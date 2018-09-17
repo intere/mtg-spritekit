@@ -83,7 +83,8 @@ class GameScene: SKScene {
             }
 
             count += 1
-            startX = 100 + count * 20
+            startX = 100 + count * 40
+            startY = 100
         }
     }
 

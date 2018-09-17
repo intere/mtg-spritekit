@@ -16,7 +16,7 @@ struct CardManager {
     let magic = Magic()
 
     init() {
-        magic.fetchPageSize = "100"
+        magic.fetchPageSize = "1"
         magic.fetchPageTotal = "1"
         Magic.enableLogging = true
     }

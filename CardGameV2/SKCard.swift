@@ -100,7 +100,7 @@ class SKCard: SKSpriteNode {
                 removeAllActions()
                 let newPosition = CGPoint(x: parent.frame.midX, y: parent.frame.midY)
                 let slide = SKAction.move(to: newPosition, duration:0.3)
-                let scaleUp = SKAction.scale(to: 5.0, duration:0.3)
+                let scaleUp = SKAction.scale(to: 4.0, duration:0.3)
                 let rotation = SKAction.rotate(toAngle: 0, duration: 0.3)
                 run(SKAction.group([slide, scaleUp, rotation]))
             }
