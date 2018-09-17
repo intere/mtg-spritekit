@@ -6,6 +6,10 @@ target 'CardGame' do
   use_frameworks!
 
   # Pods for CardGame
-  pod 'MTGSDKSwift', :git => 'git@github.com:intere/mtg-sdk-swift.git', :branch => 'feature/Cocoapods'
+  pod 'MTGSDKSwift', :git => 'git@github.com:intere/mtg-sdk-swift.git', :branch => 'master'
+
+  target 'CardGameTests' do
+    inherit! :search_paths
+  end
 
 end

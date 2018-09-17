@@ -2,21 +2,21 @@ PODS:
   - MTGSDKSwift (1.0.0)
 
 DEPENDENCIES:
-  - MTGSDKSwift (from `git@github.com:intere/mtg-sdk-swift.git`, branch `feature/Cocoapods`)
+  - MTGSDKSwift (from `git@github.com:intere/mtg-sdk-swift.git`, branch `master`)
 
 EXTERNAL SOURCES:
   MTGSDKSwift:
-    :branch: feature/Cocoapods
+    :branch: master
     :git: git@github.com:intere/mtg-sdk-swift.git
 
 CHECKOUT OPTIONS:
   MTGSDKSwift:
-    :commit: 4ace98e6e70b25a876527e25540ed9db008651fc
+    :commit: 74a9b2b02af34ecc706524a1b009560d4b4e9145
     :git: git@github.com:intere/mtg-sdk-swift.git
 
 SPEC CHECKSUMS:
   MTGSDKSwift: 4d9ce591f930a1e4d8869c178cebdbafe0b9e08a
 
-PODFILE CHECKSUM: 4f15efc617915d88133a88ae143fd7e5bf696a82
+PODFILE CHECKSUM: de25c8fa1893eb4a9e7e0dc44ca47183a4bd8f02
 
 COCOAPODS: 1.4.0

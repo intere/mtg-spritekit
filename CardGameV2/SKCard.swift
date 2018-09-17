@@ -23,48 +23,25 @@
 import MTGSDKSwift
 import SpriteKit
 
-enum CardType :Int {
-    case wolf,
-    bear,
-    dragon,
-    back
+class SKCard: SKSpriteNode {
 
-    static var types: [CardType] {
-        return [.wolf, .bear, .dragon, .back]
-    }
-}
-
-class Card : SKSpriteNode {
-    let cardType: CardType
     var frontTexture: SKTexture?
-    let frontUrlString: String
     let backTexture: SKTexture
     var damage = 0
     let damageLabel :SKLabelNode
     var faceUp = true
     var enlarged = false
     var savedPosition = CGPoint.zero
+    var tapped = false
+    var card: Card
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("NSCoding not supported")
     }
 
-    init(cardType: CardType) {
-        self.cardType = cardType
+    init(card: Card) {
+        self.card = card
         backTexture = SKTexture(imageNamed: "mtg_back")
-
-        switch cardType {
-        case .wolf:
-            frontUrlString = "https://static.tappedout.net/mtg-cards-2/dragons-maze/armored-wolf-rider/armored-wolf-rider-cropped.jpg"
-        case .bear:
-            frontUrlString = "https://static.tappedout.net/mtg-cards-2/portal-three-kingdoms/forest-bear/forest-bear.jpg"
-        case .dragon:
-            frontUrlString = "https://static.tappedout.net/mtg-cards-2/innistrad/balefire-dragon/balefire-dragon-cropped.jpg"
-
-        case .back:
-            frontUrlString = ""
-            frontTexture = backTexture
-        }
 
         damageLabel = SKLabelNode(fontNamed: "OpenSans-Bold")
         damageLabel.name = "damageLabel"
@@ -79,14 +56,24 @@ class Card : SKSpriteNode {
         makeTexture()
     }
 
+    func tap() {
+        tapped = true
+        run(SKAction.rotate(toAngle: 90.radians.cgFloat, duration: 0.3))
+    }
+
+    func untap() {
+        tapped = false
+        run(SKAction.rotate(toAngle: -90.radians.cgFloat, duration: 0.3))
+    }
+
     func makeTexture() {
-        guard !frontUrlString.isEmpty else {
+        guard let imageUrl = card.imageUrl else {
             return
         }
 
-        CardManager.shared.loadImage(urlString: frontUrlString) { (image, error) in
+        CardManager.shared.loadImage(urlString: imageUrl) { (image, error) in
             guard let image = image else {
-                return
+                return print("No image for url: \(imageUrl)")
             }
             self.frontTexture = SKTexture(image: image)
             DispatchQueue.main.async {

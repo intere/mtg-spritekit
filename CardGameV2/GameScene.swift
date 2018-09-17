@@ -20,6 +20,7 @@
  * THE SOFTWARE.
  */
 
+import MTGSDKSwift
 import SpriteKit
 
 enum CardLevel :CGFloat {
@@ -36,19 +37,60 @@ class GameScene: SKScene {
         bg.position = CGPoint.zero
         addChild(bg)
 
+
+        guard let deck = DeckReader.shared.read(fileNamed: "deck.txt") else {
+            return
+        }
+
+        CardManager.shared.loadCards(forDeck: deck) { (cards, error) in
+            if let error = error {
+                return print("ERROR loading deck: \(error.localizedDescription)")
+            }
+            guard let cards = cards else {
+                return print("ERROR: no cards came back")
+            }
+            DispatchQueue.main.async { [weak self] in
+                self?.show(deck: deck, cards: cards)
+            }
+        }
+    }
+
+    func show(deck: Deck, cards: [MTGSDKSwift.Card]) {
+        var cardHash = [String: MTGSDKSwift.Card]()
+        cards.forEach { card in
+            guard let name = card.name else {
+                return print("ERROR: Card with no name")
+            }
+            cardHash[name] = card
+        }
+
         var startX = 100
-        for type in CardType.types {
-            let card = Card(cardType: type)
-            card.position = CGPoint(x: startX, y: 200)
-            addChild(card)
-            startX += 150
+        var startY = 100
+
+        var count = 0
+
+        for card in deck.mainboard {
+            guard let apiCard = cardHash[card.name], apiCard.imageUrl != nil else {
+                print("ERROR: no image for card \(card.name)")
+                continue
+            }
+            for _ in 0..<card.quantity {
+                let skCard = SKCard(card: apiCard)
+                skCard.position = CGPoint(x: startX, y: startY)
+                addChild(skCard)
+                startX += 15
+                startY += 15
+            }
+
+            count += 1
+            startX = 100 + count * 20
         }
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             let location = touch.location(in: self)           // 1
-            if let card = atPoint(location) as? Card {        // 2
+            if let card = atPoint(location) as? SKCard {        // 2
                 if card.enlarged { return }
                 card.position = location
             }
@@ -59,7 +101,7 @@ class GameScene: SKScene {
         for touch in touches {
             
             let location = touch.location(in: self)
-            if let card = atPoint(location) as? Card {
+            if let card = atPoint(location) as? SKCard {
                 if touch.tapCount > 1 {
                     card.enlarge()
                     return
@@ -84,7 +126,7 @@ class GameScene: SKScene {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             let location = touch.location(in: self)
-            if let card = atPoint(location) as? Card {
+            if let card = atPoint(location) as? SKCard {
                 guard !card.enlarged else {
                     return
                 }
@@ -99,7 +141,7 @@ class GameScene: SKScene {
         }
     }
 
-    func wiggle(it card: Card) {
+    func wiggle(it card: SKCard) {
         let wiggleIn = SKAction.scaleX(to: 1.0, duration: 0.2)
         let wiggleOut = SKAction.scaleX(to: 1.2, duration: 0.2)
         let wiggle = SKAction.sequence([wiggleIn, wiggleOut])
@@ -107,7 +149,7 @@ class GameScene: SKScene {
         card.run(SKAction.repeatForever(wiggle), withKey: "wiggle")
     }
 
-    func stopWiggle(it card: Card) {
+    func stopWiggle(it card: SKCard) {
         card.removeAction(forKey: "wiggle")
     }
 
