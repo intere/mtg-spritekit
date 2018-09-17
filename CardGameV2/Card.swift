@@ -20,25 +20,30 @@
  * THE SOFTWARE.
  */
 
+import Kingfisher
 import SpriteKit
 
 enum CardType :Int {
     case wolf,
     bear,
-    dragon
+    dragon,
+    back
+
+    static var types: [CardType] {
+        return [.wolf, .bear, .dragon, .back]
+    }
 }
 
 class Card : SKSpriteNode {
-    let cardType :CardType
-    let frontTexture :SKTexture
-    let backTexture :SKTexture
+    let cardType: CardType
+    var frontTexture: SKTexture?
+    let frontUrlString: String
+    let backTexture: SKTexture
     var damage = 0
     let damageLabel :SKLabelNode
     var faceUp = true
     var enlarged = false
     var savedPosition = CGPoint.zero
-    let largeTextureFilename :String
-    var largeTexture :SKTexture?
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("NSCoding not supported")
@@ -46,18 +51,19 @@ class Card : SKSpriteNode {
 
     init(cardType: CardType) {
         self.cardType = cardType
-        backTexture = SKTexture(imageNamed: "card_back")
+        backTexture = SKTexture(imageNamed: "mtg_back")
 
         switch cardType {
         case .wolf:
-            frontTexture = SKTexture(imageNamed: "card_creature_wolf")
-            largeTextureFilename = "card_creature_wolf_large"
+            frontUrlString = "https://static.tappedout.net/mtg-cards-2/dragons-maze/armored-wolf-rider/armored-wolf-rider-cropped.jpg"
         case .bear:
-            frontTexture = SKTexture(imageNamed: "card_creature_bear")
-            largeTextureFilename = "card_creature_bear_large"
+            frontUrlString = "https://static.tappedout.net/mtg-cards-2/portal-three-kingdoms/forest-bear/forest-bear.jpg"
         case .dragon:
-            frontTexture = SKTexture(imageNamed: "card_creature_dragon")
-            largeTextureFilename = "card_creature_dragon_large"
+            frontUrlString = "https://static.tappedout.net/mtg-cards-2/innistrad/balefire-dragon/balefire-dragon-cropped.jpg"
+
+        case .back:
+            frontUrlString = ""
+            frontTexture = backTexture
         }
 
         damageLabel = SKLabelNode(fontNamed: "OpenSans-Bold")
@@ -67,34 +73,25 @@ class Card : SKSpriteNode {
         damageLabel.text = "0"
         damageLabel.position = CGPoint(x: 25, y: 40)
 
-        
-
-        super.init(texture: frontTexture, color: .clear, size: frontTexture.size())
+        super.init(texture: backTexture, color: .clear, size: CGSize(width: 100, height: 140))
         addChild(damageLabel)
+
+        makeTexture()
     }
 
-    func flip() {
-        let firstHalfFlip = SKAction.scaleX(to: 0.0, duration: 0.4)
-        let secondHalfFlip = SKAction.scaleX(to: 1.0, duration: 0.4)
-
-        setScale(1.0)
-
-        if faceUp {
-            run(firstHalfFlip) {
-                self.texture = self.backTexture
-                self.damageLabel.isHidden = true
-
-                self.run(secondHalfFlip)
+    func makeTexture() {
+        guard !frontUrlString.isEmpty, let url = URL(string: frontUrlString) else {
+            return
+        }
+        KingfisherManager.shared.retrieveImage(with: url, options: nil, progressBlock: nil) { (image, error, type, url) in
+            guard let image = image else {
+                return
             }
-        } else {
-            run(firstHalfFlip) {
+            self.frontTexture = SKTexture(image: image)
+            DispatchQueue.main.async {
                 self.texture = self.frontTexture
-                self.damageLabel.isHidden = false
-
-                self.run(secondHalfFlip)
             }
         }
-        faceUp = !faceUp
     }
 
     func enlarge() {
@@ -109,22 +106,15 @@ class Card : SKSpriteNode {
             enlarged = true
             savedPosition = position
 
-            if largeTexture != nil {
-                texture = largeTexture
-            } else {
-                largeTexture = SKTexture(imageNamed: largeTextureFilename)
-                texture = largeTexture
-            }
-
             zPosition = CardLevel.enlarged.rawValue
 
             if let parent = parent {
                 removeAllActions()
-                zRotation = 0
                 let newPosition = CGPoint(x: parent.frame.midX, y: parent.frame.midY)
                 let slide = SKAction.move(to: newPosition, duration:0.3)
                 let scaleUp = SKAction.scale(to: 5.0, duration:0.3)
-                run(SKAction.group([slide, scaleUp]))
+                let rotation = SKAction.rotate(toAngle: 0, duration: 0.3)
+                run(SKAction.group([slide, scaleUp, rotation]))
             }
         }
     }
