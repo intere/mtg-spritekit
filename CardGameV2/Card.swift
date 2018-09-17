@@ -20,7 +20,7 @@
  * THE SOFTWARE.
  */
 
-import Kingfisher
+import MTGSDKSwift
 import SpriteKit
 
 enum CardType :Int {
@@ -80,10 +80,11 @@ class Card : SKSpriteNode {
     }
 
     func makeTexture() {
-        guard !frontUrlString.isEmpty, let url = URL(string: frontUrlString) else {
+        guard !frontUrlString.isEmpty else {
             return
         }
-        KingfisherManager.shared.retrieveImage(with: url, options: nil, progressBlock: nil) { (image, error, type, url) in
+
+        CardManager.shared.loadImage(urlString: frontUrlString) { (image, error) in
             guard let image = image else {
                 return
             }

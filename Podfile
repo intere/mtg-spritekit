@@ -6,6 +6,6 @@ target 'CardGame' do
   use_frameworks!
 
   # Pods for CardGame
-  pod 'Kingfisher'
+  pod 'MTGSDKSwift', :git => 'git@github.com:intere/mtg-sdk-swift.git', :branch => 'feature/Cocoapods'
 
 end
