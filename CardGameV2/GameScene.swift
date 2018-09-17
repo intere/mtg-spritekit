@@ -49,6 +49,7 @@ class GameScene: SKScene {
         for touch in touches {
             let location = touch.location(in: self)           // 1
             if let card = atPoint(location) as? Card {        // 2
+                if card.enlarged { return }
                 card.position = location
             }
         }
@@ -56,11 +57,25 @@ class GameScene: SKScene {
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
+            
             let location = touch.location(in: self)
             if let card = atPoint(location) as? Card {
+                if touch.tapCount > 1 {
+                    card.enlarge()
+                    return
+                }
+
+                if card.enlarged { return }
+
                 card.zPosition = CardLevel.moving.rawValue
                 card.removeAction(forKey: "drop")
-                card.run(SKAction.scale(to: 1.3, duration: 0.25), withKey: "pickup")
+                card.run(SKAction.group([
+                    SKAction.scale(to: 1.3, duration: 0.25),
+                    SKAction.repeatForever(SKAction.sequence([
+                        SKAction.rotate(toAngle: 0.1, duration: 0.25),
+                        SKAction.rotate(toAngle: -0.1, duration: 0.25)
+                        ]))
+                    ]), withKey: "pickup")
                 wiggle(it: card)
             }
         }
@@ -74,6 +89,7 @@ class GameScene: SKScene {
                 card.removeFromParent()
                 addChild(card)
                 card.removeAction(forKey: "pickup")
+                card.run(SKAction.rotate(toAngle: 0, duration: 0.25), withKey: "stop")
                 card.run(SKAction.scale(to: 1.0, duration: 0.25), withKey: "drop")
                 stopWiggle(it: card)
             }
