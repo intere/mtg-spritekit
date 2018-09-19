@@ -70,7 +70,7 @@ class GameScene: SKScene {
         }
 
         var startX = CGFloat(100)
-        var startY = CGFloat(frame.maxY - 20) - SKCard.Constants.height
+        var startY = CGFloat(frame.maxY - 10) - SKCard.Constants.height / 2
 
         for card in deck.mainboard {
             guard let apiCard = cardHash[card.name], apiCard.imageUrl != nil else {
@@ -94,11 +94,11 @@ class GameScene: SKScene {
     }
 
     func reset(y: CGFloat) -> Bool {
-        return y - SKCard.Constants.height <= 20
+        return y - SKCard.Constants.height / 2 < 10
     }
 
     func resetPosition(card: SKCard) {
-        let newY = CGFloat(frame.maxY - 20) - SKCard.Constants.height
+        let newY = CGFloat(frame.maxY - 10) - SKCard.Constants.height / 2
         let newX = card.position.x + 20 + SKCard.Constants.width
 
         card.position = CGPoint(x: newX, y: newY)
