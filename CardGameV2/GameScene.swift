@@ -55,6 +55,11 @@ class GameScene: SKScene {
         }
     }
 
+    /// Renders the deck on the screen (makes use of the deck and the cards).
+    ///
+    /// - Parameters:
+    ///   - deck: The deck to show on the screen.
+    ///   - cards: The cards to show on the screen.
     func show(deck: Deck, cards: [MTGSDKSwift.Card]) {
         var cardHash = [String: MTGSDKSwift.Card]()
         cards.forEach { card in
@@ -64,10 +69,8 @@ class GameScene: SKScene {
             cardHash[name] = card
         }
 
-        var startX = 100
-        var startY = 100
-
-        var count = 0
+        var startX = CGFloat(100)
+        var startY = CGFloat(frame.maxY - 20) - SKCard.Constants.height
 
         for card in deck.mainboard {
             guard let apiCard = cardHash[card.name], apiCard.imageUrl != nil else {
@@ -77,15 +80,28 @@ class GameScene: SKScene {
             for _ in 0..<card.quantity {
                 let skCard = SKCard(card: apiCard)
                 skCard.position = CGPoint(x: startX, y: startY)
+                if reset(y: startY) {
+                    resetPosition(card: skCard)
+                    startX = skCard.position.x
+                    startY = skCard.position.y
+                }
                 addChild(skCard)
-                startX += 15
-                startY += 15
+                print("added card at \(skCard.position)")
+                startY -= 25
             }
-
-            count += 1
-            startX = 100 + count * 40
-            startY = 100
+            startY -= SKCard.Constants.height
         }
+    }
+
+    func reset(y: CGFloat) -> Bool {
+        return y - SKCard.Constants.height <= 20
+    }
+
+    func resetPosition(card: SKCard) {
+        let newY = CGFloat(frame.maxY - 20) - SKCard.Constants.height
+        let newX = card.position.x + 20 + SKCard.Constants.width
+
+        card.position = CGPoint(x: newX, y: newY)
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {

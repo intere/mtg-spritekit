@@ -25,6 +25,11 @@ import SpriteKit
 
 class SKCard: SKSpriteNode {
 
+    struct Constants {
+        static let width: CGFloat = 100
+        static let height: CGFloat = 140
+    }
+
     var frontTexture: SKTexture?
     let backTexture: SKTexture
     var damage = 0
