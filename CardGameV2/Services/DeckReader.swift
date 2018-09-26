@@ -24,6 +24,16 @@ struct Deck {
     var sideboardCount: Int {
         return sideboard.reduce(0, { $0 + $1.quantity })
     }
+
+    /// Gets you the unique set of card names from the deck.
+    var uniqueCardNames: [String] {
+        var set = Set(mainboard.map({ $0.name }))
+        sideboard.forEach {
+            set.insert($0.name)
+        }
+
+        return Array(set)
+    }
 }
 
 struct DeckReader {

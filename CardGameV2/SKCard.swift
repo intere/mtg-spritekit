@@ -69,7 +69,7 @@ class SKCard: SKSpriteNode {
             return
         }
 
-        CardManager.shared.loadImage(urlString: imageUrl) { (image, error) in
+        MtgApiService.shared.loadImage(urlString: imageUrl) { (image, error) in
             guard let image = image else {
                 return print("No image for url: \(imageUrl)")
             }

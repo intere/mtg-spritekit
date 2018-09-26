@@ -10,13 +10,13 @@ import Foundation
 import MTGSDKSwift
 
 /// Responsible for interacting with the cards service API (magicthegathering.io)
-struct CardManager {
+struct MtgApiService {
 
-    static let shared = CardManager()
+    static let shared = MtgApiService()
     let magic = Magic()
 
     init() {
-        magic.fetchPageSize = "2"
+        magic.fetchPageSize = "10"
         magic.fetchPageTotal = "1"
 //        Magic.enableLogging = true
     }
@@ -55,7 +55,7 @@ struct CardManager {
                     errorResult = error
                     print("Network error with card \(cardName): \(error.localizedDescription)")
                 }
-                guard let cards = cards, let card = cards.filter({ $0.imageUrl != nil }).first else {
+                guard let cards = cards, let card = cards.filter({ $0.imageUrl != nil && $0.name == cardName }).first else {
                     return
                 }
                 results.append(card)
@@ -63,7 +63,8 @@ struct CardManager {
                 let set = cardSet.subtracting(results.compactMap({$0.name}))
                 print("We have \(results.count) of \(cardSet.count) responses back: \(cardName)")
                 print("Updated Set: \(set)")
-                if results.count == cardSet.count {
+//                if results.count == cardSet.count {
+                if set.isEmpty {
                     completion(results, errorResult)
                 }
             }
