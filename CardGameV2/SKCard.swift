@@ -33,7 +33,7 @@ class SKCard: SKSpriteNode {
     var frontTexture: SKTexture?
     let backTexture: SKTexture
     var damage = 0
-    let damageLabel :SKLabelNode
+    var damageLabel: SKLabelNode?
     var faceUp = true
     var enlarged = false
     var savedPosition = CGPoint.zero
@@ -48,17 +48,10 @@ class SKCard: SKSpriteNode {
         self.card = card
         backTexture = SKTexture(imageNamed: "mtg_back")
 
-        damageLabel = SKLabelNode(fontNamed: "OpenSans-Bold")
-        damageLabel.name = "damageLabel"
-        damageLabel.fontSize = 12
-        damageLabel.fontColor = SKColor(red: 0.47, green: 0.0, blue: 0.0, alpha: 1.0)
-        damageLabel.text = "0"
-        damageLabel.position = CGPoint(x: 25, y: 40)
-
         super.init(texture: backTexture, color: .clear, size: CGSize(width: 100, height: 140))
-        addChild(damageLabel)
 
         makeTexture()
+        damageLabel = makeDamageLabel()
     }
 
     func tap() {
@@ -110,5 +103,18 @@ class SKCard: SKSpriteNode {
                 run(SKAction.group([slide, scaleUp, rotation]))
             }
         }
+    }
+
+    func makeDamageLabel() -> SKLabelNode {
+        let label = SKLabelNode(fontNamed: "OpenSans-Bold")
+        label.name = "damageLabel"
+        label.fontSize = 12
+        label.fontColor = SKColor(red: 0.47, green: 0.0, blue: 0.0, alpha: 1.0)
+        label.text = "0"
+        label.position = CGPoint(x: 25, y: 40)
+        label.isHidden = true
+        addChild(label)
+
+        return label
     }
 }

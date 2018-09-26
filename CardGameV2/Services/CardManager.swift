@@ -16,9 +16,9 @@ struct CardManager {
     let magic = Magic()
 
     init() {
-        magic.fetchPageSize = "1"
+        magic.fetchPageSize = "2"
         magic.fetchPageTotal = "1"
-        Magic.enableLogging = true
+//        Magic.enableLogging = true
     }
 
     /// Loads an image for you.
@@ -50,18 +50,23 @@ struct CardManager {
                 CardSearchParameter(parameterType: .name, value: cardName),
                 CardSearchParameter(parameterType: .contains, value: "imageUrl")
             ]
-            magic.fetchCards(params, completion: { (cards, error) in
+            magic.fetchCards(params) { (cards, error) in
                 if let error = error {
                     errorResult = error
+                    print("Network error with card \(cardName): \(error.localizedDescription)")
                 }
-                guard let cards = cards, let card = cards.first else {
+                guard let cards = cards, let card = cards.filter({ $0.imageUrl != nil }).first else {
                     return
                 }
                 results.append(card)
+
+                let set = cardSet.subtracting(results.compactMap({$0.name}))
+                print("We have \(results.count) of \(cardSet.count) responses back: \(cardName)")
+                print("Updated Set: \(set)")
                 if results.count == cardSet.count {
                     completion(results, errorResult)
                 }
-            })
+            }
         }
     }
 

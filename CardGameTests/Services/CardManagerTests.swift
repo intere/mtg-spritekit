@@ -14,6 +14,39 @@ class CardManagerTests: XCTestCase {
 
     let deck = DeckReader.shared.read(fileNamed: "deck.txt")
 
+    func testLoadDampingSphere() {
+        let cardName = "Damping Sphere"
+
+        let magic = Magic()
+        magic.fetchPageSize = "2"
+        magic.fetchPageTotal = "1"
+        Magic.enableLogging = true
+
+        let exp = expectation(description: "loadCards")
+        let params = [
+            CardSearchParameter(parameterType: .name, value: cardName),
+            CardSearchParameter(parameterType: .contains, value: "imageUrl")
+        ]
+        magic.fetchCards(params) { (cards, error) in
+            defer {
+                exp.fulfill()
+            }
+            if let error = error {
+                XCTFail(error.localizedDescription)
+            }
+            guard let cards = cards else {
+                return XCTFail("Cards came back nil")
+            }
+            XCTAssertNotEqual(0, cards.count)
+            for card in cards {
+                XCTAssertNotNil(card.imageUrl)
+            }
+        }
+
+        waitForExpectations(timeout: 10, handler: nil)
+
+    }
+
     func testLoadCards() {
         guard let deck = deck else {
             return XCTFail("No test deck to play with")

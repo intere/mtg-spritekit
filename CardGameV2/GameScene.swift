@@ -1,24 +1,4 @@
-/**
- * Copyright (c) 2016 Razeware LLC
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
+
 
 import MTGSDKSwift
 import SpriteKit
@@ -37,6 +17,9 @@ class GameScene: SKScene {
         bg.position = CGPoint.zero
         addChild(bg)
 
+        guard NSClassFromString("XCTestCase") == nil else {
+            return
+        }
 
         guard let deck = DeckReader.shared.read(fileNamed: "deck.txt") else {
             return
@@ -53,55 +36,6 @@ class GameScene: SKScene {
                 self?.show(deck: deck, cards: cards)
             }
         }
-    }
-
-    /// Renders the deck on the screen (makes use of the deck and the cards).
-    ///
-    /// - Parameters:
-    ///   - deck: The deck to show on the screen.
-    ///   - cards: The cards to show on the screen.
-    func show(deck: Deck, cards: [MTGSDKSwift.Card]) {
-        var cardHash = [String: MTGSDKSwift.Card]()
-        cards.forEach { card in
-            guard let name = card.name else {
-                return print("ERROR: Card with no name")
-            }
-            cardHash[name] = card
-        }
-
-        var startX = CGFloat(100)
-        var startY = CGFloat(frame.maxY - 10) - SKCard.Constants.height / 2
-
-        for card in deck.mainboard {
-            guard let apiCard = cardHash[card.name], apiCard.imageUrl != nil else {
-                print("ERROR: no image for card \(card.name)")
-                continue
-            }
-            for _ in 0..<card.quantity {
-                let skCard = SKCard(card: apiCard)
-                skCard.position = CGPoint(x: startX, y: startY)
-                if reset(y: startY) {
-                    resetPosition(card: skCard)
-                    startX = skCard.position.x
-                    startY = skCard.position.y
-                }
-                addChild(skCard)
-                print("added card at \(skCard.position)")
-                startY -= 25
-            }
-            startY -= SKCard.Constants.height
-        }
-    }
-
-    func reset(y: CGFloat) -> Bool {
-        return y - SKCard.Constants.height / 2 < 10
-    }
-
-    func resetPosition(card: SKCard) {
-        let newY = CGFloat(frame.maxY - 10) - SKCard.Constants.height / 2
-        let newX = card.position.x + 20 + SKCard.Constants.width
-
-        card.position = CGPoint(x: newX, y: newY)
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -158,6 +92,15 @@ class GameScene: SKScene {
         }
     }
 
+}
+
+// MARK: - Implementation
+
+extension GameScene {
+
+    /// Wiggle animation for when you're moving the card
+    ///
+    /// - Parameter card: The card you want to animate the wiggle on.
     func wiggle(it card: SKCard) {
         let wiggleIn = SKAction.scaleX(to: 1.0, duration: 0.2)
         let wiggleOut = SKAction.scaleX(to: 1.2, duration: 0.2)
@@ -166,8 +109,70 @@ class GameScene: SKScene {
         card.run(SKAction.repeatForever(wiggle), withKey: "wiggle")
     }
 
+    /// Stops the wigling animation on the card
+    ///
+    /// - Parameter card: The card you want to stop the wiggle on.
     func stopWiggle(it card: SKCard) {
         card.removeAction(forKey: "wiggle")
     }
 
+    /// Renders the deck on the screen (makes use of the deck and the cards).
+    ///
+    /// - Parameters:
+    ///   - deck: The deck to show on the screen.
+    ///   - cards: The cards to show on the screen.
+    func show(deck: Deck, cards: [MTGSDKSwift.Card]) {
+        var cardHash = [String: MTGSDKSwift.Card]()
+        cards.forEach { card in
+            guard let name = card.name else {
+                return print("ERROR: Card with no name")
+            }
+            cardHash[name] = card
+        }
+
+        var startX = CGFloat(100)
+        var startY = CGFloat(frame.maxY - 10) - SKCard.Constants.height / 2
+
+        for card in deck.mainboard {
+            guard let apiCard = cardHash[card.name] else {
+                print("ERROR: no API Card for \(card.name)")
+                continue
+            }
+            guard apiCard.imageUrl != nil else {
+                print("ERROR: no image for card \(card.name)")
+                continue
+            }
+            for _ in 0..<card.quantity {
+                let skCard = SKCard(card: apiCard)
+                skCard.position = CGPoint(x: startX, y: startY)
+                if reset(y: startY) {
+                    resetPosition(card: skCard)
+                    startX = skCard.position.x
+                    startY = skCard.position.y
+                }
+                addChild(skCard)
+                print("added card at \(skCard.position)")
+                startY -= 25
+            }
+            startY -= SKCard.Constants.height
+        }
+    }
+
+    /// Should the y be reset (based on the current Y value)?
+    ///
+    /// - Parameter y: The y value we want to drop a card in at.
+    /// - Returns: True if the y value would have the card too low, false if not.
+    func reset(y: CGFloat) -> Bool {
+        return y - SKCard.Constants.height / 2 < 10
+    }
+
+    /// Takes the provided card and moves it up and to the right.
+    ///
+    /// - Parameter card: The card to be repositioned.
+    func resetPosition(card: SKCard) {
+        let newY = CGFloat(frame.maxY - 10) - SKCard.Constants.height / 2
+        let newX = card.position.x + 20 + SKCard.Constants.width
+
+        card.position = CGPoint(x: newX, y: newY)
+    }
 }
