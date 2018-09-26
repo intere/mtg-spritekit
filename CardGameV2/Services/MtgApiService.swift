@@ -10,13 +10,13 @@ import Foundation
 import MTGSDKSwift
 
 /// Responsible for interacting with the cards service API (magicthegathering.io)
-struct CardManager {
+struct MtgApiService {
 
-    static let shared = CardManager()
+    static let shared = MtgApiService()
     let magic = Magic()
 
     init() {
-        magic.fetchPageSize = "1"
+        magic.fetchPageSize = "10"
         magic.fetchPageTotal = "1"
         Magic.enableLogging = true
     }
@@ -54,7 +54,7 @@ struct CardManager {
                 if let error = error {
                     errorResult = error
                 }
-                guard let cards = cards, let card = cards.first else {
+                guard let cards = cards, let card = cards.filter({ $0.imageUrl != nil }) .first else {
                     return
                 }
                 results.append(card)

@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		362B7AF521501649009E165C /* CardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362B7AF421501649009E165C /* CardManager.swift */; };
+		362B7AF521501649009E165C /* MtgApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362B7AF421501649009E165C /* MtgApiService.swift */; };
 		362B7AF821501887009E165C /* MathExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362B7AF721501887009E165C /* MathExtensions.swift */; };
 		362B7AFA21501A87009E165C /* deck.txt in Resources */ = {isa = PBXBuildFile; fileRef = 362B7AF921501A87009E165C /* deck.txt */; };
 		362B7AFC21501ABE009E165C /* DeckReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362B7AFB21501ABE009E165C /* DeckReader.swift */; };
 		362B7B0421501B77009E165C /* CardGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362B7B0321501B77009E165C /* CardGameTests.swift */; };
 		362B7B0D21501B9E009E165C /* DeckReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362B7B0C21501B9E009E165C /* DeckReaderTests.swift */; };
-		362B7B0F215023C8009E165C /* CardManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362B7B0E215023C8009E165C /* CardManagerTests.swift */; };
+		362B7B0F215023C8009E165C /* MtgApiServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362B7B0E215023C8009E165C /* MtgApiServiceTests.swift */; };
 		86A853F5A20A3991F4EDD8F7 /* Pods_CardGame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 828BF80EB7F7AB501D2F1E3C /* Pods_CardGame.framework */; };
 		D39654F41CD45F10002A5E99 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3EFEB2F1CD3D8A100014542 /* OpenSans-Bold.ttf */; };
 		D3EFEB0A1CD3C43400014542 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EFEB091CD3C43400014542 /* AppDelegate.swift */; };
@@ -43,7 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		362B7AF421501649009E165C /* CardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardManager.swift; sourceTree = "<group>"; };
+		362B7AF421501649009E165C /* MtgApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MtgApiService.swift; sourceTree = "<group>"; };
 		362B7AF721501887009E165C /* MathExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathExtensions.swift; sourceTree = "<group>"; };
 		362B7AF921501A87009E165C /* deck.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = deck.txt; sourceTree = "<group>"; };
 		362B7AFB21501ABE009E165C /* DeckReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckReader.swift; sourceTree = "<group>"; };
@@ -51,7 +51,7 @@
 		362B7B0321501B77009E165C /* CardGameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardGameTests.swift; sourceTree = "<group>"; };
 		362B7B0521501B77009E165C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		362B7B0C21501B9E009E165C /* DeckReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckReaderTests.swift; sourceTree = "<group>"; };
-		362B7B0E215023C8009E165C /* CardManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardManagerTests.swift; sourceTree = "<group>"; };
+		362B7B0E215023C8009E165C /* MtgApiServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MtgApiServiceTests.swift; sourceTree = "<group>"; };
 		7562CCFD132DBCF31797117D /* Pods-CardGame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardGame.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CardGame/Pods-CardGame.debug.xcconfig"; sourceTree = "<group>"; };
 		828BF80EB7F7AB501D2F1E3C /* Pods_CardGame.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CardGame.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB433297C884F471BD14F085 /* Pods-CardGameTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardGameTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CardGameTests/Pods-CardGameTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -110,7 +110,7 @@
 		362B7AF321501640009E165C /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				362B7AF421501649009E165C /* CardManager.swift */,
+				362B7AF421501649009E165C /* MtgApiService.swift */,
 				362B7AFB21501ABE009E165C /* DeckReader.swift */,
 			);
 			path = Services;
@@ -138,7 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				362B7B0C21501B9E009E165C /* DeckReaderTests.swift */,
-				362B7B0E215023C8009E165C /* CardManagerTests.swift */,
+				362B7B0E215023C8009E165C /* MtgApiServiceTests.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -468,7 +468,7 @@
 			files = (
 				362B7B0421501B77009E165C /* CardGameTests.swift in Sources */,
 				362B7B0D21501B9E009E165C /* DeckReaderTests.swift in Sources */,
-				362B7B0F215023C8009E165C /* CardManagerTests.swift in Sources */,
+				362B7B0F215023C8009E165C /* MtgApiServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,7 +480,7 @@
 				D3EFEB0E1CD3C43400014542 /* GameScene.swift in Sources */,
 				D3EFEB101CD3C43400014542 /* GameViewController.swift in Sources */,
 				D3EFEB0A1CD3C43400014542 /* AppDelegate.swift in Sources */,
-				362B7AF521501649009E165C /* CardManager.swift in Sources */,
+				362B7AF521501649009E165C /* MtgApiService.swift in Sources */,
 				D3EFEB311CD3D9D400014542 /* SKCard.swift in Sources */,
 				362B7AF821501887009E165C /* MathExtensions.swift in Sources */,
 			);

@@ -42,7 +42,7 @@ class GameScene: SKScene {
             return
         }
 
-        CardManager.shared.loadCards(forDeck: deck) { (cards, error) in
+        MtgApiService.shared.loadCards(forDeck: deck) { (cards, error) in
             if let error = error {
                 return print("ERROR loading deck: \(error.localizedDescription)")
             }

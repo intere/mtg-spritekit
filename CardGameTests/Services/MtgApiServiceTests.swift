@@ -10,7 +10,7 @@
 import MTGSDKSwift
 import XCTest
 
-class CardManagerTests: XCTestCase {
+class MtgApiServiceTests: XCTestCase {
 
     let deck = DeckReader.shared.read(fileNamed: "deck.txt")
 
@@ -21,7 +21,7 @@ class CardManagerTests: XCTestCase {
         XCTAssertEqual(60, deck.mainboardCount)
 
         let exp = expectation(description: "loadCards")
-        CardManager.shared.loadCards(forDeck: deck) { (cards, error) in
+        MtgApiService.shared.loadCards(forDeck: deck) { (cards, error) in
             defer {
                 exp.fulfill()
             }
@@ -38,6 +38,12 @@ class CardManagerTests: XCTestCase {
         }
 
         waitForExpectations(timeout: 10, handler: nil)
+    }
+
+    func testGetInkmothNexus() {
+        let name = "Inkmoth Nexus"
+
+
     }
     
 }
