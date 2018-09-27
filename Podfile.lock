@@ -11,7 +11,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   MTGSDKSwift:
-    :commit: 31d42ec914bed5f69754d0e0689ee85dc18b54fc
+    :commit: 70ef75fa08e67386a4ebcc522acb6f4e6f2e1d43
     :git: git@github.com:intere/mtg-sdk-swift.git
 
 SPEC CHECKSUMS:

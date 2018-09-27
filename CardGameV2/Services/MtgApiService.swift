@@ -18,7 +18,6 @@ struct MtgApiService {
     init() {
         magic.fetchPageSize = "10"
         magic.fetchPageTotal = "1"
-//        Magic.enableLogging = true
     }
 
     /// Loads an image for you.
