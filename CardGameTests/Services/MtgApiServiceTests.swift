@@ -37,7 +37,11 @@ extension MtgApiServiceTests {
             XCTAssertEqual(1, cards.count, "Not enough cards came back")
 
             for card in cards {
-                XCTAssertNotNil(card.imageUrl, "Card \(card.name!) had a nil image")
+                guard let cardName = card.name else {
+                    XCTFail("card without a name: \(card.id)")
+                    continue
+                }
+                XCTAssertNotNil(card.imageUrl, "Card \(cardName) had a nil image")
             }
         }
 

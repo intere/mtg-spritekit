@@ -55,15 +55,17 @@ struct MtgApiService {
                     errorResult = error
                     print("Network error with card \(cardName): \(error.localizedDescription)")
                 }
-                guard let cards = cards, let card = cards.filter({ $0.imageUrl != nil && $0.name == cardName }).first else {
+                guard let cards = cards, let card = cards.filter({ $0.name == cardName }).first else {
                     return
                 }
                 results.append(card)
 
-                let set = cardSet.subtracting(results.compactMap({$0.name}))
-                print("We have \(results.count) of \(cardSet.count) responses back: \(cardName)")
-                print("Updated Set: \(set)")
-//                if results.count == cardSet.count {
+                let set = cardSet.subtracting(results.compactMap({ $0.name }))
+                if Magic.enableLogging {
+                    print("We have \(results.count) of \(cardSet.count) responses back: \(cardName)")
+                    print("Updated Set: \(set)")
+                }
+
                 if set.isEmpty {
                     completion(results, errorResult)
                 }
