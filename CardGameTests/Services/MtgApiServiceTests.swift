@@ -49,6 +49,7 @@ extension MtgApiServiceTests {
     }
 
     func testLoadDeckOfCards() {
+        Magic.enableLogging = true
         guard let deck = deck else {
             return XCTFail("No test deck to play with")
         }

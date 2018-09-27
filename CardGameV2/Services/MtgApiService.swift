@@ -49,6 +49,23 @@ struct MtgApiService {
                 CardSearchParameter(parameterType: .name, value: cardName),
                 CardSearchParameter(parameterType: .contains, value: "imageUrl")
             ]
+            do {
+                if let card = try CardCacheService.shared.loadCachedCard(named: cardName) {
+                    results.append(card)
+                    let set = cardSet.subtracting(results.compactMap({ $0.name }))
+                    if Magic.enableLogging {
+                        print("We have \(results.count) of \(cardSet.count) responses back: \(cardName)")
+                        print("Updated Set: \(set)")
+                    }
+
+                    if set.isEmpty {
+                        completion(results, errorResult)
+                    }
+                    return
+                }
+            } catch {
+                print("ERROR: \(error.localizedDescription)")
+            }
             magic.fetchCards(params) { (cards, error) in
                 if let error = error {
                     errorResult = error
@@ -58,6 +75,7 @@ struct MtgApiService {
                     return
                 }
                 results.append(card)
+                try? CardCacheService.shared.cache(card: card)
 
                 let set = cardSet.subtracting(results.compactMap({ $0.name }))
                 if Magic.enableLogging {
