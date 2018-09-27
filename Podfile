@@ -7,6 +7,7 @@ target 'CardGame' do
 
   # Pods for CardGame
   pod 'MTGSDKSwift', :git => 'git@github.com:intere/mtg-sdk-swift.git', :branch => 'master'
+  pod 'Kingfisher'
 
   target 'CardGameTests' do
     inherit! :search_paths

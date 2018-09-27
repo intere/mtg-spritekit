@@ -1,7 +1,9 @@
 PODS:
+  - Kingfisher (4.10.0)
   - MTGSDKSwift (1.0.0)
 
 DEPENDENCIES:
+  - Kingfisher
   - MTGSDKSwift (from `git@github.com:intere/mtg-sdk-swift.git`, branch `master`)
 
 EXTERNAL SOURCES:
@@ -15,8 +17,9 @@ CHECKOUT OPTIONS:
     :git: git@github.com:intere/mtg-sdk-swift.git
 
 SPEC CHECKSUMS:
+  Kingfisher: 43c4b802d8b5256cf1f4379e9cd10b329be6d3e2
   MTGSDKSwift: 4d9ce591f930a1e4d8869c178cebdbafe0b9e08a
 
-PODFILE CHECKSUM: de25c8fa1893eb4a9e7e0dc44ca47183a4bd8f02
+PODFILE CHECKSUM: ac3c8e6351f467b4cc4a2f4db3c3a4cb0625acb7
 
 COCOAPODS: 1.4.0

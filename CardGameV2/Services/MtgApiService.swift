@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Kingfisher
 import MTGSDKSwift
 
 /// Responsible for interacting with the cards service API (magicthegathering.io)
@@ -26,10 +27,22 @@ struct MtgApiService {
     ///   - urlString: the image you want to load.
     ///   - completion: the completion handler.
     func loadImage(urlString: String, completion: @escaping Magic.CardImageCompletion) {
-        var card = MTGSDKSwift.Card()
-        card.imageUrl = urlString
+        if ImageCache.default.isImageCached(forKey: urlString).cached {
+            ImageCache.default.retrieveImage(forKey: urlString, options: nil) { (image, _) in
+                completion(image, nil)
+            }
+        } else {
+            var card = MTGSDKSwift.Card()
+            card.imageUrl = urlString
+            magic.fetchImageForCard(card) { (image, error) in
+                guard let image = image else {
+                    return completion(nil, error)
+                }
+                ImageCache.default.store(image, forKey: urlString, toDisk: true)
+                completion(image, error)
+            }
+        }
 
-        magic.fetchImageForCard(card, completion: completion)
     }
 
     /// Loads the cards for an entire deck
