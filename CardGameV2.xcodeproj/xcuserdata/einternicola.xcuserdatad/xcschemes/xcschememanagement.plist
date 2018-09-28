@@ -7,7 +7,25 @@
 		<key>CardGame.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>9</integer>
+		</dict>
+		<key>TVCardGameMTG.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>36AED7B9215ED689000D02D0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>36AED7CF215ED68B000D02D0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

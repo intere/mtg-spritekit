@@ -1,15 +1,29 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '9.3'
 
 target 'CardGame' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  platform :ios, '9.3'
   use_frameworks!
 
   # Pods for CardGame
-  pod 'MTGSDKSwift', :git => 'git@github.com:intere/mtg-sdk-swift.git', :branch => 'master'
+  pod 'MTGSDKSwift', :git => 'git@github.com:intere/mtg-sdk-swift.git', :branch => 'tvos'
   pod 'Kingfisher'
 
   target 'CardGameTests' do
+    inherit! :search_paths
+  end
+
+end
+
+
+target 'tvCardGameMTG' do
+  platform :tvos, '9.3'
+  use_frameworks!
+
+  # Pods for CardGame
+  pod 'MTGSDKSwift', :git => 'git@github.com:intere/mtg-sdk-swift.git', :branch => 'tvos'
+  pod 'Kingfisher'
+
+  target 'tvCardGameMTGTests' do
     inherit! :search_paths
   end
 

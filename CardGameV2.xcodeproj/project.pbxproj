@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05C30CBDF12AA28B9654CC29 /* Pods_tvCardGameMTGTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 262076B7A9E0B8B67CA177AF /* Pods_tvCardGameMTGTests.framework */; };
+		361B7206215EED8100A596D6 /* deck.txt in Resources */ = {isa = PBXBuildFile; fileRef = 361B7205215EED8100A596D6 /* deck.txt */; };
+		361B7207215EEDA700A596D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3EFEB141CD3C43400014542 /* Assets.xcassets */; };
 		362B7AF521501649009E165C /* MtgApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362B7AF421501649009E165C /* MtgApiService.swift */; };
 		362B7AF821501887009E165C /* MathExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362B7AF721501887009E165C /* MathExtensions.swift */; };
 		362B7AFA21501A87009E165C /* deck.txt in Resources */ = {isa = PBXBuildFile; fileRef = 362B7AF921501A87009E165C /* deck.txt */; };
@@ -18,8 +21,20 @@
 		366A5026215D25CE00C435E3 /* 417683.json in Resources */ = {isa = PBXBuildFile; fileRef = 366A5025215D25CE00C435E3 /* 417683.json */; };
 		366A5028215D26B000C435E3 /* 397905.json in Resources */ = {isa = PBXBuildFile; fileRef = 366A5027215D26B000C435E3 /* 397905.json */; };
 		366A502B215D350900C435E3 /* CardCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366A5029215D350300C435E3 /* CardCacheService.swift */; };
+		36AED7BD215ED689000D02D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AED7BC215ED689000D02D0 /* AppDelegate.swift */; };
+		36AED7C5215ED689000D02D0 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AED7C4215ED689000D02D0 /* GameViewController.swift */; };
+		36AED7C8215ED689000D02D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36AED7C6215ED689000D02D0 /* Main.storyboard */; };
+		36AED7D5215ED68B000D02D0 /* CardGameMTGTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AED7D4215ED68B000D02D0 /* CardGameMTGTests.swift */; };
+		36AED7DD215EEB00000D02D0 /* MathExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362B7AF721501887009E165C /* MathExtensions.swift */; };
+		36AED7DE215EEB00000D02D0 /* Card+Serialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F6759F215D1C3B00733708 /* Card+Serialization.swift */; };
+		36AED7DF215EEB00000D02D0 /* MtgApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362B7AF421501649009E165C /* MtgApiService.swift */; };
+		36AED7E0215EEB00000D02D0 /* DeckReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362B7AFB21501ABE009E165C /* DeckReader.swift */; };
+		36AED7E1215EEB00000D02D0 /* CardCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366A5029215D350300C435E3 /* CardCacheService.swift */; };
+		36AED7E2215EEB00000D02D0 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EFEB0D1CD3C43400014542 /* GameScene.swift */; };
+		36AED7E3215EEB00000D02D0 /* SKCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EFEB301CD3D9D400014542 /* SKCard.swift */; };
 		36F675A0215D1C3B00733708 /* Card+Serialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F6759F215D1C3B00733708 /* Card+Serialization.swift */; };
 		86A853F5A20A3991F4EDD8F7 /* Pods_CardGame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 828BF80EB7F7AB501D2F1E3C /* Pods_CardGame.framework */; };
+		89AA57BE39AC2CD6FBDB2304 /* Pods_tvCardGameMTG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC8D1773A57A55DF45D7FC30 /* Pods_tvCardGameMTG.framework */; };
 		D39654F41CD45F10002A5E99 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3EFEB2F1CD3D8A100014542 /* OpenSans-Bold.ttf */; };
 		D3EFEB0A1CD3C43400014542 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EFEB091CD3C43400014542 /* AppDelegate.swift */; };
 		D3EFEB0E1CD3C43400014542 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EFEB0D1CD3C43400014542 /* GameScene.swift */; };
@@ -45,9 +60,21 @@
 			remoteGlobalIDString = D3EFEB051CD3C43400014542;
 			remoteInfo = CardGame;
 		};
+		36AED7D1215ED68B000D02D0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D3EFEAFE1CD3C43400014542 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 36AED7B9215ED689000D02D0;
+			remoteInfo = CardGameMTG;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1BB94CB2CD2C95BA67DC5CE4 /* Pods-tvCardGameMTGTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tvCardGameMTGTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-tvCardGameMTGTests/Pods-tvCardGameMTGTests.release.xcconfig"; sourceTree = "<group>"; };
+		1BD34D764ED97ABE958C29FC /* Pods-tvCardGameMTG.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tvCardGameMTG.release.xcconfig"; path = "Pods/Target Support Files/Pods-tvCardGameMTG/Pods-tvCardGameMTG.release.xcconfig"; sourceTree = "<group>"; };
+		25500602D3A66ECF66FB5961 /* Pods-tvCardGameMTGTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tvCardGameMTGTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tvCardGameMTGTests/Pods-tvCardGameMTGTests.debug.xcconfig"; sourceTree = "<group>"; };
+		262076B7A9E0B8B67CA177AF /* Pods_tvCardGameMTGTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tvCardGameMTGTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		361B7205215EED8100A596D6 /* deck.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = deck.txt; path = iosCardGameV2/deck.txt; sourceTree = SOURCE_ROOT; };
 		362B7AF421501649009E165C /* MtgApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MtgApiService.swift; sourceTree = "<group>"; };
 		362B7AF721501887009E165C /* MathExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathExtensions.swift; sourceTree = "<group>"; };
 		362B7AF921501A87009E165C /* deck.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = deck.txt; sourceTree = "<group>"; };
@@ -61,7 +88,16 @@
 		366A5025215D25CE00C435E3 /* 417683.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 417683.json; sourceTree = "<group>"; };
 		366A5027215D26B000C435E3 /* 397905.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 397905.json; sourceTree = "<group>"; };
 		366A5029215D350300C435E3 /* CardCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCacheService.swift; sourceTree = "<group>"; };
+		36AED7BA215ED689000D02D0 /* tvCardGameMTG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tvCardGameMTG.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		36AED7BC215ED689000D02D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		36AED7C4215ED689000D02D0 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		36AED7C7215ED689000D02D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		36AED7CB215ED68B000D02D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		36AED7D0215ED68B000D02D0 /* tvCardGameMTGTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tvCardGameMTGTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		36AED7D4215ED68B000D02D0 /* CardGameMTGTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardGameMTGTests.swift; sourceTree = "<group>"; };
+		36AED7D6215ED68B000D02D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		36F6759F215D1C3B00733708 /* Card+Serialization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+Serialization.swift"; sourceTree = "<group>"; };
+		49D50E1E94E6F111C0845821 /* Pods-tvCardGameMTG.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tvCardGameMTG.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tvCardGameMTG/Pods-tvCardGameMTG.debug.xcconfig"; sourceTree = "<group>"; };
 		7562CCFD132DBCF31797117D /* Pods-CardGame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardGame.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CardGame/Pods-CardGame.debug.xcconfig"; sourceTree = "<group>"; };
 		828BF80EB7F7AB501D2F1E3C /* Pods_CardGame.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CardGame.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB433297C884F471BD14F085 /* Pods-CardGameTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardGameTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CardGameTests/Pods-CardGameTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -84,6 +120,7 @@
 		D3EFEB301CD3D9D400014542 /* SKCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKCard.swift; sourceTree = "<group>"; };
 		EC0EFAA16BEFBB5E05468B86 /* Pods_CardGameTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CardGameTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F56A83A0E04C56858709B73D /* Pods-CardGame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardGame.release.xcconfig"; path = "Pods/Target Support Files/Pods-CardGame/Pods-CardGame.release.xcconfig"; sourceTree = "<group>"; };
+		FC8D1773A57A55DF45D7FC30 /* Pods_tvCardGameMTG.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tvCardGameMTG.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +129,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8FE556F84F60D1A52871332 /* Pods_CardGameTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		36AED7B7215ED689000D02D0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89AA57BE39AC2CD6FBDB2304 /* Pods_tvCardGameMTG.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		36AED7CD215ED68B000D02D0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05C30CBDF12AA28B9654CC29 /* Pods_tvCardGameMTGTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +166,10 @@
 				F56A83A0E04C56858709B73D /* Pods-CardGame.release.xcconfig */,
 				C9480A47197B9384DA1ACB12 /* Pods-CardGameTests.debug.xcconfig */,
 				BB433297C884F471BD14F085 /* Pods-CardGameTests.release.xcconfig */,
+				49D50E1E94E6F111C0845821 /* Pods-tvCardGameMTG.debug.xcconfig */,
+				1BD34D764ED97ABE958C29FC /* Pods-tvCardGameMTG.release.xcconfig */,
+				25500602D3A66ECF66FB5961 /* Pods-tvCardGameMTGTests.debug.xcconfig */,
+				1BB94CB2CD2C95BA67DC5CE4 /* Pods-tvCardGameMTGTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -174,11 +231,34 @@
 			path = TestResources;
 			sourceTree = "<group>";
 		};
+		36AED7BB215ED689000D02D0 /* tvosCardGameMTG */ = {
+			isa = PBXGroup;
+			children = (
+				361B7205215EED8100A596D6 /* deck.txt */,
+				36AED7BC215ED689000D02D0 /* AppDelegate.swift */,
+				36AED7C4215ED689000D02D0 /* GameViewController.swift */,
+				36AED7C6215ED689000D02D0 /* Main.storyboard */,
+				36AED7CB215ED68B000D02D0 /* Info.plist */,
+			);
+			path = tvosCardGameMTG;
+			sourceTree = "<group>";
+		};
+		36AED7D3215ED68B000D02D0 /* CardGameMTGTests */ = {
+			isa = PBXGroup;
+			children = (
+				36AED7D4215ED68B000D02D0 /* CardGameMTGTests.swift */,
+				36AED7D6215ED68B000D02D0 /* Info.plist */,
+			);
+			path = CardGameMTGTests;
+			sourceTree = "<group>";
+		};
 		8472A613D9A58482467798BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				828BF80EB7F7AB501D2F1E3C /* Pods_CardGame.framework */,
 				EC0EFAA16BEFBB5E05468B86 /* Pods_CardGameTests.framework */,
+				FC8D1773A57A55DF45D7FC30 /* Pods_tvCardGameMTG.framework */,
+				262076B7A9E0B8B67CA177AF /* Pods_tvCardGameMTGTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -186,8 +266,10 @@
 		D3EFEAFD1CD3C43400014542 = {
 			isa = PBXGroup;
 			children = (
-				D3EFEB081CD3C43400014542 /* CardGameV2 */,
+				D3EFEB081CD3C43400014542 /* iosCardGameV2 */,
 				362B7B0221501B77009E165C /* CardGameTests */,
+				36AED7BB215ED689000D02D0 /* tvosCardGameMTG */,
+				36AED7D3215ED68B000D02D0 /* CardGameMTGTests */,
 				D3EFEB071CD3C43400014542 /* Products */,
 				04793B813C6B44D1422D366E /* Pods */,
 				8472A613D9A58482467798BA /* Frameworks */,
@@ -199,11 +281,13 @@
 			children = (
 				D3EFEB061CD3C43400014542 /* CardGame.app */,
 				362B7B0121501B77009E165C /* CardGameTests.xctest */,
+				36AED7BA215ED689000D02D0 /* tvCardGameMTG.app */,
+				36AED7D0215ED68B000D02D0 /* tvCardGameMTGTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D3EFEB081CD3C43400014542 /* CardGameV2 */ = {
+		D3EFEB081CD3C43400014542 /* iosCardGameV2 */ = {
 			isa = PBXGroup;
 			children = (
 				362B7AF62150187D009E165C /* Extensions */,
@@ -212,7 +296,7 @@
 				D3EFEB321CD3E38200014542 /* System */,
 				D3EFEB1F1CD3C59000014542 /* Assets */,
 			);
-			path = CardGameV2;
+			path = iosCardGameV2;
 			sourceTree = "<group>";
 		};
 		D3EFEB1F1CD3C59000014542 /* Assets */ = {
@@ -300,6 +384,47 @@
 			productReference = 362B7B0121501B77009E165C /* CardGameTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		36AED7B9215ED689000D02D0 /* tvCardGameMTG */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 36AED7D7215ED68B000D02D0 /* Build configuration list for PBXNativeTarget "tvCardGameMTG" */;
+			buildPhases = (
+				1D6AF855CA71E0ED71282326 /* [CP] Check Pods Manifest.lock */,
+				36AED7B6215ED689000D02D0 /* Sources */,
+				36AED7B7215ED689000D02D0 /* Frameworks */,
+				36AED7B8215ED689000D02D0 /* Resources */,
+				CDB628F4D7970B0E774705CB /* [CP] Embed Pods Frameworks */,
+				749AF200A594010229A977D8 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = tvCardGameMTG;
+			productName = CardGameMTG;
+			productReference = 36AED7BA215ED689000D02D0 /* tvCardGameMTG.app */;
+			productType = "com.apple.product-type.application";
+		};
+		36AED7CF215ED68B000D02D0 /* tvCardGameMTGTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 36AED7DA215ED68B000D02D0 /* Build configuration list for PBXNativeTarget "tvCardGameMTGTests" */;
+			buildPhases = (
+				2D4F5E506733EAA63B1B4B58 /* [CP] Check Pods Manifest.lock */,
+				36AED7CC215ED68B000D02D0 /* Sources */,
+				36AED7CD215ED68B000D02D0 /* Frameworks */,
+				36AED7CE215ED68B000D02D0 /* Resources */,
+				B43297D6491E19C9E97D55CD /* [CP] Embed Pods Frameworks */,
+				649F789459F431934141A6C0 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				36AED7D2215ED68B000D02D0 /* PBXTargetDependency */,
+			);
+			name = tvCardGameMTGTests;
+			productName = CardGameMTGTests;
+			productReference = 36AED7D0215ED68B000D02D0 /* tvCardGameMTGTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		D3EFEB051CD3C43400014542 /* CardGame */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D3EFEB1C1CD3C43400014542 /* Build configuration list for PBXNativeTarget "CardGame" */;
@@ -326,7 +451,7 @@
 		D3EFEAFE1CD3C43400014542 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0940;
+				LastSwiftUpdateCheck = 1000;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = iColasoft;
 				TargetAttributes = {
@@ -335,6 +460,17 @@
 						DevelopmentTeam = 268S5GJFWZ;
 						ProvisioningStyle = Automatic;
 						TestTargetID = D3EFEB051CD3C43400014542;
+					};
+					36AED7B9215ED689000D02D0 = {
+						CreatedOnToolsVersion = 10.0;
+						DevelopmentTeam = 268S5GJFWZ;
+						ProvisioningStyle = Automatic;
+					};
+					36AED7CF215ED68B000D02D0 = {
+						CreatedOnToolsVersion = 10.0;
+						DevelopmentTeam = 268S5GJFWZ;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 36AED7B9215ED689000D02D0;
 					};
 					D3EFEB051CD3C43400014542 = {
 						CreatedOnToolsVersion = 7.3;
@@ -358,6 +494,8 @@
 			targets = (
 				D3EFEB051CD3C43400014542 /* CardGame */,
 				362B7B0021501B77009E165C /* CardGameTests */,
+				36AED7B9215ED689000D02D0 /* tvCardGameMTG */,
+				36AED7CF215ED68B000D02D0 /* tvCardGameMTGTests */,
 			);
 		};
 /* End PBXProject section */
@@ -369,6 +507,23 @@
 			files = (
 				366A5028215D26B000C435E3 /* 397905.json in Resources */,
 				366A5026215D25CE00C435E3 /* 417683.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		36AED7B8215ED689000D02D0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36AED7C8215ED689000D02D0 /* Main.storyboard in Resources */,
+				361B7207215EEDA700A596D6 /* Assets.xcassets in Resources */,
+				361B7206215EED8100A596D6 /* deck.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		36AED7CE215ED68B000D02D0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,6 +563,72 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CardGameTests/Pods-CardGameTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		1D6AF855CA71E0ED71282326 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-tvCardGameMTG-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2D4F5E506733EAA63B1B4B58 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-tvCardGameMTGTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		649F789459F431934141A6C0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tvCardGameMTGTests/Pods-tvCardGameMTGTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		749AF200A594010229A977D8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tvCardGameMTG/Pods-tvCardGameMTG-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		918B59426955DEF89C9E9A70 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -430,8 +651,8 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CardGame/Pods-CardGame-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/MTGSDKSwift/MTGSDKSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher-iOS/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/MTGSDKSwift-iOS/MTGSDKSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -494,6 +715,41 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B43297D6491E19C9E97D55CD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tvCardGameMTGTests/Pods-tvCardGameMTGTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CDB628F4D7970B0E774705CB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-tvCardGameMTG/Pods-tvCardGameMTG-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher-tvOS/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/MTGSDKSwift-tvOS/MTGSDKSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MTGSDKSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tvCardGameMTG/Pods-tvCardGameMTG-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -505,6 +761,30 @@
 				362B7B0D21501B9E009E165C /* DeckReaderTests.swift in Sources */,
 				366A5023215D24B500C435E3 /* Card+SerializationTests.swift in Sources */,
 				362B7B0F215023C8009E165C /* MtgApiServiceTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		36AED7B6215ED689000D02D0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36AED7DD215EEB00000D02D0 /* MathExtensions.swift in Sources */,
+				36AED7DE215EEB00000D02D0 /* Card+Serialization.swift in Sources */,
+				36AED7DF215EEB00000D02D0 /* MtgApiService.swift in Sources */,
+				36AED7E0215EEB00000D02D0 /* DeckReader.swift in Sources */,
+				36AED7E1215EEB00000D02D0 /* CardCacheService.swift in Sources */,
+				36AED7E2215EEB00000D02D0 /* GameScene.swift in Sources */,
+				36AED7E3215EEB00000D02D0 /* SKCard.swift in Sources */,
+				36AED7C5215ED689000D02D0 /* GameViewController.swift in Sources */,
+				36AED7BD215ED689000D02D0 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		36AED7CC215ED68B000D02D0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36AED7D5215ED68B000D02D0 /* CardGameMTGTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,9 +812,22 @@
 			target = D3EFEB051CD3C43400014542 /* CardGame */;
 			targetProxy = 362B7B0621501B77009E165C /* PBXContainerItemProxy */;
 		};
+		36AED7D2215ED68B000D02D0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 36AED7B9215ED689000D02D0 /* tvCardGameMTG */;
+			targetProxy = 36AED7D1215ED68B000D02D0 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		36AED7C6215ED689000D02D0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				36AED7C7215ED689000D02D0 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		D3EFEB111CD3C43400014542 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -619,6 +912,150 @@
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CardGame.app/CardGame";
+			};
+			name = Release;
+		};
+		36AED7D8215ED68B000D02D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 49D50E1E94E6F111C0845821 /* Pods-tvCardGameMTG.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 268S5GJFWZ;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "$(SRCROOT)/tvosCardGameMTG/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.intere.tvos.CardGameMTG;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
+			};
+			name = Debug;
+		};
+		36AED7D9215ED68B000D02D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1BD34D764ED97ABE958C29FC /* Pods-tvCardGameMTG.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 268S5GJFWZ;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "$(SRCROOT)/tvosCardGameMTG/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.intere.tvos.CardGameMTG;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
+			};
+			name = Release;
+		};
+		36AED7DB215ED68B000D02D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 25500602D3A66ECF66FB5961 /* Pods-tvCardGameMTGTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 268S5GJFWZ;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = CardGameMTGTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.intere.tvos.CardGameMTGTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 3;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CardGameMTG.app/CardGameMTG";
+				TVOS_DEPLOYMENT_TARGET = 12.0;
+			};
+			name = Debug;
+		};
+		36AED7DC215ED68B000D02D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1BB94CB2CD2C95BA67DC5CE4 /* Pods-tvCardGameMTGTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 268S5GJFWZ;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = CardGameMTGTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.intere.tvos.CardGameMTGTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 3;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CardGameMTG.app/CardGameMTG";
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Release;
 		};
@@ -718,10 +1155,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 268S5GJFWZ;
-				INFOPLIST_FILE = CardGameV2/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/iosCardGameV2/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.brianbroom.CardGameV2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.intere.ios.CardGameMTG;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -733,10 +1170,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 268S5GJFWZ;
-				INFOPLIST_FILE = CardGameV2/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/iosCardGameV2/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.brianbroom.CardGameV2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.intere.ios.CardGameMTG;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -750,6 +1187,24 @@
 			buildConfigurations = (
 				362B7B0921501B77009E165C /* Debug */,
 				362B7B0A21501B77009E165C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		36AED7D7215ED68B000D02D0 /* Build configuration list for PBXNativeTarget "tvCardGameMTG" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				36AED7D8215ED68B000D02D0 /* Debug */,
+				36AED7D9215ED68B000D02D0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		36AED7DA215ED68B000D02D0 /* Build configuration list for PBXNativeTarget "tvCardGameMTGTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				36AED7DB215ED68B000D02D0 /* Debug */,
+				36AED7DC215ED68B000D02D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
