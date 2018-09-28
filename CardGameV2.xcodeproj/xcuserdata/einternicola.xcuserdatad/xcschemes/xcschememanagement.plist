@@ -4,12 +4,12 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>CardGame.xcscheme</key>
+		<key>CardGame.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>9</integer>
+			<integer>1</integer>
 		</dict>
-		<key>TVCardGameMTG.xcscheme</key>
+		<key>TVCardGameMTG.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -17,12 +17,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>362B7B0021501B77009E165C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>36AED7B9215ED689000D02D0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>36AED7CF215ED68B000D02D0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D3EFEB051CD3C43400014542</key>
 		<dict>
 			<key>primary</key>
 			<true/>
