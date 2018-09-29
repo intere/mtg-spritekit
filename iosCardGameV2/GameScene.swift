@@ -12,10 +12,12 @@ enum CardLevel :CGFloat {
 class GameScene: SKScene {
 
     override func didMove(to view: SKView) {
+        #if !os(tvOS)
         let bg = SKSpriteNode(imageNamed: "bg_blank")
         bg.anchorPoint = CGPoint.zero
         bg.position = CGPoint.zero
         addChild(bg)
+        #endif
 
         guard NSClassFromString("XCTestCase") == nil else {
             return

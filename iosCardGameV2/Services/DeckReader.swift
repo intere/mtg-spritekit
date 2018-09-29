@@ -8,37 +8,13 @@
 
 import Foundation
 
-struct CardGroup {
-    var name = ""
-    var quantity = 1
-}
-
-struct Deck {
-    var mainboard = [CardGroup]()
-    var sideboard = [CardGroup]()
-
-    var mainboardCount: Int {
-        return mainboard.reduce(0, { $0 + $1.quantity })
-    }
-
-    var sideboardCount: Int {
-        return sideboard.reduce(0, { $0 + $1.quantity })
-    }
-
-    /// Gets you the unique set of card names from the deck.
-    var uniqueCardNames: [String] {
-        var set = Set(mainboard.map({ $0.name }))
-        sideboard.forEach {
-            set.insert($0.name)
-        }
-
-        return Array(set)
-    }
-}
-
 struct DeckReader {
     static let shared = DeckReader()
 
+    /// Reads the provided filename (from the main bundle) if it can be located.
+    ///
+    /// - Parameter fileNamed: The name of the file to load from the bundle.
+    /// - Returns: A Deck object if the file exists and it could be read as a deck or nil.
     func read(fileNamed: String) -> Deck? {
         guard let path = Bundle.main.path(forResource: fileNamed, ofType: nil) else {
             return nil

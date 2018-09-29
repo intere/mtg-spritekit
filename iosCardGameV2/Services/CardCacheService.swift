@@ -12,6 +12,12 @@ import MTGSDKSwift
 class CardCacheService {
     static let shared = CardCacheService()
 
+    /// An in-memory card cache
+    var memoryCache = NSCache<NSString, AnyObject>()
+
+    /// A mapping of card name -> multiverse id that's written to UserDefaults.
+    /// The idea is so that we can take a card name and map it to the id and
+    /// then look for the cache file for that id.
     var cardNameToMultiverseidMapping: [String: Int] {
         get {
             return UserDefaults.standard.dictionary(forKey: DefaultKeys.cardNameCache) as? [String: Int] ?? [:]
@@ -37,6 +43,7 @@ class CardCacheService {
         let data = try JSONSerialization.data(withJSONObject: jsonPayload, options: JSONSerialization.WritingOptions(rawValue: 0))
         try data.write(to: path)
         cardNameToMultiverseidMapping[name.lowercased()] = multiverseid
+        memoryCache.setObject(card as AnyObject, forKey: name.lowercased() as NSString)
     }
 
     /// Searches for a cached card by name, and if it's cached, gives it back to you.
@@ -45,10 +52,14 @@ class CardCacheService {
     /// - Returns: The card if it was cached, nil if not.
     /// - Throws: If there was an I/O issue.
     func loadCachedCard(named name: String) throws -> Card? {
+        if let card = memoryCache.object(forKey: name.lowercased() as NSString) as? Card {
+            return card
+        }
         guard let multiverseid = cardNameToMultiverseidMapping[name.lowercased()],
             let cacheDirectory = cacheDirectory else {
             return nil
         }
+
         let path = cacheDirectory.appendingPathComponent("\(multiverseid).json")
         guard FileManager.default.fileExists(atPath: path.path) else {
             return nil
@@ -57,7 +68,13 @@ class CardCacheService {
         guard let jsonPayload = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
             return nil
         }
-        return Parser().parseCards(json: jsonPayload).first
+        guard let card = Parser().parseCards(json: jsonPayload).first else {
+            return nil
+        }
+
+        // Put the card back into the in-memory cache:
+        memoryCache.setObject(card as AnyObject, forKey: name.lowercased() as NSString)
+        return card
     }
 
 }

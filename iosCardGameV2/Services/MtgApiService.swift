@@ -27,7 +27,7 @@ struct MtgApiService {
     ///   - urlString: the image you want to load.
     ///   - completion: the completion handler.
     func loadImage(urlString: String, completion: @escaping Magic.CardImageCompletion) {
-        if ImageCache.default.isImageCached(forKey: urlString).cached {
+        if ImageCache.default.imageCachedType(forKey: urlString).cached {
             ImageCache.default.retrieveImage(forKey: urlString, options: nil) { (image, _) in
                 completion(image, nil)
             }
@@ -45,7 +45,8 @@ struct MtgApiService {
 
     }
 
-    /// Loads the cards for an entire deck
+    /// Loads the cards for an entire deck and assigns the card object to each
+    /// of the `CardGroup` objects when loaded.
     ///
     /// - Parameters:
     ///   - deck: The deck to load the cards for.
@@ -70,6 +71,8 @@ struct MtgApiService {
                         print("We have \(results.count) of \(cardSet.count) responses back: \(cardName)")
                         print("Updated Set: \(set)")
                     }
+                    // Assign the card to the card in the deck
+                    deck.getCards(byName: cardName).forEach { $0.card = card }
 
                     if set.isEmpty {
                         completion(results, errorResult)

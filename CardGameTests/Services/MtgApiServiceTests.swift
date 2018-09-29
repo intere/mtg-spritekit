@@ -38,7 +38,7 @@ extension MtgApiServiceTests {
 
             for card in cards {
                 guard let cardName = card.name else {
-                    XCTFail("card without a name: \(card.id)")
+                    XCTFail("card without a name: \(card.multiverseid!)")
                     continue
                 }
                 XCTAssertNotNil(card.imageUrl, "Card \(cardName) had a nil image")
@@ -46,6 +46,10 @@ extension MtgApiServiceTests {
         }
 
         waitForExpectations(timeout: 10, handler: nil)
+        for group in deck.mainboard {
+            XCTAssertNotNil(group.card, "Missing the card")
+            XCTAssertEqual(group.name, group.card?.name)
+        }
     }
 
     func testLoadDeckOfCards() {

@@ -21,6 +21,8 @@
 		366A5026215D25CE00C435E3 /* 417683.json in Resources */ = {isa = PBXBuildFile; fileRef = 366A5025215D25CE00C435E3 /* 417683.json */; };
 		366A5028215D26B000C435E3 /* 397905.json in Resources */ = {isa = PBXBuildFile; fileRef = 366A5027215D26B000C435E3 /* 397905.json */; };
 		366A502B215D350900C435E3 /* CardCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366A5029215D350300C435E3 /* CardCacheService.swift */; };
+		3696CFA7215FDC53008BA9EF /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3696CFA6215FDC53008BA9EF /* Deck.swift */; };
+		3696CFA8215FDC53008BA9EF /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3696CFA6215FDC53008BA9EF /* Deck.swift */; };
 		36AED7BD215ED689000D02D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AED7BC215ED689000D02D0 /* AppDelegate.swift */; };
 		36AED7C5215ED689000D02D0 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AED7C4215ED689000D02D0 /* GameViewController.swift */; };
 		36AED7C8215ED689000D02D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36AED7C6215ED689000D02D0 /* Main.storyboard */; };
@@ -32,6 +34,9 @@
 		36AED7E1215EEB00000D02D0 /* CardCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366A5029215D350300C435E3 /* CardCacheService.swift */; };
 		36AED7E2215EEB00000D02D0 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EFEB0D1CD3C43400014542 /* GameScene.swift */; };
 		36AED7E3215EEB00000D02D0 /* SKCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EFEB301CD3D9D400014542 /* SKCard.swift */; };
+		36C797CA215EF51D00D8D8EC /* iTunesArtwork-512.png in Resources */ = {isa = PBXBuildFile; fileRef = D3EFEB2B1CD3C75700014542 /* iTunesArtwork-512.png */; };
+		36C797CB215EF51D00D8D8EC /* iTunesArtwork-512@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3EFEB2C1CD3C75700014542 /* iTunesArtwork-512@2x.png */; };
+		36C797CC215EF51D00D8D8EC /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3EFEB2F1CD3D8A100014542 /* OpenSans-Bold.ttf */; };
 		36F675A0215D1C3B00733708 /* Card+Serialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F6759F215D1C3B00733708 /* Card+Serialization.swift */; };
 		86A853F5A20A3991F4EDD8F7 /* Pods_CardGame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 828BF80EB7F7AB501D2F1E3C /* Pods_CardGame.framework */; };
 		89AA57BE39AC2CD6FBDB2304 /* Pods_tvCardGameMTG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC8D1773A57A55DF45D7FC30 /* Pods_tvCardGameMTG.framework */; };
@@ -88,6 +93,7 @@
 		366A5025215D25CE00C435E3 /* 417683.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 417683.json; sourceTree = "<group>"; };
 		366A5027215D26B000C435E3 /* 397905.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 397905.json; sourceTree = "<group>"; };
 		366A5029215D350300C435E3 /* CardCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCacheService.swift; sourceTree = "<group>"; };
+		3696CFA6215FDC53008BA9EF /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		36AED7BA215ED689000D02D0 /* tvCardGameMTG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tvCardGameMTG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36AED7BC215ED689000D02D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36AED7C4215ED689000D02D0 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -231,6 +237,14 @@
 			path = TestResources;
 			sourceTree = "<group>";
 		};
+		3696CFA5215FDC44008BA9EF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3696CFA6215FDC53008BA9EF /* Deck.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		36AED7BB215ED689000D02D0 /* tvosCardGameMTG */ = {
 			isa = PBXGroup;
 			children = (
@@ -290,6 +304,7 @@
 		D3EFEB081CD3C43400014542 /* iosCardGameV2 */ = {
 			isa = PBXGroup;
 			children = (
+				3696CFA5215FDC44008BA9EF /* Models */,
 				362B7AF62150187D009E165C /* Extensions */,
 				362B7AF321501640009E165C /* Services */,
 				D3EFEB331CD3E4CE00014542 /* Game */,
@@ -516,7 +531,10 @@
 			files = (
 				36AED7C8215ED689000D02D0 /* Main.storyboard in Resources */,
 				361B7207215EEDA700A596D6 /* Assets.xcassets in Resources */,
+				36C797CC215EF51D00D8D8EC /* OpenSans-Bold.ttf in Resources */,
 				361B7206215EED8100A596D6 /* deck.txt in Resources */,
+				36C797CB215EF51D00D8D8EC /* iTunesArtwork-512@2x.png in Resources */,
+				36C797CA215EF51D00D8D8EC /* iTunesArtwork-512.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -770,6 +788,7 @@
 			files = (
 				36AED7DD215EEB00000D02D0 /* MathExtensions.swift in Sources */,
 				36AED7DE215EEB00000D02D0 /* Card+Serialization.swift in Sources */,
+				3696CFA8215FDC53008BA9EF /* Deck.swift in Sources */,
 				36AED7DF215EEB00000D02D0 /* MtgApiService.swift in Sources */,
 				36AED7E0215EEB00000D02D0 /* DeckReader.swift in Sources */,
 				36AED7E1215EEB00000D02D0 /* CardCacheService.swift in Sources */,
@@ -794,6 +813,7 @@
 			files = (
 				362B7AFC21501ABE009E165C /* DeckReader.swift in Sources */,
 				D3EFEB0E1CD3C43400014542 /* GameScene.swift in Sources */,
+				3696CFA7215FDC53008BA9EF /* Deck.swift in Sources */,
 				D3EFEB101CD3C43400014542 /* GameViewController.swift in Sources */,
 				366A502B215D350900C435E3 /* CardCacheService.swift in Sources */,
 				D3EFEB0A1CD3C43400014542 /* AppDelegate.swift in Sources */,

@@ -45,5 +45,9 @@
             </dict>
         </dict>
     </dict>
+    <key>UIAppFonts</key>
+    <array>
+        <string>OpenSans-Bold.ttf</string>
+    </array>
 </dict>
 </plist>
