@@ -34,7 +34,7 @@ struct DeckReader {
     /// - Parameter file: the file to read the deck from.
     /// - Returns: A Deck built by reading your file.
     func read(fileContent: String) -> Deck {
-        var deck = Deck()
+        let deck = Deck()
 
         let lines = fileContent.replacingOccurrences(of: "\r\n", with: "\n").split(separator: "\n")
         var sideboard = false

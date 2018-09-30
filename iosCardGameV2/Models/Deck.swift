@@ -12,6 +12,9 @@ import MTGSDKSwift
 
 /// Represents a unique card in a deck, it tells us the card name, quantity
 /// and holds an optional reference to the card object itself.
+/// For example, in a deck, you might have `4, Mox Opal` cards.  This would
+/// correlate to a single `CardGroup`, with a `quantity` of 4, the `name` Mox Opal
+/// and after the cache is populated, you should also have the associated `Card`.
 class CardGroup {
     var name: String
     var quantity: Int
@@ -25,13 +28,18 @@ class CardGroup {
 }
 
 class Deck {
+    /// Gets you the mainboard of this deck
     var mainboard: [CardGroup]
+
+    /// Gets you the sideboard of this deck
     var sideboard: [CardGroup]
 
+    /// Tells you how many cards are in the mainboard
     var mainboardCount: Int {
         return mainboard.reduce(0, { $0 + $1.quantity })
     }
 
+    /// Tells you how many cards are in the sideboard
     var sideboardCount: Int {
         return sideboard.reduce(0, { $0 + $1.quantity })
     }
@@ -46,6 +54,12 @@ class Deck {
         return Array(set)
     }
 
+    /// Initializer for the deck.  You can initialize with an optional `mainboard` and optional `sideboard`
+    /// or it will default to an empty deck (no cards in either mainboard or sideboard).
+    ///
+    /// - Parameters:
+    ///   - mainboard: The mainboard to initialize with or empty.
+    ///   - sideboard: The sideboard to initialize with or empty.
     init(mainboard: [CardGroup] = [], sideboard: [CardGroup] = []) {
         self.mainboard = mainboard
         self.sideboard = sideboard
@@ -62,5 +76,34 @@ class Deck {
         var results = mainboard.filter { $0.name.lowercased() == name.lowercased() }
         results.append(contentsOf: sideboard.filter({ $0.name.lowercased() == name.lowercased() }))
         return results
+    }
+
+    /// Gets you the cards in the main board.
+    var mainboardCards: [Card] {
+        return mainboard.flatMap { $0.cards }
+    }
+
+    /// Gets you the cards in the side board.
+    var sideboardCards: [Card] {
+        return sideboard.flatMap { $0.cards }
+    }
+}
+
+// MARK: - Implementation
+
+extension CardGroup {
+
+    /// Assumes that the card is cached, and based on that assumption gives
+    /// you the `quantity` number of cards back for this CardGroup
+    var cards: [Card] {
+        guard let card = card else {
+            assertionFailure("\(name) is missing its card")
+            return [Card]()
+        }
+        var cards = [Card]()
+        for _ in 0..<quantity {
+            cards.append(card)
+        }
+        return cards
     }
 }

@@ -11,7 +11,6 @@ import MTGSDKSwift
 import XCTest
 
 class MtgApiServiceTests: XCTestCase {
-
     let deck = DeckReader.shared.read(fileNamed: "deck.txt")
 
 }

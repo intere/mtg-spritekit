@@ -10,6 +10,9 @@ import Foundation
 import Kingfisher
 import MTGSDKSwift
 
+/// A callback handler for when the deck is cached
+typealias DeckCached = (Error?) -> Void
+
 /// Responsible for interacting with the cards service API (magicthegathering.io)
 struct MtgApiService {
 
@@ -19,6 +22,31 @@ struct MtgApiService {
     init() {
         magic.fetchPageSize = "10"
         magic.fetchPageTotal = "1"
+    }
+
+    /// Ensures the cards in the deck are populated in the cache for you.
+    ///
+    /// - Parameters:
+    ///   - deck: The deck to cache.
+    ///   - completion: An optional completion handler that will have a nil error on success
+    ///         and an error on failure.
+    func cache(deck: Deck, completion: DeckCached? = nil) {
+        loadCards(forDeck: deck) { (cards, error) in
+            completion?(error)
+            guard let cards = cards else {
+                return
+            }
+            for card in cards {
+                guard let imageUrl = card.imageUrl else {
+                    continue
+                }
+                self.loadImage(urlString: imageUrl) { (image, error) in
+                    if let error = error {
+                        print("Error loading image: \(error.localizedDescription)")
+                    }
+                }
+            }
+        }
     }
 
     /// Loads an image for you.
@@ -92,6 +120,7 @@ struct MtgApiService {
                 }
                 results.append(card)
                 try? CardCacheService.shared.cache(card: card)
+                deck.getCards(byName: cardName).forEach { $0.card = card }
 
                 let set = cardSet.subtracting(results.compactMap({ $0.name }))
                 if Magic.enableLogging {

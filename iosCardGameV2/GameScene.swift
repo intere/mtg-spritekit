@@ -11,6 +11,8 @@ enum CardLevel :CGFloat {
 
 class GameScene: SKScene {
 
+    var playerBoard: PlayerBoard!
+
     override func didMove(to view: SKView) {
         #if !os(tvOS)
         let bg = SKSpriteNode(imageNamed: "bg_blank")
@@ -27,15 +29,24 @@ class GameScene: SKScene {
             return
         }
 
-        MtgApiService.shared.loadCards(forDeck: deck) { (cards, error) in
-            if let error = error {
-                return print("ERROR loading deck: \(error.localizedDescription)")
-            }
-            guard let cards = cards else {
-                return print("ERROR: no cards came back")
-            }
+        let messageLabel = SKLabelNode(text: "Loading cards, please wait...")
+        messageLabel.fontSize = 36
+        messageLabel.position = CGPoint(x: frame.midX, y: frame.midY)
+        addChild(messageLabel)
+
+        // Ensure that we cache all of the cards in the deck, then continue
+        MtgApiService.shared.cache(deck: deck) { (error) in
             DispatchQueue.main.async { [weak self] in
-                self?.show(deck: deck, cards: cards)
+                if let error = error {
+                    messageLabel.text = "Error loading deck from API\n\(error.localizedDescription)"
+                    return
+                }
+                messageLabel.run(SKAction.fadeOut(withDuration: 0.5)) {
+                    messageLabel.removeFromParent()
+                }
+                // TODO: Now show the player's hand
+                self?.playerBoard = PlayerBoard(player: Player(name: "Reznor", deck: deck))
+                self?.startGame()
             }
         }
     }
@@ -100,6 +111,10 @@ class GameScene: SKScene {
 
 extension GameScene {
 
+    func startGame() {
+        showHand()
+    }
+
     /// Wiggle animation for when you're moving the card
     ///
     /// - Parameter card: The card you want to animate the wiggle on.
@@ -118,13 +133,32 @@ extension GameScene {
         card.removeAction(forKey: "wiggle")
     }
 
+    func showHand() {
+        let hand = playerBoard.hand
+
+        var startX = CGFloat(20) + SKCard.Constants.width / 2
+        var startY = CGFloat(frame.minY + 10) + SKCard.Constants.height / 2
+
+        for card in hand {
+            let skCard = SKCard(card: card)
+            skCard.position = CGPoint(x: startX, y: startY)
+            if reset(y: startY) {
+                resetPosition(card: skCard)
+                startX = skCard.position.x
+                startY = skCard.position.y
+            }
+            addChild(skCard)
+            startX += skCard.frame.width + 5
+        }
+    }
+
     /// Renders the deck on the screen (makes use of the deck and the cards).
     ///
     /// - Parameters:
     ///   - deck: The deck to show on the screen.
     ///   - cards: The cards to show on the screen.
-    func show(deck: Deck, cards: [MTGSDKSwift.Card]) {
-        var cardHash = [String: MTGSDKSwift.Card]()
+    func showOverlapped(deck: Deck, cards: [Card]) {
+        var cardHash = [String: Card]()
         cards.forEach { card in
             guard let name = card.name else {
                 return print("ERROR: Card with no name")
@@ -159,6 +193,8 @@ extension GameScene {
             startY -= SKCard.Constants.height
         }
     }
+
+
 
     /// Should the y be reset (based on the current Y value)?
     ///
