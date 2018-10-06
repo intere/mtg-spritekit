@@ -55,13 +55,17 @@ class SKCard: SKSpriteNode {
             return
         }
 
-        MtgApiService.shared.loadImage(urlString: imageUrl) { (image, error) in
-            guard let image = image else {
-                return print("No image for url: \(imageUrl)")
-            }
-            self.frontTexture = SKTexture(image: image)
-            DispatchQueue.main.async {
-                self.texture = self.frontTexture
+        MtgApiService.shared.loadImage(urlString: imageUrl) { result in
+
+            switch result {
+            case .success(let image):
+                self.frontTexture = SKTexture(image: image)
+                DispatchQueue.main.async {
+                    self.texture = self.frontTexture
+                }
+
+            default:
+                break
             }
         }
     }

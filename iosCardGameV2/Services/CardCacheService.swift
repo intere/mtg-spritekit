@@ -68,7 +68,7 @@ class CardCacheService {
         guard let jsonPayload = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
             return nil
         }
-        guard let card = Parser().parseCards(json: jsonPayload).first else {
+        guard let card = Parser.parseCards(json: jsonPayload).first else {
             return nil
         }
 

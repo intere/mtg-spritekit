@@ -1,6 +1,6 @@
 PODS:
   - Kingfisher (4.10.0)
-  - MTGSDKSwift (1.0.0)
+  - MTGSDKSwift (1.0.1)
 
 DEPENDENCIES:
   - Kingfisher
@@ -13,12 +13,12 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   MTGSDKSwift:
-    :commit: df235cfa6d345655113dc3c0eca23a32a17af36c
+    :commit: 97a4f492b0c03b7071c39bc5b99c5e8b8a09f520
     :git: git@github.com:intere/mtg-sdk-swift.git
 
 SPEC CHECKSUMS:
   Kingfisher: 43c4b802d8b5256cf1f4379e9cd10b329be6d3e2
-  MTGSDKSwift: 8ce5aa8d4909de5b0ad93cada5a9e5a4d06b7219
+  MTGSDKSwift: d56423e8b5517a1f1368faf9b652606e7a7449d4
 
 PODFILE CHECKSUM: 1464898b08bf2b49bf425f19a754690892b04103
 

@@ -19,11 +19,6 @@ struct MtgApiService {
     static let shared = MtgApiService()
     let magic = Magic()
 
-    init() {
-        magic.fetchPageSize = "10"
-        magic.fetchPageTotal = "1"
-    }
-
     /// Ensures the cards in the deck are populated in the cache for you.
     ///
     /// - Parameters:
@@ -31,20 +26,27 @@ struct MtgApiService {
     ///   - completion: An optional completion handler that will have a nil error on success
     ///         and an error on failure.
     func cache(deck: Deck, completion: DeckCached? = nil) {
-        loadCards(forDeck: deck) { (cards, error) in
-            completion?(error)
-            guard let cards = cards else {
-                return
-            }
-            for card in cards {
-                guard let imageUrl = card.imageUrl else {
-                    continue
+        loadCards(forDeck: deck) { result in
+            switch result {
+            case .success(let cards):
+                    for card in cards {
+                        guard let imageUrl = card.imageUrl else {
+                            continue
+                        }
+                        self.loadImage(urlString: imageUrl) { result in
+                            switch result {
+                            case .error(let error):
+                                print("Error loading image: \(error.localizedDescription)")
+                            default:
+                                break
+                            }
+                        }
                 }
-                self.loadImage(urlString: imageUrl) { (image, error) in
-                    if let error = error {
-                        print("Error loading image: \(error.localizedDescription)")
-                    }
-                }
+                completion?(nil)
+                
+            case .error(let error):
+                print("Error loading deck: \(error.localizedDescription)")
+                completion?(error)
             }
         }
     }
@@ -57,17 +59,25 @@ struct MtgApiService {
     func loadImage(urlString: String, completion: @escaping Magic.CardImageCompletion) {
         if ImageCache.default.imageCachedType(forKey: urlString).cached {
             ImageCache.default.retrieveImage(forKey: urlString, options: nil) { (image, _) in
-                completion(image, nil)
+                guard let image = image else {
+                    return completion(Result.error(NetworkError.fetchCardImageError("The card was not found in the cache")))
+                }
+                completion(Result.success(image))
             }
         } else {
             var card = MTGSDKSwift.Card()
             card.imageUrl = urlString
-            magic.fetchImageForCard(card) { (image, error) in
-                guard let image = image else {
-                    return completion(nil, error)
+            magic.fetchImageForCard(card) { result in
+
+                switch result {
+                case .success(let image):
+                    ImageCache.default.store(image, forKey: urlString, toDisk: true)
+
+                case .error(let error):
+                    print("Error fetching image \(urlString): \(error.localizedDescription)")
                 }
-                ImageCache.default.store(image, forKey: urlString, toDisk: true)
-                completion(image, error)
+
+                completion(result)
             }
         }
 
@@ -103,33 +113,46 @@ struct MtgApiService {
                     deck.getCards(byName: cardName).forEach { $0.card = card }
 
                     if set.isEmpty {
-                        completion(results, errorResult)
+                        if let error = errorResult {
+                            completion(Result.error(error))
+                        } else {
+                            completion(Result.success(results))
+                        }
                     }
                     return
                 }
             } catch {
                 print("ERROR: \(error.localizedDescription)")
             }
-            magic.fetchCards(params) { (cards, error) in
-                if let error = error {
+
+            magic.fetchCards(params) { result in
+
+                switch result {
+                case .error(let error):
                     errorResult = error
                     print("Network error with card \(cardName): \(error.localizedDescription)")
-                }
-                guard let cards = cards, let card = cards.filter({ $0.name == cardName }).first else {
-                    return
-                }
-                results.append(card)
-                try? CardCacheService.shared.cache(card: card)
-                deck.getCards(byName: cardName).forEach { $0.card = card }
 
-                let set = cardSet.subtracting(results.compactMap({ $0.name }))
-                if Magic.enableLogging {
-                    print("We have \(results.count) of \(cardSet.count) responses back: \(cardName)")
-                    print("Updated Set: \(set)")
-                }
+                case .success(let cards):
+                    guard let card = cards.filter({ $0.name == cardName }).first else {
+                        return
+                    }
+                    results.append(card)
+                    try? CardCacheService.shared.cache(card: card)
+                    deck.getCards(byName: cardName).forEach { $0.card = card }
 
-                if set.isEmpty {
-                    completion(results, errorResult)
+                    let set = cardSet.subtracting(results.compactMap({ $0.name }))
+                    if Magic.enableLogging {
+                        print("We have \(results.count) of \(cardSet.count) responses back: \(cardName)")
+                        print("Updated Set: \(set)")
+                    }
+
+                    if set.isEmpty {
+                        if let error = errorResult {
+                            completion(Result.error(error))
+                        } else {
+                            completion(Result.success(results))
+                        }
+                    }
                 }
             }
         }

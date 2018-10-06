@@ -101,10 +101,11 @@ extension Card {
             map[Parser.JsonKeys.loyalty] = loyalty
         }
         var legalityArray = [[String: String]]()
-        legalities.forEach { (key, value) in
+        legalities.forEach { (arg) in
+            let (key, value) = arg
             legalityArray.append([
-                Parser.JsonKeys.legalitiesFormat: key,
-                Parser.JsonKeys.legalitiesLegality: value
+                Parser.JsonKeys.legalityFormat: key,
+                Parser.JsonKeys.legalityLegality: value
                 ])
         }
         map[Parser.JsonKeys.legalities] = legalityArray
