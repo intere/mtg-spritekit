@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2aN-4A-19s">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--New Deck View Controller-->
+        <scene sceneID="v8Y-01-5E0">
+            <objects>
+                <viewController storyboardIdentifier="NewDeckViewController" id="2aN-4A-19s" customClass="NewDeckViewController" customModule="CardGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="z47-e9-Mit">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ker-Cs-V1f">
+                                <rect key="frame" x="8" y="629" width="359" height="30"/>
+                                <state key="normal" title="Create Deck"/>
+                                <connections>
+                                    <action selector="tappedCreateDeck:" destination="2aN-4A-19s" eventType="touchUpInside" id="cGs-Kl-Kqe"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="flg-rN-L47">
+                                <rect key="frame" x="8" y="66" width="359" height="555"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.80000000000000004"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="5" height="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Deck Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3A7-5Y-bA4">
+                                <rect key="frame" x="8" y="28" width="359" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ker-Cs-V1f" firstAttribute="top" secondItem="flg-rN-L47" secondAttribute="bottom" constant="8" id="4tT-sT-nRd"/>
+                            <constraint firstItem="ker-Cs-V1f" firstAttribute="leading" secondItem="8GJ-vv-NyJ" secondAttribute="leading" constant="8" id="7pI-0w-EkQ"/>
+                            <constraint firstItem="flg-rN-L47" firstAttribute="top" secondItem="3A7-5Y-bA4" secondAttribute="bottom" constant="8" id="BBA-Cp-dns"/>
+                            <constraint firstItem="flg-rN-L47" firstAttribute="leading" secondItem="8GJ-vv-NyJ" secondAttribute="leading" constant="8" id="Ljm-fB-3UP"/>
+                            <constraint firstItem="3A7-5Y-bA4" firstAttribute="leading" secondItem="8GJ-vv-NyJ" secondAttribute="leading" constant="8" id="LqE-uC-0XB"/>
+                            <constraint firstItem="8GJ-vv-NyJ" firstAttribute="bottom" secondItem="ker-Cs-V1f" secondAttribute="bottom" constant="8" id="Smh-PG-Rau"/>
+                            <constraint firstItem="8GJ-vv-NyJ" firstAttribute="trailing" secondItem="flg-rN-L47" secondAttribute="trailing" constant="8" id="Vlj-rg-N5K"/>
+                            <constraint firstItem="3A7-5Y-bA4" firstAttribute="top" secondItem="8GJ-vv-NyJ" secondAttribute="top" constant="8" id="Y7v-bF-xAx"/>
+                            <constraint firstItem="8GJ-vv-NyJ" firstAttribute="trailing" secondItem="ker-Cs-V1f" secondAttribute="trailing" constant="8" id="nrY-Bv-NCG"/>
+                            <constraint firstItem="8GJ-vv-NyJ" firstAttribute="trailing" secondItem="3A7-5Y-bA4" secondAttribute="trailing" constant="8" id="p1s-jk-A3N"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8GJ-vv-NyJ"/>
+                    </view>
+                    <connections>
+                        <outlet property="deckListText" destination="flg-rN-L47" id="6OV-eO-q0I"/>
+                        <outlet property="deckNameText" destination="3A7-5Y-bA4" id="XoV-Ag-NWU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ye7-qU-vel" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="172" y="-108.39580209895054"/>
+        </scene>
+    </scenes>
+</document>

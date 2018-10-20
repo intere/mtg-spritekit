@@ -79,14 +79,30 @@ extension GameScene {
 
     @objc
     func takeMulligan(_ notification: NSNotification) {
+        // 1. Remove current cards
         for child in children {
             guard let card = child as? SKCard else {
                 continue
             }
-            card.removeFromParent()
+            card.fadeOutAndRemove()
         }
-        playerBoard.mulligan()
-        showHand()
+
+        // 2. take a mulligan and show that hand
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            guard let self = self else {
+                return
+            }
+            self.playerBoard.mulligan()
+            self.showHand()
+
+            guard self.playerBoard.cardsInHand > 0 else {
+                return
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                Notification.GameSceneEvent.gameLoaded.notify()
+            }
+        }
+
     }
 
 }
@@ -154,7 +170,7 @@ extension GameScene {
         let hand = playerBoard.hand
 
         var startX = CGFloat(20) + SKCard.Constants.width / 2
-        var startY = CGFloat(frame.minY + 10) + SKCard.Constants.height / 2
+        var startY = CGFloat(frame.minY + 30) + SKCard.Constants.height / 2
 
         for card in hand {
             let skCard = SKCard(card: card)
@@ -164,8 +180,8 @@ extension GameScene {
                 startX = skCard.position.x
                 startY = skCard.position.y
             }
-            addChild(skCard)
             startX += skCard.frame.width + 5
+            skCard.fadeInAfter(addingTo: self)
         }
     }
 

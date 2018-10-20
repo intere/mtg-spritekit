@@ -11,20 +11,19 @@
 import XCTest
 
 class Card_SerializationTests: XCTestCase {
-    let parser = Parser()
 
     var chandra: Card? {
         guard let chandra = readMapped(jsonfile: "417683.json") else {
             return nil
         }
-        return parser.parseCards(json: chandra).first
+        return Parser.parseCards(json: chandra).first
     }
 
     var emrakul: Card? {
         guard let emrakul = readMapped(jsonfile: "397905.json") else {
             return nil
         }
-        return parser.parseCards(json: emrakul).first
+        return Parser.parseCards(json: emrakul).first
     }
 
     func testSerializeChandra() {
@@ -33,7 +32,7 @@ class Card_SerializationTests: XCTestCase {
         }
         let serialized = [ Parser.JsonKeys.cards: [ chandra.toJsonMap ] ]
 
-        guard let deserialized = parser.parseCards(json: serialized).first else {
+        guard let deserialized = Parser.parseCards(json: serialized).first else {
             return XCTFail("Failed to deserialize our payload")
         }
         XCTAssertEqual(chandra.name, deserialized.name, "The name field was not the same")
@@ -78,7 +77,7 @@ class Card_SerializationTests: XCTestCase {
         }
         let serialized = [ Parser.JsonKeys.cards: [ emrakul.toJsonMap ] ]
 
-        guard let deserialized = parser.parseCards(json: serialized).first else {
+        guard let deserialized = Parser.parseCards(json: serialized).first else {
             return XCTFail("Failed to deserialize our payload")
         }
         XCTAssertEqual(emrakul.name, deserialized.name, "The name field was not the same")

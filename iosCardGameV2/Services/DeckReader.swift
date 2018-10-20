@@ -40,6 +40,7 @@ struct DeckReader {
         var sideboard = false
 
         for line in lines {
+            print("Line: '\(line)'")
             guard !line.isEmpty && !line.lowercased().starts(with: "sideboard") else {
                 sideboard = true
                 continue

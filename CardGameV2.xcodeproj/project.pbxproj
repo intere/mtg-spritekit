@@ -19,9 +19,21 @@
 		36578683217AA30000F16FB9 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36578682217AA30000F16FB9 /* AlertViewController.swift */; };
 		36578686217AA34400F16FB9 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36578685217AA34400F16FB9 /* AppTheme.swift */; };
 		36578688217AA90700F16FB9 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36578687217AA90700F16FB9 /* UIColorExtensions.swift */; };
-		3657868B217B7FAC00F16FB9 /* SKCard+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3657868A217B7FAC00F16FB9 /* SKCard+Actions.swift */; };
 		3657868D217B8A3900F16FB9 /* Notifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3657868C217B8A3900F16FB9 /* Notifiable.swift */; };
 		36578691217B8CE400F16FB9 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36578690217B8CE400F16FB9 /* Notifications.swift */; };
+		36578697217BA58E00F16FB9 /* Gameplay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36578693217BA58E00F16FB9 /* Gameplay.storyboard */; };
+		36578698217BA58E00F16FB9 /* SKCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36578694217BA58E00F16FB9 /* SKCard.swift */; };
+		36578699217BA58E00F16FB9 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36578695217BA58E00F16FB9 /* GameScene.swift */; };
+		3657869A217BA58E00F16FB9 /* SKCard+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36578696217BA58E00F16FB9 /* SKCard+Actions.swift */; };
+		3657869C217BA63F00F16FB9 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3657869B217BA63F00F16FB9 /* GameViewController.swift */; };
+		3657869F217BA6AA00F16FB9 /* Decks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3657869E217BA6AA00F16FB9 /* Decks.storyboard */; };
+		365786A1217BA91500F16FB9 /* DeckListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365786A0217BA91500F16FB9 /* DeckListTableViewController.swift */; };
+		365786A3217BA99800F16FB9 /* DeckListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365786A2217BA99800F16FB9 /* DeckListService.swift */; };
+		365786A5217BABD100F16FB9 /* NewDeck.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 365786A4217BABD100F16FB9 /* NewDeck.storyboard */; };
+		365786A7217BACF100F16FB9 /* NewDeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365786A6217BACF100F16FB9 /* NewDeckViewController.swift */; };
+		365786A9217BAD7700F16FB9 /* Designables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365786A8217BAD7700F16FB9 /* Designables.swift */; };
+		365786AB217BAF2900F16FB9 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365786AA217BAF2900F16FB9 /* UIViewControllerExtension.swift */; };
+		365786AD217BB12E00F16FB9 /* UIAlertControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365786AC217BB12E00F16FB9 /* UIAlertControllerExtensions.swift */; };
 		366A5023215D24B500C435E3 /* Card+SerializationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366A5022215D24B500C435E3 /* Card+SerializationTests.swift */; };
 		366A5026215D25CE00C435E3 /* 417683.json in Resources */ = {isa = PBXBuildFile; fileRef = 366A5025215D25CE00C435E3 /* 417683.json */; };
 		366A5028215D26B000C435E3 /* 397905.json in Resources */ = {isa = PBXBuildFile; fileRef = 366A5027215D26B000C435E3 /* 397905.json */; };
@@ -50,8 +62,6 @@
 		36AED7DF215EEB00000D02D0 /* MtgApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362B7AF421501649009E165C /* MtgApiService.swift */; };
 		36AED7E0215EEB00000D02D0 /* DeckReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362B7AFB21501ABE009E165C /* DeckReader.swift */; };
 		36AED7E1215EEB00000D02D0 /* CardCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366A5029215D350300C435E3 /* CardCacheService.swift */; };
-		36AED7E2215EEB00000D02D0 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EFEB0D1CD3C43400014542 /* GameScene.swift */; };
-		36AED7E3215EEB00000D02D0 /* SKCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EFEB301CD3D9D400014542 /* SKCard.swift */; };
 		36C797CA215EF51D00D8D8EC /* iTunesArtwork-512.png in Resources */ = {isa = PBXBuildFile; fileRef = D3EFEB2B1CD3C75700014542 /* iTunesArtwork-512.png */; };
 		36C797CB215EF51D00D8D8EC /* iTunesArtwork-512@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3EFEB2C1CD3C75700014542 /* iTunesArtwork-512@2x.png */; };
 		36C797CC215EF51D00D8D8EC /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3EFEB2F1CD3D8A100014542 /* OpenSans-Bold.ttf */; };
@@ -60,8 +70,6 @@
 		89AA57BE39AC2CD6FBDB2304 /* Pods_tvCardGameMTG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC8D1773A57A55DF45D7FC30 /* Pods_tvCardGameMTG.framework */; };
 		D39654F41CD45F10002A5E99 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3EFEB2F1CD3D8A100014542 /* OpenSans-Bold.ttf */; };
 		D3EFEB0A1CD3C43400014542 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EFEB091CD3C43400014542 /* AppDelegate.swift */; };
-		D3EFEB0E1CD3C43400014542 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EFEB0D1CD3C43400014542 /* GameScene.swift */; };
-		D3EFEB101CD3C43400014542 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EFEB0F1CD3C43400014542 /* GameViewController.swift */; };
 		D3EFEB131CD3C43400014542 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3EFEB111CD3C43400014542 /* Main.storyboard */; };
 		D3EFEB151CD3C43400014542 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3EFEB141CD3C43400014542 /* Assets.xcassets */; };
 		D3EFEB181CD3C43400014542 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3EFEB161CD3C43400014542 /* LaunchScreen.storyboard */; };
@@ -71,7 +79,6 @@
 		D3EFEB2A1CD3C5D500014542 /* dragon-roar.wav in Resources */ = {isa = PBXBuildFile; fileRef = D3EFEB271CD3C5D500014542 /* dragon-roar.wav */; };
 		D3EFEB2D1CD3C75700014542 /* iTunesArtwork-512.png in Resources */ = {isa = PBXBuildFile; fileRef = D3EFEB2B1CD3C75700014542 /* iTunesArtwork-512.png */; };
 		D3EFEB2E1CD3C75700014542 /* iTunesArtwork-512@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3EFEB2C1CD3C75700014542 /* iTunesArtwork-512@2x.png */; };
-		D3EFEB311CD3D9D400014542 /* SKCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EFEB301CD3D9D400014542 /* SKCard.swift */; };
 		F8FE556F84F60D1A52871332 /* Pods_CardGameTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0EFAA16BEFBB5E05468B86 /* Pods_CardGameTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -109,9 +116,21 @@
 		36578682217AA30000F16FB9 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		36578685217AA34400F16FB9 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
 		36578687217AA90700F16FB9 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
-		3657868A217B7FAC00F16FB9 /* SKCard+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKCard+Actions.swift"; sourceTree = "<group>"; };
 		3657868C217B8A3900F16FB9 /* Notifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifiable.swift; sourceTree = "<group>"; };
 		36578690217B8CE400F16FB9 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		36578693217BA58E00F16FB9 /* Gameplay.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Gameplay.storyboard; sourceTree = "<group>"; };
+		36578694217BA58E00F16FB9 /* SKCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKCard.swift; sourceTree = "<group>"; };
+		36578695217BA58E00F16FB9 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		36578696217BA58E00F16FB9 /* SKCard+Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKCard+Actions.swift"; sourceTree = "<group>"; };
+		3657869B217BA63F00F16FB9 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		3657869E217BA6AA00F16FB9 /* Decks.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Decks.storyboard; sourceTree = "<group>"; };
+		365786A0217BA91500F16FB9 /* DeckListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckListTableViewController.swift; sourceTree = "<group>"; };
+		365786A2217BA99800F16FB9 /* DeckListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckListService.swift; sourceTree = "<group>"; };
+		365786A4217BABD100F16FB9 /* NewDeck.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewDeck.storyboard; sourceTree = "<group>"; };
+		365786A6217BACF100F16FB9 /* NewDeckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDeckViewController.swift; sourceTree = "<group>"; };
+		365786A8217BAD7700F16FB9 /* Designables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Designables.swift; sourceTree = "<group>"; };
+		365786AA217BAF2900F16FB9 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		365786AC217BB12E00F16FB9 /* UIAlertControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtensions.swift; sourceTree = "<group>"; };
 		366A5022215D24B500C435E3 /* Card+SerializationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+SerializationTests.swift"; sourceTree = "<group>"; };
 		366A5025215D25CE00C435E3 /* 417683.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 417683.json; sourceTree = "<group>"; };
 		366A5027215D26B000C435E3 /* 397905.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 397905.json; sourceTree = "<group>"; };
@@ -141,8 +160,6 @@
 		C9480A47197B9384DA1ACB12 /* Pods-CardGameTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardGameTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CardGameTests/Pods-CardGameTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D3EFEB061CD3C43400014542 /* CardGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CardGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3EFEB091CD3C43400014542 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D3EFEB0D1CD3C43400014542 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		D3EFEB0F1CD3C43400014542 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		D3EFEB121CD3C43400014542 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D3EFEB141CD3C43400014542 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3EFEB171CD3C43400014542 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -154,7 +171,6 @@
 		D3EFEB2B1CD3C75700014542 /* iTunesArtwork-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork-512.png"; sourceTree = "<group>"; };
 		D3EFEB2C1CD3C75700014542 /* iTunesArtwork-512@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork-512@2x.png"; sourceTree = "<group>"; };
 		D3EFEB2F1CD3D8A100014542 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
-		D3EFEB301CD3D9D400014542 /* SKCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKCard.swift; sourceTree = "<group>"; };
 		EC0EFAA16BEFBB5E05468B86 /* Pods_CardGameTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CardGameTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F56A83A0E04C56858709B73D /* Pods-CardGame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardGame.release.xcconfig"; path = "Pods/Target Support Files/Pods-CardGame/Pods-CardGame.release.xcconfig"; sourceTree = "<group>"; };
 		FC8D1773A57A55DF45D7FC30 /* Pods_tvCardGameMTG.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tvCardGameMTG.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -217,6 +233,7 @@
 				362B7AF421501649009E165C /* MtgApiService.swift */,
 				362B7AFB21501ABE009E165C /* DeckReader.swift */,
 				366A5029215D350300C435E3 /* CardCacheService.swift */,
+				365786A2217BA99800F16FB9 /* DeckListService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -228,6 +245,9 @@
 				36F6759F215D1C3B00733708 /* Card+Serialization.swift */,
 				36578687217AA90700F16FB9 /* UIColorExtensions.swift */,
 				36578690217B8CE400F16FB9 /* Notifications.swift */,
+				365786A8217BAD7700F16FB9 /* Designables.swift */,
+				365786AA217BAF2900F16FB9 /* UIViewControllerExtension.swift */,
+				365786AC217BB12E00F16FB9 /* UIAlertControllerExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -260,6 +280,29 @@
 				3657868C217B8A3900F16FB9 /* Notifiable.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		36578692217BA58E00F16FB9 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				36578693217BA58E00F16FB9 /* Gameplay.storyboard */,
+				36578695217BA58E00F16FB9 /* GameScene.swift */,
+				3657869B217BA63F00F16FB9 /* GameViewController.swift */,
+				36578694217BA58E00F16FB9 /* SKCard.swift */,
+				36578696217BA58E00F16FB9 /* SKCard+Actions.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		3657869D217BA69000F16FB9 /* Decks */ = {
+			isa = PBXGroup;
+			children = (
+				3657869E217BA6AA00F16FB9 /* Decks.storyboard */,
+				365786A0217BA91500F16FB9 /* DeckListTableViewController.swift */,
+				365786A4217BABD100F16FB9 /* NewDeck.storyboard */,
+				365786A6217BACF100F16FB9 /* NewDeckViewController.swift */,
+			);
+			path = Decks;
 			sourceTree = "<group>";
 		};
 		366A5021215D24A300C435E3 /* Extensions */ = {
@@ -369,14 +412,15 @@
 		D3EFEB081CD3C43400014542 /* iosCardGameV2 */ = {
 			isa = PBXGroup;
 			children = (
-				36578684217AA33800F16FB9 /* Common */,
-				36FC256F217AA2B5001953FD /* Views */,
-				3696CFA5215FDC44008BA9EF /* Models */,
-				362B7AF62150187D009E165C /* Extensions */,
-				362B7AF321501640009E165C /* Services */,
-				D3EFEB331CD3E4CE00014542 /* Game */,
-				D3EFEB321CD3E38200014542 /* System */,
 				D3EFEB1F1CD3C59000014542 /* Assets */,
+				36578684217AA33800F16FB9 /* Common */,
+				3657869D217BA69000F16FB9 /* Decks */,
+				362B7AF62150187D009E165C /* Extensions */,
+				36578692217BA58E00F16FB9 /* Game */,
+				3696CFA5215FDC44008BA9EF /* Models */,
+				362B7AF321501640009E165C /* Services */,
+				D3EFEB321CD3E38200014542 /* System */,
+				36FC256F217AA2B5001953FD /* Views */,
 			);
 			path = iosCardGameV2;
 			sourceTree = "<group>";
@@ -425,22 +469,11 @@
 			isa = PBXGroup;
 			children = (
 				D3EFEB091CD3C43400014542 /* AppDelegate.swift */,
-				D3EFEB0F1CD3C43400014542 /* GameViewController.swift */,
 				D3EFEB111CD3C43400014542 /* Main.storyboard */,
 				D3EFEB161CD3C43400014542 /* LaunchScreen.storyboard */,
 				D3EFEB191CD3C43400014542 /* Info.plist */,
 			);
 			name = System;
-			sourceTree = "<group>";
-		};
-		D3EFEB331CD3E4CE00014542 /* Game */ = {
-			isa = PBXGroup;
-			children = (
-				D3EFEB0D1CD3C43400014542 /* GameScene.swift */,
-				D3EFEB301CD3D9D400014542 /* SKCard.swift */,
-				3657868A217B7FAC00F16FB9 /* SKCard+Actions.swift */,
-			);
-			name = Game;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -617,16 +650,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3657869F217BA6AA00F16FB9 /* Decks.storyboard in Resources */,
 				D3EFEB181CD3C43400014542 /* LaunchScreen.storyboard in Resources */,
 				362B7AFA21501A87009E165C /* deck.txt in Resources */,
 				D3EFEB2E1CD3C75700014542 /* iTunesArtwork-512@2x.png in Resources */,
 				D3EFEB291CD3C5D500014542 /* wolf_howl.wav in Resources */,
 				D3EFEB281CD3C5D500014542 /* bear_growl.wav in Resources */,
 				D3EFEB151CD3C43400014542 /* Assets.xcassets in Resources */,
+				36578697217BA58E00F16FB9 /* Gameplay.storyboard in Resources */,
 				D3EFEB131CD3C43400014542 /* Main.storyboard in Resources */,
 				D3EFEB211CD3C59F00014542 /* credits.txt in Resources */,
 				D3EFEB2A1CD3C5D500014542 /* dragon-roar.wav in Resources */,
 				D39654F41CD45F10002A5E99 /* OpenSans-Bold.ttf in Resources */,
+				365786A5217BABD100F16FB9 /* NewDeck.storyboard in Resources */,
 				D3EFEB2D1CD3C75700014542 /* iTunesArtwork-512.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -866,9 +902,7 @@
 				36AED7DF215EEB00000D02D0 /* MtgApiService.swift in Sources */,
 				36AED7E0215EEB00000D02D0 /* DeckReader.swift in Sources */,
 				36AED7E1215EEB00000D02D0 /* CardCacheService.swift in Sources */,
-				36AED7E2215EEB00000D02D0 /* GameScene.swift in Sources */,
 				36A5DDF32160104D00178BBC /* Game.swift in Sources */,
-				36AED7E3215EEB00000D02D0 /* SKCard.swift in Sources */,
 				36AED7C5215ED689000D02D0 /* GameViewController.swift in Sources */,
 				36A5DDF02160021300178BBC /* Trigger.swift in Sources */,
 				36A5DDF62160107700178BBC /* Player.swift in Sources */,
@@ -888,27 +922,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				365786A1217BA91500F16FB9 /* DeckListTableViewController.swift in Sources */,
+				365786A9217BAD7700F16FB9 /* Designables.swift in Sources */,
 				36578686217AA34400F16FB9 /* AppTheme.swift in Sources */,
 				36A5DDE9215FFDB100178BBC /* PlayerBoard.swift in Sources */,
+				365786AD217BB12E00F16FB9 /* UIAlertControllerExtensions.swift in Sources */,
 				36578691217B8CE400F16FB9 /* Notifications.swift in Sources */,
-				3657868B217B7FAC00F16FB9 /* SKCard+Actions.swift in Sources */,
 				362B7AFC21501ABE009E165C /* DeckReader.swift in Sources */,
 				3657868D217B8A3900F16FB9 /* Notifiable.swift in Sources */,
 				36A5DDEC215FFE5800178BBC /* TurnPhase.swift in Sources */,
-				D3EFEB0E1CD3C43400014542 /* GameScene.swift in Sources */,
 				3696CFA7215FDC53008BA9EF /* Deck.swift in Sources */,
-				D3EFEB101CD3C43400014542 /* GameViewController.swift in Sources */,
+				3657869C217BA63F00F16FB9 /* GameViewController.swift in Sources */,
 				366A502B215D350900C435E3 /* CardCacheService.swift in Sources */,
+				36578698217BA58E00F16FB9 /* SKCard.swift in Sources */,
+				36578699217BA58E00F16FB9 /* GameScene.swift in Sources */,
 				D3EFEB0A1CD3C43400014542 /* AppDelegate.swift in Sources */,
 				36578688217AA90700F16FB9 /* UIColorExtensions.swift in Sources */,
 				362B7AF521501649009E165C /* MtgApiService.swift in Sources */,
+				3657869A217BA58E00F16FB9 /* SKCard+Actions.swift in Sources */,
 				36A5DDF22160104D00178BBC /* Game.swift in Sources */,
-				D3EFEB311CD3D9D400014542 /* SKCard.swift in Sources */,
 				36578683217AA30000F16FB9 /* AlertViewController.swift in Sources */,
 				36F675A0215D1C3B00733708 /* Card+Serialization.swift in Sources */,
 				36A5DDEF2160021300178BBC /* Trigger.swift in Sources */,
 				36A5DDF52160107700178BBC /* Player.swift in Sources */,
+				365786AB217BAF2900F16FB9 /* UIViewControllerExtension.swift in Sources */,
 				362B7AF821501887009E165C /* MathExtensions.swift in Sources */,
+				365786A7217BACF100F16FB9 /* NewDeckViewController.swift in Sources */,
+				365786A3217BA99800F16FB9 /* DeckListService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

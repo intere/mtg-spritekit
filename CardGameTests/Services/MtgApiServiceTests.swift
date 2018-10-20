@@ -23,24 +23,25 @@ extension MtgApiServiceTests {
         let deck = Deck(mainboard: [CardGroup(name: "Inkmoth Nexus", quantity: 1)], sideboard: [])
         let exp = expectation(description: "loadCards")
 
-        MtgApiService.shared.loadCards(forDeck: deck) { (cards, error) in
+        MtgApiService.shared.loadCards(forDeck: deck) { result in
             defer {
                 exp.fulfill()
             }
-            if let error = error {
-                XCTFail("Failed with error: \(error.localizedDescription)")
-            }
-            guard let cards = cards else {
-                return XCTFail("Cards came back nil")
-            }
-            XCTAssertEqual(1, cards.count, "Not enough cards came back")
 
-            for card in cards {
-                guard let cardName = card.name else {
-                    XCTFail("card without a name: \(card.multiverseid!)")
-                    continue
+            switch result {
+            case .error(let error):
+                XCTFail("Failed with error: \(error.localizedDescription)")
+
+            case .success(let cards):
+                XCTAssertEqual(1, cards.count, "Not enough cards came back")
+
+                for card in cards {
+                    guard let cardName = card.name else {
+                        XCTFail("card without a name: \(card.multiverseid!)")
+                        continue
+                    }
+                    XCTAssertNotNil(card.imageUrl, "Card \(cardName) had a nil image")
                 }
-                XCTAssertNotNil(card.imageUrl, "Card \(cardName) had a nil image")
             }
         }
 
@@ -60,32 +61,33 @@ extension MtgApiServiceTests {
         let uniqueCount = deck.uniqueCardNames.count
 
         let exp = expectation(description: "loadCards")
-        MtgApiService.shared.loadCards(forDeck: deck) { (cards, error) in
+        MtgApiService.shared.loadCards(forDeck: deck) { result in
             defer {
                 exp.fulfill()
             }
-            if let error = error {
+
+            switch result {
+            case .error(let error):
                 XCTFail("Failed with error: \(error.localizedDescription)")
-            }
-            guard let cards = cards else {
-                return XCTFail("Cards came back nil")
-            }
-            XCTAssertEqual(uniqueCount, cards.count, "Not enough cards came back")
-            for card in cards {
-                XCTAssertNotNil(card.imageUrl, "Card \(card.name!) had a nil image")
-            }
-            var hash = [String: Card]()
-            cards.forEach {
-                guard let name = $0.name else {
-                    return XCTFail("Failed to get a name for a card")
+
+            case .success(let cards):
+                XCTAssertEqual(uniqueCount, cards.count, "Not enough cards came back")
+                for card in cards {
+                    XCTAssertNotNil(card.imageUrl, "Card \(card.name!) had a nil image")
                 }
-                hash[name] = $0
-            }
-            deck.mainboard.forEach { card in
-                XCTAssertNotNil(hash[card.name], "\(card.name) had no card")
-            }
-            deck.sideboard.forEach { card in
-                XCTAssertNotNil(hash[card.name], "\(card.name) had no card")
+                var hash = [String: Card]()
+                cards.forEach {
+                    guard let name = $0.name else {
+                        return XCTFail("Failed to get a name for a card")
+                    }
+                    hash[name] = $0
+                }
+                deck.mainboard.forEach { card in
+                    XCTAssertNotNil(hash[card.name], "\(card.name) had no card")
+                }
+                deck.sideboard.forEach { card in
+                    XCTAssertNotNil(hash[card.name], "\(card.name) had no card")
+                }
             }
         }
 
@@ -101,19 +103,19 @@ extension MtgApiServiceTests {
 
         let exp = expectation(description: "loadCards")
 
-        search(forCard: "Damping Sphere") { (cards, error) in
+        search(forCard: "Damping Sphere") { result in
             defer {
                 exp.fulfill()
             }
-            if let error = error {
+            switch result {
+            case .error(let error):
                 XCTFail(error.localizedDescription)
-            }
-            guard let cards = cards else {
-                return XCTFail("Cards came back nil")
-            }
-            XCTAssertNotEqual(0, cards.count)
-            for card in cards {
-                XCTAssertNotNil(card.imageUrl)
+
+            case .success(let cards):
+                XCTAssertNotEqual(0, cards.count)
+                for card in cards {
+                    XCTAssertNotNil(card.imageUrl)
+                }
             }
         }
 
@@ -123,19 +125,19 @@ extension MtgApiServiceTests {
     func testLoadInkmothNexus() {
         let exp = expectation(description: "loadCards")
 
-        search(forCard: "Inkmoth Nexus") { (cards, error) in
+        search(forCard: "Inkmoth Nexus") { result in
             defer {
                 exp.fulfill()
             }
-            if let error = error {
+            switch result {
+            case .error(let error):
                 XCTFail(error.localizedDescription)
-            }
-            guard let cards = cards else {
-                return XCTFail("Cards came back nil")
-            }
-            XCTAssertNotEqual(0, cards.count)
-            for card in cards {
-                XCTAssertNotNil(card.imageUrl)
+
+            case .success(let cards):
+                XCTAssertNotEqual(0, cards.count)
+                for card in cards {
+                    XCTAssertNotNil(card.imageUrl)
+                }
             }
         }
         waitForExpectations(timeout: 10, handler: nil)
@@ -149,30 +151,30 @@ extension MtgApiServiceTests {
     func testLoadImages() {
         let exp = expectation(description: "loadCards")
 
-        search(forCard: "Inkmoth Nexus") { (cards, error) in
-            if let error = error {
+        search(forCard: "Inkmoth Nexus") { result in
+            switch result {
+            case .error(let error):
                 XCTFail(error.localizedDescription)
-            }
-            guard let cards = cards else {
-                return XCTFail("Cards came back nil")
-            }
-            guard let inkmothNexusImageUrl = cards.first?.imageUrl else {
-                return XCTFail("No image came back for Inkmoth Nexus")
-            }
-            MtgApiService.shared.loadImage(urlString: inkmothNexusImageUrl) { (image, error) in
-                defer {
-                    exp.fulfill()
+
+            case .success(let cards):
+                guard let inkmothNexusImageUrl = cards.first?.imageUrl else {
+                    return XCTFail("No image came back for Inkmoth Nexus")
                 }
-                if let error = error {
-                    XCTFail("Error loading image: \(error.localizedDescription)")
-                }
-                guard let image = image else {
-                    return XCTFail("Nil image came back for url \(inkmothNexusImageUrl)")
-                }
-                do {
-                    try UIImagePNGRepresentation(image)?.write(to: URL(fileURLWithPath: "/tmp/nexus.png"))
-                } catch {
-                    XCTFail("Failed to write the nexus image")
+                MtgApiService.shared.loadImage(urlString: inkmothNexusImageUrl) { result in
+                    defer {
+                        exp.fulfill()
+                    }
+                    switch result {
+                    case .error(let error):
+                        XCTFail("Error loading image: \(error.localizedDescription)")
+
+                    case .success(let image):
+                        do {
+                            try UIImagePNGRepresentation(image)?.write(to: URL(fileURLWithPath: "/tmp/nexus.png"))
+                        } catch {
+                            XCTFail("Failed to write the nexus image")
+                        }
+                    }
                 }
             }
         }
@@ -187,14 +189,13 @@ extension MtgApiServiceTests {
 
     func search(forCard cardName: String, completion: @escaping Magic.CardCompletion) {
         let magic = Magic()
-        magic.fetchPageSize = "10"
-        magic.fetchPageTotal = "1"
+        let config = MTGSearchConfiguration(pageSize: 10, pageTotal: 1)
         Magic.enableLogging = true
 
         let params = [
             CardSearchParameter(parameterType: .name, value: cardName),
             CardSearchParameter(parameterType: .contains, value: "imageUrl")
         ]
-        magic.fetchCards(params, completion: completion)
+        magic.fetchCards(params, configuration: config, completion: completion)
     }
 }

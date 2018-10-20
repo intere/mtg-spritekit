@@ -14,12 +14,14 @@ class PlayerBoard {
     /// The current player
     var player: Player
 
-    var life = 20
+    private(set) var life = 20
 
-    var poison = 0
+    private(set) var poison = 0
 
     /// The number of mulligans the player took
-    var mulligans = 0
+    private(set) var mulligans = 0
+
+    private(set) var canScry = false
 
     // TODO:
 //    /// The player stats (life, poison, etc)
@@ -29,10 +31,10 @@ class PlayerBoard {
 //    var emblems: [Emblem]
 
     /// The player's library
-    var library: [Card]
+    private(set) var library: [Card]
 
     /// The player's graveyard
-    var graveyard = [Card]()
+    private(set) var graveyard = [Card]()
 
     /// Cards the player has revealed
     var revealed = [Card]()
@@ -46,6 +48,11 @@ class PlayerBoard {
     /// Gets you the player's deck
     var deck: Deck {
         return player.deck
+    }
+
+    /// Tells you the number of cards in your hand.
+    var cardsInHand: Int {
+        return hand.count
     }
 
     /// Initializes the PlayerBoard using the provide player.  The library is then
@@ -64,9 +71,14 @@ class PlayerBoard {
     /// Takes a mulligan for you.
     func mulligan() {
         mulligans += 1
+        canScry = true
+
         hand.removeAll()
         library = player.deck.mainboardCards.shuffled()
         let cardsInHand = 7 - mulligans
+        guard cardsInHand > 0 else {
+            return
+        }
         for _ in 0..<cardsInHand {
             hand.append(library.removeFirst())
         }

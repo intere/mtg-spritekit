@@ -73,6 +73,21 @@ extension SKCard {
         stopWiggle()
     }
 
+    /// Fades out and then removes itself from its parent
+    func fadeOutAndRemove() {
+        run(SKAction.fadeOut(withDuration: 0.3)) { [weak self] in
+            self?.removeFromParent()
+        }
+    }
+
+    /// Adds this card to its parent and then fades it in.
+    ///
+    /// - Parameter parent: The parent node to be added to.
+    func fadeInAfter(addingTo parent: SKNode) {
+        alpha = 0
+        parent.addChild(self)
+        run(SKAction.fadeIn(withDuration: 0.3))
+    }
 
 }
 
