@@ -18,6 +18,9 @@ class PlayerBoard {
 
     var poison = 0
 
+    /// The number of mulligans the player took
+    var mulligans = 0
+
     // TODO:
 //    /// The player stats (life, poison, etc)
 //    var stats: [StatType: Int]
@@ -54,6 +57,17 @@ class PlayerBoard {
         self.player = player
         library = player.deck.mainboardCards.shuffled()
         for _ in 0..<7 {
+            hand.append(library.removeFirst())
+        }
+    }
+
+    /// Takes a mulligan for you.
+    func mulligan() {
+        mulligans += 1
+        hand.removeAll()
+        library = player.deck.mainboardCards.shuffled()
+        let cardsInHand = 7 - mulligans
+        for _ in 0..<cardsInHand {
             hand.append(library.removeFirst())
         }
     }

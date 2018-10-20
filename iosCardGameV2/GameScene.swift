@@ -3,7 +3,7 @@
 import MTGSDKSwift
 import SpriteKit
 
-enum CardLevel :CGFloat {
+enum CardLevel: CGFloat {
     case board = 10
     case moving = 100
     case enlarged = 200
@@ -28,6 +28,8 @@ class GameScene: SKScene {
 
         addLoadingLabel()
         cacheDeck()
+
+        Notification.UserAction.mulliganHand.addObserver(self, selector: #selector(takeMulligan(_:)))
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -71,6 +73,24 @@ class GameScene: SKScene {
 
 }
 
+// MARK: - Notifications
+
+extension GameScene {
+
+    @objc
+    func takeMulligan(_ notification: NSNotification) {
+        for child in children {
+            guard let card = child as? SKCard else {
+                continue
+            }
+            card.removeFromParent()
+        }
+        playerBoard.mulligan()
+        showHand()
+    }
+
+}
+
 // MARK: - Implementation
 
 extension GameScene {
@@ -93,6 +113,7 @@ extension GameScene {
                 // TODO: Now show the player's hand
                 self?.playerBoard = PlayerBoard(player: Player(name: "Reznor", deck: deck))
                 self?.startGame()
+                Notification.GameSceneEvent.gameLoaded.notify()
             }
         }
     }

@@ -20,6 +20,8 @@
 		36578686217AA34400F16FB9 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36578685217AA34400F16FB9 /* AppTheme.swift */; };
 		36578688217AA90700F16FB9 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36578687217AA90700F16FB9 /* UIColorExtensions.swift */; };
 		3657868B217B7FAC00F16FB9 /* SKCard+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3657868A217B7FAC00F16FB9 /* SKCard+Actions.swift */; };
+		3657868D217B8A3900F16FB9 /* Notifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3657868C217B8A3900F16FB9 /* Notifiable.swift */; };
+		36578691217B8CE400F16FB9 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36578690217B8CE400F16FB9 /* Notifications.swift */; };
 		366A5023215D24B500C435E3 /* Card+SerializationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366A5022215D24B500C435E3 /* Card+SerializationTests.swift */; };
 		366A5026215D25CE00C435E3 /* 417683.json in Resources */ = {isa = PBXBuildFile; fileRef = 366A5025215D25CE00C435E3 /* 417683.json */; };
 		366A5028215D26B000C435E3 /* 397905.json in Resources */ = {isa = PBXBuildFile; fileRef = 366A5027215D26B000C435E3 /* 397905.json */; };
@@ -108,6 +110,8 @@
 		36578685217AA34400F16FB9 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
 		36578687217AA90700F16FB9 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		3657868A217B7FAC00F16FB9 /* SKCard+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKCard+Actions.swift"; sourceTree = "<group>"; };
+		3657868C217B8A3900F16FB9 /* Notifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifiable.swift; sourceTree = "<group>"; };
+		36578690217B8CE400F16FB9 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		366A5022215D24B500C435E3 /* Card+SerializationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+SerializationTests.swift"; sourceTree = "<group>"; };
 		366A5025215D25CE00C435E3 /* 417683.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 417683.json; sourceTree = "<group>"; };
 		366A5027215D26B000C435E3 /* 397905.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 397905.json; sourceTree = "<group>"; };
@@ -223,6 +227,7 @@
 				362B7AF721501887009E165C /* MathExtensions.swift */,
 				36F6759F215D1C3B00733708 /* Card+Serialization.swift */,
 				36578687217AA90700F16FB9 /* UIColorExtensions.swift */,
+				36578690217B8CE400F16FB9 /* Notifications.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -252,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				36578685217AA34400F16FB9 /* AppTheme.swift */,
+				3657868C217B8A3900F16FB9 /* Notifiable.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -884,8 +890,10 @@
 			files = (
 				36578686217AA34400F16FB9 /* AppTheme.swift in Sources */,
 				36A5DDE9215FFDB100178BBC /* PlayerBoard.swift in Sources */,
+				36578691217B8CE400F16FB9 /* Notifications.swift in Sources */,
 				3657868B217B7FAC00F16FB9 /* SKCard+Actions.swift in Sources */,
 				362B7AFC21501ABE009E165C /* DeckReader.swift in Sources */,
+				3657868D217B8A3900F16FB9 /* Notifiable.swift in Sources */,
 				36A5DDEC215FFE5800178BBC /* TurnPhase.swift in Sources */,
 				D3EFEB0E1CD3C43400014542 /* GameScene.swift in Sources */,
 				3696CFA7215FDC53008BA9EF /* Deck.swift in Sources */,
