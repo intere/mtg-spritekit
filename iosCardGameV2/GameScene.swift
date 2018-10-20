@@ -12,6 +12,7 @@ enum CardLevel :CGFloat {
 class GameScene: SKScene {
 
     var playerBoard: PlayerBoard!
+    var messageLabel: SKLabelNode?
 
     override func didMove(to view: SKView) {
         #if !os(tvOS)
@@ -25,83 +26,46 @@ class GameScene: SKScene {
             return
         }
 
-        guard let deck = DeckReader.shared.read(fileNamed: "deck.txt") else {
-            return
-        }
-
-        let messageLabel = SKLabelNode(text: "Loading cards, please wait...")
-        messageLabel.fontSize = 36
-        messageLabel.position = CGPoint(x: frame.midX, y: frame.midY)
-        addChild(messageLabel)
-
-        // Ensure that we cache all of the cards in the deck, then continue
-        MtgApiService.shared.cache(deck: deck) { (error) in
-            DispatchQueue.main.async { [weak self] in
-                if let error = error {
-                    messageLabel.text = "Error loading deck from API\n\(error.localizedDescription)"
-                    return
-                }
-                messageLabel.run(SKAction.fadeOut(withDuration: 0.5)) {
-                    messageLabel.removeFromParent()
-                }
-                // TODO: Now show the player's hand
-                self?.playerBoard = PlayerBoard(player: Player(name: "Reznor", deck: deck))
-                self?.startGame()
-            }
-        }
+        addLoadingLabel()
+        cacheDeck()
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
-            let location = touch.location(in: self)           // 1
-            if let card = atPoint(location) as? SKCard {        // 2
-                if card.enlarged { return }
-                card.position = location
+            guard let card = self.card(for: touch), !card.enlarged else {
+                continue
             }
+
+            card.position = touch.location(in: self)
         }
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
-            
-            let location = touch.location(in: self)
-            if let card = atPoint(location) as? SKCard {
-                if touch.tapCount > 1 {
-                    card.enlarge()
-                    return
-                }
-
-                if card.enlarged { return }
-
-                card.zPosition = CardLevel.moving.rawValue
-                card.removeAction(forKey: "drop")
-                card.run(SKAction.group([
-                    SKAction.scale(to: 1.3, duration: 0.25),
-                    SKAction.repeatForever(SKAction.sequence([
-                        SKAction.rotate(toAngle: 0.1, duration: 0.25),
-                        SKAction.rotate(toAngle: -0.1, duration: 0.25)
-                        ]))
-                    ]), withKey: "pickup")
-                wiggle(it: card)
+            guard let card = card(for: touch) else {
+                continue
             }
+            guard !touch.isMultiTap else {
+                card.toggleEnlarged()
+                continue
+            }
+            guard !card.enlarged else {
+                continue
+            }
+
+            card.pickup()
         }
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
-            let location = touch.location(in: self)
-            if let card = atPoint(location) as? SKCard {
-                guard !card.enlarged else {
-                    return
-                }
-                card.zPosition = CardLevel.board.rawValue
-                card.removeFromParent()
-                addChild(card)
-                card.removeAction(forKey: "pickup")
-                card.run(SKAction.rotate(toAngle: 0, duration: 0.25), withKey: "stop")
-                card.run(SKAction.scale(to: 1.0, duration: 0.25), withKey: "drop")
-                stopWiggle(it: card)
+            guard let card = card(for: touch) else {
+                continue
             }
+            guard !card.enlarged else {
+                continue
+            }
+            card.dropCard(on: self)
         }
     }
 
@@ -111,28 +75,60 @@ class GameScene: SKScene {
 
 extension GameScene {
 
+    /// Loads the deck (deck.txt file) and caches all of the images for it.
+    func cacheDeck() {
+        guard let deck = DeckReader.shared.read(fileNamed: "deck.txt") else {
+            return
+        }
+        // Ensure that we cache all of the cards in the deck, then continue
+        MtgApiService.shared.cache(deck: deck) { (error) in
+            DispatchQueue.main.async { [weak self] in
+                if let error = error {
+                    self?.messageLabel?.text = "Error loading deck from API\n\(error.localizedDescription)"
+                    return
+                }
+                self?.messageLabel?.run(SKAction.fadeOut(withDuration: 0.5)) {
+                    self?.messageLabel?.removeFromParent()
+                }
+                // TODO: Now show the player's hand
+                self?.playerBoard = PlayerBoard(player: Player(name: "Reznor", deck: deck))
+                self?.startGame()
+            }
+        }
+    }
+
+    /// Gets you the card for the provided touch.
+    ///
+    /// - Parameter touch: The touch event
+    /// - Returns: An SKCard if there was one at the touch point.
+    func card(for touch: UITouch) -> SKCard? {
+        let location = touch.location(in: self)
+        return card(at: location)
+    }
+
+    /// Gets you the card at the provided location.
+    ///
+    /// - Parameter location: The location to check for a cad.
+    /// - Returns: The SKCard if it exists at the provided point.
+    func card(at location: CGPoint) -> SKCard? {
+        return atPoint(location) as? SKCard
+    }
+
+    /// Adds a "loading" message to the view.
+    func addLoadingLabel() {
+        let messageLabel = SKLabelNode(text: "Loading cards, please wait...")
+        messageLabel.fontSize = 36
+        messageLabel.position = CGPoint(x: frame.midX, y: frame.midY)
+        addChild(messageLabel)
+        self.messageLabel = messageLabel
+    }
+
+    /// Starts the game up, visually
     func startGame() {
         showHand()
     }
 
-    /// Wiggle animation for when you're moving the card
-    ///
-    /// - Parameter card: The card you want to animate the wiggle on.
-    func wiggle(it card: SKCard) {
-        let wiggleIn = SKAction.scaleX(to: 1.0, duration: 0.2)
-        let wiggleOut = SKAction.scaleX(to: 1.2, duration: 0.2)
-        let wiggle = SKAction.sequence([wiggleIn, wiggleOut])
-
-        card.run(SKAction.repeatForever(wiggle), withKey: "wiggle")
-    }
-
-    /// Stops the wigling animation on the card
-    ///
-    /// - Parameter card: The card you want to stop the wiggle on.
-    func stopWiggle(it card: SKCard) {
-        card.removeAction(forKey: "wiggle")
-    }
-
+    /// Positions the players hand
     func showHand() {
         let hand = playerBoard.hand
 
@@ -187,14 +183,11 @@ extension GameScene {
                     startY = skCard.position.y
                 }
                 addChild(skCard)
-//                print("added card at \(skCard.position)")
                 startY -= 25
             }
             startY -= SKCard.Constants.height
         }
     }
-
-
 
     /// Should the y be reset (based on the current Y value)?
     ///
@@ -213,4 +206,15 @@ extension GameScene {
 
         card.position = CGPoint(x: newX, y: newY)
     }
+}
+
+// MARK: - UITouch extension
+
+extension UITouch {
+
+    /// Is this a multi (double or more) tap?
+    var isMultiTap: Bool {
+        return tapCount > 1
+    }
+
 }

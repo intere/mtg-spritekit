@@ -1,8 +1,10 @@
 PODS:
+  - Cartography (3.1.0)
   - Kingfisher (4.10.0)
   - MTGSDKSwift (1.0.1)
 
 DEPENDENCIES:
+  - Cartography (~> 3.0)
   - Kingfisher
   - MTGSDKSwift (from `git@github.com:intere/mtg-sdk-swift.git`, branch `tvos`)
 
@@ -17,9 +19,10 @@ CHECKOUT OPTIONS:
     :git: git@github.com:intere/mtg-sdk-swift.git
 
 SPEC CHECKSUMS:
+  Cartography: 1988b7578871a56c036e7af17195cb2190edf18c
   Kingfisher: 43c4b802d8b5256cf1f4379e9cd10b329be6d3e2
   MTGSDKSwift: d56423e8b5517a1f1368faf9b652606e7a7449d4
 
-PODFILE CHECKSUM: 1464898b08bf2b49bf425f19a754690892b04103
+PODFILE CHECKSUM: 3e43bf8d525d14f2c9373dfe593de9310e52355b
 
 COCOAPODS: 1.4.0

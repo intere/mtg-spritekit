@@ -16,6 +16,10 @@
 		362B7AFC21501ABE009E165C /* DeckReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362B7AFB21501ABE009E165C /* DeckReader.swift */; };
 		362B7B0D21501B9E009E165C /* DeckReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362B7B0C21501B9E009E165C /* DeckReaderTests.swift */; };
 		362B7B0F215023C8009E165C /* MtgApiServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362B7B0E215023C8009E165C /* MtgApiServiceTests.swift */; };
+		36578683217AA30000F16FB9 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36578682217AA30000F16FB9 /* AlertViewController.swift */; };
+		36578686217AA34400F16FB9 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36578685217AA34400F16FB9 /* AppTheme.swift */; };
+		36578688217AA90700F16FB9 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36578687217AA90700F16FB9 /* UIColorExtensions.swift */; };
+		3657868B217B7FAC00F16FB9 /* SKCard+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3657868A217B7FAC00F16FB9 /* SKCard+Actions.swift */; };
 		366A5023215D24B500C435E3 /* Card+SerializationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366A5022215D24B500C435E3 /* Card+SerializationTests.swift */; };
 		366A5026215D25CE00C435E3 /* 417683.json in Resources */ = {isa = PBXBuildFile; fileRef = 366A5025215D25CE00C435E3 /* 417683.json */; };
 		366A5028215D26B000C435E3 /* 397905.json in Resources */ = {isa = PBXBuildFile; fileRef = 366A5027215D26B000C435E3 /* 397905.json */; };
@@ -100,6 +104,10 @@
 		362B7B0521501B77009E165C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		362B7B0C21501B9E009E165C /* DeckReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckReaderTests.swift; sourceTree = "<group>"; };
 		362B7B0E215023C8009E165C /* MtgApiServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MtgApiServiceTests.swift; sourceTree = "<group>"; };
+		36578682217AA30000F16FB9 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		36578685217AA34400F16FB9 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
+		36578687217AA90700F16FB9 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
+		3657868A217B7FAC00F16FB9 /* SKCard+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKCard+Actions.swift"; sourceTree = "<group>"; };
 		366A5022215D24B500C435E3 /* Card+SerializationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+SerializationTests.swift"; sourceTree = "<group>"; };
 		366A5025215D25CE00C435E3 /* 417683.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 417683.json; sourceTree = "<group>"; };
 		366A5027215D26B000C435E3 /* 397905.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 397905.json; sourceTree = "<group>"; };
@@ -214,6 +222,7 @@
 			children = (
 				362B7AF721501887009E165C /* MathExtensions.swift */,
 				36F6759F215D1C3B00733708 /* Card+Serialization.swift */,
+				36578687217AA90700F16FB9 /* UIColorExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -237,6 +246,14 @@
 				362B7B0E215023C8009E165C /* MtgApiServiceTests.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		36578684217AA33800F16FB9 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				36578685217AA34400F16FB9 /* AppTheme.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		366A5021215D24A300C435E3 /* Extensions */ = {
@@ -300,6 +317,14 @@
 			path = CardGameMTGTests;
 			sourceTree = "<group>";
 		};
+		36FC256F217AA2B5001953FD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				36578682217AA30000F16FB9 /* AlertViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		8472A613D9A58482467798BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -338,6 +363,8 @@
 		D3EFEB081CD3C43400014542 /* iosCardGameV2 */ = {
 			isa = PBXGroup;
 			children = (
+				36578684217AA33800F16FB9 /* Common */,
+				36FC256F217AA2B5001953FD /* Views */,
 				3696CFA5215FDC44008BA9EF /* Models */,
 				362B7AF62150187D009E165C /* Extensions */,
 				362B7AF321501640009E165C /* Services */,
@@ -405,6 +432,7 @@
 			children = (
 				D3EFEB0D1CD3C43400014542 /* GameScene.swift */,
 				D3EFEB301CD3D9D400014542 /* SKCard.swift */,
+				3657868A217B7FAC00F16FB9 /* SKCard+Actions.swift */,
 			);
 			name = Game;
 			sourceTree = "<group>";
@@ -703,11 +731,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CardGame/Pods-CardGame-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Cartography/Cartography.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher-iOS/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/MTGSDKSwift-iOS/MTGSDKSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cartography.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MTGSDKSwift.framework",
 			);
@@ -852,7 +882,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36578686217AA34400F16FB9 /* AppTheme.swift in Sources */,
 				36A5DDE9215FFDB100178BBC /* PlayerBoard.swift in Sources */,
+				3657868B217B7FAC00F16FB9 /* SKCard+Actions.swift in Sources */,
 				362B7AFC21501ABE009E165C /* DeckReader.swift in Sources */,
 				36A5DDEC215FFE5800178BBC /* TurnPhase.swift in Sources */,
 				D3EFEB0E1CD3C43400014542 /* GameScene.swift in Sources */,
@@ -860,9 +892,11 @@
 				D3EFEB101CD3C43400014542 /* GameViewController.swift in Sources */,
 				366A502B215D350900C435E3 /* CardCacheService.swift in Sources */,
 				D3EFEB0A1CD3C43400014542 /* AppDelegate.swift in Sources */,
+				36578688217AA90700F16FB9 /* UIColorExtensions.swift in Sources */,
 				362B7AF521501649009E165C /* MtgApiService.swift in Sources */,
 				36A5DDF22160104D00178BBC /* Game.swift in Sources */,
 				D3EFEB311CD3D9D400014542 /* SKCard.swift in Sources */,
+				36578683217AA30000F16FB9 /* AlertViewController.swift in Sources */,
 				36F675A0215D1C3B00733708 /* Card+Serialization.swift in Sources */,
 				36A5DDEF2160021300178BBC /* Trigger.swift in Sources */,
 				36A5DDF52160107700178BBC /* Player.swift in Sources */,

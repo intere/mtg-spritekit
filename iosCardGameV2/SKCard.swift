@@ -41,11 +41,17 @@ class SKCard: SKSpriteNode {
     }
 
     func tap() {
+        guard !tapped else {
+            return
+        }
         tapped = true
         run(SKAction.rotate(toAngle: 90.radians.cgFloat, duration: 0.3))
     }
 
     func untap() {
+        guard tapped else {
+            return
+        }
         tapped = false
         run(SKAction.rotate(toAngle: -90.radians.cgFloat, duration: 0.3))
     }
@@ -66,31 +72,6 @@ class SKCard: SKSpriteNode {
 
             default:
                 break
-            }
-        }
-    }
-
-    func enlarge() {
-        if enlarged {
-            let slide = SKAction.move(to: savedPosition, duration:0.3)
-            let scaleDown = SKAction.scale(to: 1.0, duration:0.3)
-            run(SKAction.group([slide, scaleDown])) {
-                self.enlarged = false
-                self.zPosition = CardLevel.board.rawValue
-            }
-        } else {
-            enlarged = true
-            savedPosition = position
-
-            zPosition = CardLevel.enlarged.rawValue
-
-            if let parent = parent {
-                removeAllActions()
-                let newPosition = CGPoint(x: parent.frame.midX, y: parent.frame.midY)
-                let slide = SKAction.move(to: newPosition, duration:0.3)
-                let scaleUp = SKAction.scale(to: 4.0, duration:0.3)
-                let rotation = SKAction.rotate(toAngle: 0, duration: 0.3)
-                run(SKAction.group([slide, scaleUp, rotation]))
             }
         }
     }
