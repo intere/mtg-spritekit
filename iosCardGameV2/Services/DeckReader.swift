@@ -36,12 +36,12 @@ struct DeckReader {
     func read(fileContent: String) -> Deck {
         let deck = Deck()
 
-        let lines = fileContent.replacingOccurrences(of: "\r\n", with: "\n").split(separator: "\n")
+        let lines = fileContent.replacingOccurrences(of: "\n\n", with: "\n\n ").replacingOccurrences(of: "\r\n", with: "\n").split(separator: "\n")
         var sideboard = false
 
         for line in lines {
             print("Line: '\(line)'")
-            guard !line.isEmpty && !line.lowercased().starts(with: "sideboard") else {
+            guard !line.replacingOccurrences(of: " ", with: "").isEmpty && !line.lowercased().starts(with: "sideboard") else {
                 sideboard = true
                 continue
             }
