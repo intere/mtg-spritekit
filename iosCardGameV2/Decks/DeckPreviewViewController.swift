@@ -39,51 +39,12 @@ extension DeckPreviewViewController {
 
     @objc
     func handlePinch(_ pinch: UIPinchGestureRecognizer) {
-        let scale = pinch.scale
-        switch pinch.state {
-        case .changed:
-            if let lastScale = lastScale {
-                let delta = lastScale - scale
-                scene.scale(by: delta)
-            }
-            lastScale = scale
-
-        case .began:
-            lastScale = scale
-
-        case .ended, .cancelled:
-            lastScale = nil
-
-        default:
-            break
-        }
+        lastScale = pinchHandler(pinch, lastScale: lastScale, scene: scene)
     }
 
     @objc
     func handlePan(_ pan: UIPanGestureRecognizer) {
-        guard let panView = pan.view else {
-            return
-        }
-        let translation = pan.translation(in: panView)
-
-        switch pan.state {
-        case .changed:
-            if let lastPanPoint = lastPanPoint {
-                let delta = CGPoint(x: translation.x - lastPanPoint.x,
-                                    y: translation.y - lastPanPoint.y)
-                scene.pan(by: delta)
-            }
-            lastPanPoint = translation
-
-        case .began:
-            lastPanPoint = translation
-
-        case .ended, .cancelled:
-            lastPanPoint = nil
-
-        default:
-            break
-        }
+        lastPanPoint = panHandler(pan, lastPanPoint: lastPanPoint, scene: scene)
     }
 
 }
