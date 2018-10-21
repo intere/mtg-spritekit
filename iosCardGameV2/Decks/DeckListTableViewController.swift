@@ -44,6 +44,14 @@ class DeckListTableViewController: UITableViewController {
         return cell
     }
 
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        return [
+            UITableViewRowAction(style: .normal, title: "Play", handler: { [weak self] _, indexPath in
+                self?.playDeck(at: indexPath.row)
+            })
+        ]
+    }
+
 }
 
 // MARK: - Segues
@@ -106,6 +114,17 @@ extension DeckListTableViewController {
 // MARK: - Implementation
 
 private extension DeckListTableViewController {
+
+    /// This function will setup a test play of the deck at the provided index
+    ///
+    /// - Parameter index: the index of the deck you wish to play.
+    func playDeck(at index: Int) {
+        guard let deck = deck(at: index) else {
+            return
+        }
+
+        Notification.DeckEvent.playDeck.notify(withObject: deck)
+    }
 
     /// Gets you the deck at the provided index.
     ///

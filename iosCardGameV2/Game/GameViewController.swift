@@ -10,25 +10,37 @@ import UIKit
 import SpriteKit
 
 class GameViewController: UIViewController {
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
 
-    let skView = self.view as! SKView
-    let scene = GameScene(size: skView.frame.size)
-    
-    skView.showsFPS = true
-    skView.showsNodeCount = true
-    skView.ignoresSiblingOrder = false
-    scene.scaleMode = .resizeFill
-    skView.presentScene(scene)
+    var deck: Deck?
 
-    Notification.GameSceneEvent.gameLoaded.addObserver(self, selector: #selector(gameLoaded(_:)))
-  }
-  
-  override var prefersStatusBarHidden : Bool {
-    return true
-  }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        guard let deck = deck else {
+            return
+        }
+
+
+        let skView = self.view as! SKView
+        let scene = GameScene(size: skView.frame.size)
+        scene.playerBoard = PlayerBoard(player: Player(name: "User", deck: deck))
+
+        skView.showsFPS = true
+        skView.showsNodeCount = true
+        skView.ignoresSiblingOrder = false
+        scene.scaleMode = .resizeFill
+        skView.presentScene(scene)
+
+        Notification.GameSceneEvent.gameLoaded.addObserver(self, selector: #selector(gameLoaded(_:)))
+    }
+
+    override var prefersStatusBarHidden : Bool {
+        return true
+    }
+
+    class func loadFromStoryboard() -> GameViewController {
+        return UIStoryboard(name: "Gameplay", bundle: nil).instantiateViewController(withIdentifier: "GameViewController") as! GameViewController
+    }
   
 }
 
