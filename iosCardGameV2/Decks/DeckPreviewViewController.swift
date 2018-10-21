@@ -48,8 +48,7 @@ class DeckPreviewViewController: UIViewController {
         switch pinch.state {
         case .changed:
             if let lastScale = lastScale {
-                let delta = scale - lastScale
-//                print("∂ Scale: \(delta)")
+                let delta = lastScale - scale
                 scene.scale(by: delta)
             }
             lastScale = scale

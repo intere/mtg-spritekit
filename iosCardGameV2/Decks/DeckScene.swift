@@ -18,19 +18,31 @@ class DeckScene: SKScene {
     override func didMove(to view: SKView) {
         super.didMove(to: view)
         camera = theCamera
-        camera?.setScale(1)
+        theCamera.setScale(1)
+        theCamera.position = CGPoint(x: frame.midX, y: frame.midY)
 
         addLoadingLabel()
         cacheDeck()
     }
 
+    /// Adds the amount of scale change that you provide to the scene.
+    /// The concept behind this is to be used by a pinch gesture.
+    ///
+    /// - Parameter delta: The amount of scale change to add to the current scale.
     func scale(by delta: CGFloat) {
         guard let camera = camera else {
             return assertionFailure("no camera")
         }
-        camera.setScale(camera.xScale + delta)
+        let scale = camera.xScale + delta
+        guard scale > 0.15 else {
+            return
+        }
+        camera.setScale(scale)
     }
 
+    /// Pans around in the scene (by moving the camera).
+    ///
+    /// - Parameter delta: The change in location from the current location
     func pan(by delta: CGPoint) {
         guard let camera = camera else {
             return assertionFailure("no camera")
@@ -75,8 +87,7 @@ class DeckScene: SKScene {
     ///   - deck: The deck to show on the screen.
     ///   - cards: The cards to show on the screen.
     func show(deck: Deck) {
-
-        var startX = CGFloat(50)
+        var startX = CGFloat(0)
         var startY = CGFloat(frame.maxY - 10) - SKCard.Constants.height / 2
 
         for card in deck.mainboard {
@@ -97,6 +108,29 @@ class DeckScene: SKScene {
             }
             startY -= SKCard.Constants.height
         }
+
+        adjustCamera()
+    }
+
+    func adjustCamera() {
+        guard let camera = camera else {
+            return assertionFailure("No camera to adjust")
+        }
+        var minX = CGFloat.greatestFiniteMagnitude
+        var minY = CGFloat.greatestFiniteMagnitude
+        var maxX = CGFloat(0)
+        var maxY = CGFloat(0)
+
+        for card in children where card is SKCard {
+            minX = min(minX, card.position.x)
+            minY = min(minY, card.position.y)
+            maxX = max(maxX, card.position.x)
+            maxY = max(maxY, card.position.y)
+        }
+
+        let rect = CGRect(x: minX, y: minY, width: maxX-minX, height: maxY-minY)
+        let centerPoint = CGPoint(x: rect.midX, y: rect.midY)
+        camera.position = centerPoint
     }
 
     func reset(y: CGFloat) -> Bool {
