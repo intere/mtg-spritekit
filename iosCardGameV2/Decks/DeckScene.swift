@@ -18,9 +18,17 @@ class DeckScene: SKScene {
     override func didMove(to view: SKView) {
         super.didMove(to: view)
         camera = theCamera
+        camera?.setScale(1)
 
         addLoadingLabel()
         cacheDeck()
+    }
+
+    func scale(by delta: CGFloat) {
+        guard let camera = camera else {
+            return assertionFailure("no camera")
+        }
+        camera.setScale(camera.xScale + delta)
     }
 
     func pan(by delta: CGPoint) {

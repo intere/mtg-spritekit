@@ -15,14 +15,16 @@ class DeckPreviewViewController: UIViewController {
     var scene: DeckScene!
     var deck: Deck?
     var lastPanPoint: CGPoint?
+    var lastScale: CGFloat?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         buildScene()
 
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(pan:)))
-        view.addGestureRecognizer(panGesture)
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
+        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(_:)))
+        [panGesture, pinchGesture].forEach { view.addGestureRecognizer($0) }
     }
 
     func buildScene() {
@@ -41,7 +43,30 @@ class DeckPreviewViewController: UIViewController {
     }
 
     @objc
-    func handlePan(pan: UIPanGestureRecognizer) {
+    func handlePinch(_ pinch: UIPinchGestureRecognizer) {
+        let scale = pinch.scale
+        switch pinch.state {
+        case .changed:
+            if let lastScale = lastScale {
+                let delta = scale - lastScale
+//                print("∂ Scale: \(delta)")
+                scene.scale(by: delta)
+            }
+            lastScale = scale
+
+        case .began:
+            lastScale = scale
+
+        case .ended, .cancelled:
+            lastScale = nil
+
+        default:
+            break
+        }
+    }
+
+    @objc
+    func handlePan(_ pan: UIPanGestureRecognizer) {
         guard let panView = pan.view else {
             return
         }
@@ -49,11 +74,9 @@ class DeckPreviewViewController: UIViewController {
 
         switch pan.state {
         case .changed:
-            print("Translation: \(translation)")
             if let lastPanPoint = lastPanPoint {
                 let delta = CGPoint(x: translation.x - lastPanPoint.x,
                                     y: translation.y - lastPanPoint.y)
-                print("Delta: \(delta)")
                 scene.pan(by: delta)
             }
             lastPanPoint = translation
@@ -67,13 +90,6 @@ class DeckPreviewViewController: UIViewController {
         default:
             break
         }
-
-//        if pan.state == .changed {
-//            let translation = pan.translation(in: pan.view!)
-//
-//            node!.position = SCNVector3(x:node!.position.x + Float(translation.x), y:node!.position.y, z:node!.position.z)
-//            pan.setTranslation(CGPoint.zero, in: pan.view!)
-//        }
     }
 
 }
