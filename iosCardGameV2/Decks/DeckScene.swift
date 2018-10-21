@@ -13,12 +13,21 @@ class DeckScene: SKScene {
 
     var deck: Deck?
     var messageLabel: SKLabelNode?
+    let theCamera = SKCameraNode()
 
     override func didMove(to view: SKView) {
         super.didMove(to: view)
+        camera = theCamera
 
         addLoadingLabel()
         cacheDeck()
+    }
+
+    func pan(by delta: CGPoint) {
+        guard let camera = camera else {
+            return assertionFailure("no camera")
+        }
+        camera.position = camera.position.panMove(by: delta)
     }
 
     /// Loads the deck (deck.txt file) and caches all of the images for it.
@@ -92,4 +101,14 @@ class DeckScene: SKScene {
 
         card.position = CGPoint(x: newX, y: newY)
     }
+}
+
+// MARK: - CGPoint Extension
+
+extension CGPoint {
+
+    func panMove(by point: CGPoint) -> CGPoint {
+        return CGPoint(x: x - point.x, y: y + point.y)
+    }
+
 }
