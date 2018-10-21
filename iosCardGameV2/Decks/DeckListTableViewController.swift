@@ -20,7 +20,6 @@ class DeckListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         Notification.DeckEvent.newDeckSaved.addObserver(self, selector: #selector(newDeckAdded(_:)))
     }
 
@@ -46,6 +45,26 @@ class DeckListTableViewController: UITableViewController {
         return cell
     }
 
+}
+
+// MARK: - Segues
+
+extension DeckListTableViewController {
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        guard let deckPreview = segue.destination as? DeckPreviewViewController,
+            let cell = sender as? UITableViewCell,
+            let indexPath = tableView.indexPath(for: cell),
+            indexPath.row < files.count else {
+                return print("Nope")
+        }
+
+        guard let deck = DeckReader.shared.readFile(path: files[indexPath.row]) else {
+            return print("Failed to read deck file")
+        }
+        deckPreview.deck = deck
+    }
 }
 
 // MARK: - Notifications

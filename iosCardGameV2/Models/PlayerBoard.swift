@@ -31,7 +31,7 @@ class PlayerBoard {
 //    var emblems: [Emblem]
 
     /// The player's library
-    private(set) var library: [Card]
+    private(set) var library = [Card]()
 
     /// The player's graveyard
     private(set) var graveyard = [Card]()
@@ -46,7 +46,7 @@ class PlayerBoard {
     var hand = [Card]()
 
     /// Gets you the player's deck
-    var deck: Deck {
+    var deck: Deck! {
         return player.deck
     }
 
@@ -62,6 +62,10 @@ class PlayerBoard {
     /// - Parameter player: The player to initialize this board from.
     init(player: Player) {
         self.player = player
+    }
+
+    /// Starts the game by shuffling the library and drawing 7 cards.
+    func startGame() {
         library = player.deck.mainboardCards.shuffled()
         for _ in 0..<7 {
             hand.append(library.removeFirst())

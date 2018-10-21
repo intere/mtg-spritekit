@@ -43,7 +43,7 @@ class DeckReaderTests: XCTestCase {
     }
 
     func testReadBundledDeck() {
-        guard let deck = DeckReader.shared.read(fileNamed: "deck.txt") else {
+        guard let deck = DeckReader.shared.readBundleFile(fileNamed: "deck.txt") else {
             return XCTFail("Failed to load deck")
         }
         XCTAssertEqual(60, deck.mainboardCount)

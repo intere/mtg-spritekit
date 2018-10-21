@@ -12,7 +12,7 @@ import XCTest
 
 class BaseDeckTest: XCTestCase {
     
-    let deck = DeckReader.shared.read(fileNamed: "deck.txt")!
+    let deck = DeckReader.shared.readBundleFile(fileNamed: "deck.txt")!
 
     override func setUp() {
         super.setUp()

@@ -113,9 +113,10 @@ extension GameScene {
 
     /// Loads the deck (deck.txt file) and caches all of the images for it.
     func cacheDeck() {
-        guard let deck = DeckReader.shared.read(fileNamed: "deck.txt") else {
+        guard let deck = DeckReader.shared.readBundleFile(fileNamed: "deck.txt") else {
             return
         }
+
         // Ensure that we cache all of the cards in the deck, then continue
         MtgApiService.shared.cache(deck: deck) { (error) in
             DispatchQueue.main.async { [weak self] in
@@ -162,6 +163,7 @@ extension GameScene {
 
     /// Starts the game up, visually
     func startGame() {
+        playerBoard.startGame()
         showHand()
     }
 

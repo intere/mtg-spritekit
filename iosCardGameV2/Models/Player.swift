@@ -10,9 +10,9 @@ import Foundation
 
 class Player {
     var name: String
-    var deck: Deck
+    var deck: Deck!
 
-    init(name: String, deck: Deck) {
+    init(name: String, deck: Deck!) {
         self.name = name
         self.deck = deck
     }

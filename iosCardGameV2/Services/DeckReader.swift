@@ -11,11 +11,26 @@ import Foundation
 struct DeckReader {
     static let shared = DeckReader()
 
+    /// Reads the contents of the path you provide.
+    ///
+    /// - Parameter path: The path to a deck file.
+    /// - Returns: The Deck if it could be read, or nil if there was a problem.
+    func readFile(path: URL) -> Deck? {
+        do {
+            let content = try String(contentsOf: path)
+            return read(fileContent: content)
+        } catch {
+            print("ERROR reading contents of file: \(path.absoluteString)")
+        }
+
+        return nil
+    }
+
     /// Reads the provided filename (from the main bundle) if it can be located.
     ///
     /// - Parameter fileNamed: The name of the file to load from the bundle.
     /// - Returns: A Deck object if the file exists and it could be read as a deck or nil.
-    func read(fileNamed: String) -> Deck? {
+    func readBundleFile(fileNamed: String) -> Deck? {
         guard let path = Bundle.main.path(forResource: fileNamed, ofType: nil) else {
             return nil
         }

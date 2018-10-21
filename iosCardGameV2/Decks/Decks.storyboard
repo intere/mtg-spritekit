@@ -25,6 +25,14 @@
             </objects>
             <point key="canvasLocation" x="1170" y="341"/>
         </scene>
+        <!--DeckPreview-->
+        <scene sceneID="Ots-7h-XRv">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DeckPreview" id="A7t-ZX-UDN" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="015-gB-yup" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2337" y="-503"/>
+        </scene>
         <!--NewDeck-->
         <scene sceneID="7Ce-zp-yP8">
             <objects>
@@ -42,13 +50,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="D8L-1u-ulL">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="D8L-1u-ulL">
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="D8L-1u-ulL" id="ImE-PA-FzR">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="A7t-ZX-UDN" kind="showDetail" id="cPm-Kq-LsZ"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

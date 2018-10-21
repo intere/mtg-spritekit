@@ -13,14 +13,14 @@ class GameViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    let scene = GameScene(size: CGSize(width: 1024, height: 768))
+
     let skView = self.view as! SKView
+    let scene = GameScene(size: skView.frame.size)
     
     skView.showsFPS = true
     skView.showsNodeCount = true
     skView.ignoresSiblingOrder = false
-    scene.scaleMode = .aspectFill
+    scene.scaleMode = .resizeFill
     skView.presentScene(scene)
 
     Notification.GameSceneEvent.gameLoaded.addObserver(self, selector: #selector(gameLoaded(_:)))

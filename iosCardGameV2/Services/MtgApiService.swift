@@ -18,6 +18,7 @@ struct MtgApiService {
 
     static let shared = MtgApiService()
     let magic = Magic()
+    let config = MTGSearchConfiguration(pageSize: 20, pageTotal: 1)
 
     /// Ensures the cards in the deck are populated in the cache for you.
     ///
@@ -125,7 +126,7 @@ struct MtgApiService {
                 print("ERROR: \(error.localizedDescription)")
             }
 
-            magic.fetchCards(params) { result in
+            magic.fetchCards(params, configuration: config) { result in
 
                 switch result {
                 case .error(let error):
