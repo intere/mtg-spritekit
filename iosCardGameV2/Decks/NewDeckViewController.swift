@@ -88,7 +88,10 @@ extension NewDeckViewController {
         if let errorMessage = DeckListService.shared.save(deck: title, contents: content) {
             return present(UIAlertController.okayAlert(title: "Error", message: errorMessage), animated: true)
         }
-        splitViewController?.showDetailViewController(UIViewController(), sender: self)
+
+        DispatchQueue.main.async {
+            Notification.DeckEvent.selectDeck.notify(withObject: title)
+        }
     }
 
 }

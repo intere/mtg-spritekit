@@ -49,6 +49,7 @@ extension Notification {
 
     enum DeckEvent: String, Notifiable, CustomStringConvertible {
         case newDeckSaved = "new.deck.saved"
+        case selectDeck = "select.deck"
 
         static var notificationBase: String {
             return "com.cardgame.deck.event"

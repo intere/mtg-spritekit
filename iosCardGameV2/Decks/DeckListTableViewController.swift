@@ -21,6 +21,7 @@ class DeckListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         Notification.DeckEvent.newDeckSaved.addObserver(self, selector: #selector(newDeckAdded(_:)))
+        Notification.DeckEvent.selectDeck.addObserver(self, selector: #selector(selectDeck(_:)))
     }
 
     // MARK: - Table view data source
@@ -35,12 +36,10 @@ class DeckListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-
         guard indexPath.row < files.count else {
             return cell
         }
-        let text = (files[indexPath.row].lastPathComponent as NSString).deletingPathExtension
-        cell.textLabel?.text = text.replacingOccurrences(of: "_-_", with: " ")
+        cell.textLabel?.text = files[indexPath.row].userFriendlyName
 
         return cell
     }
@@ -60,7 +59,7 @@ extension DeckListTableViewController {
                 return print("Nope")
         }
 
-        guard let deck = DeckReader.shared.readFile(path: files[indexPath.row]) else {
+        guard let deck = deck(at: indexPath.row) else {
             return print("Failed to read deck file")
         }
         deckPreview.deck = deck
@@ -77,6 +76,20 @@ extension DeckListTableViewController {
         tableView.reloadData()
     }
 
+    @objc
+    func selectDeck(_ notification: NSNotification) {
+        guard let name = notification.object as? String else {
+            return assertionFailure("No name selected")
+        }
+        for idx in 0..<files.count where files[idx].userFriendlyName == name {
+            tableView.selectRow(at: IndexPath(row: idx, section: 0), animated: true, scrollPosition: .middle)
+            let previewVC = DeckPreviewViewController.loadFromStoryboard()
+            previewVC.deck = deck(at: idx)
+            showDetailViewController(previewVC, sender: self)
+            break
+        }
+    }
+
 }
 
 // MARK: - Actions
@@ -88,4 +101,32 @@ extension DeckListTableViewController {
         print("You tapped add deck")
     }
 
+}
+
+// MARK: - Implementation
+
+private extension DeckListTableViewController {
+
+    /// Gets you the deck at the provided index.
+    ///
+    /// - Parameter index: The index of the deck you want to read.
+    /// - Returns: The deck object if it could be read.
+    func deck(at index: Int) -> Deck? {
+        guard index < files.count else {
+            return nil
+        }
+
+        return DeckReader.shared.readFile(path: files[index])
+    }
+
+}
+
+// MARK: - URL Extension
+
+extension URL {
+
+    /// Gets you the user friendly name of the file.
+    var userFriendlyName: String {
+        return (lastPathComponent as NSString).deletingPathExtension.replacingOccurrences(of: "_-_", with: " ")
+    }
 }

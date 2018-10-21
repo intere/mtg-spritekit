@@ -27,6 +27,10 @@ class DeckPreviewViewController: UIViewController {
         [panGesture, pinchGesture].forEach { view.addGestureRecognizer($0) }
     }
 
+    class func loadFromStoryboard() -> DeckPreviewViewController {
+        return UIStoryboard(name: "DeckPreview", bundle: nil).instantiateInitialViewController() as! DeckPreviewViewController
+    }
+
     func buildScene() {
         guard let deck = deck else {
             return assertionFailure("No Deck")
