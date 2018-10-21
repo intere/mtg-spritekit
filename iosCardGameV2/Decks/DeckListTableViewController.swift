@@ -21,6 +21,7 @@ class DeckListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        Notification.DeckEvent.newDeckSaved.addObserver(self, selector: #selector(newDeckAdded(_:)))
     }
 
     // MARK: - Table view data source
@@ -39,9 +40,22 @@ class DeckListTableViewController: UITableViewController {
         guard indexPath.row < files.count else {
             return cell
         }
-        cell.textLabel?.text = files[indexPath.row].lastPathComponent
+        let text = (files[indexPath.row].lastPathComponent as NSString).deletingPathExtension
+        cell.textLabel?.text = text.replacingOccurrences(of: "_-_", with: " ")
 
         return cell
+    }
+
+}
+
+// MARK: - Notifications
+
+extension DeckListTableViewController {
+
+    @objc
+    func newDeckAdded(_ notification: NSNotification) {
+        files = DeckListService.shared.deckFiles
+        tableView.reloadData()
     }
 
 }

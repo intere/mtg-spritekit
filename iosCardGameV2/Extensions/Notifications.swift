@@ -42,3 +42,20 @@ extension Notification {
         }
     }
 }
+
+// MARK: - DeckEvent Notifications
+
+extension Notification {
+
+    enum DeckEvent: String, Notifiable, CustomStringConvertible {
+        case newDeckSaved = "new.deck.saved"
+
+        static var notificationBase: String {
+            return "com.cardgame.deck.event"
+        }
+
+        var description: String {
+            return rawValue
+        }
+    }
+}

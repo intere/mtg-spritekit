@@ -26,15 +26,16 @@ class NewDeckViewController: UIViewController {
             return alertFillInDeck()
         }
 
-        present(UIAlertController.yesNoAlert(title: "Deck Info",
-                                             message: "Your deck has been read as a \(buildDeckSummary).  Create this deck?",
+        let alert = UIAlertController.yesNoAlert(
+            title: "Deck Info",
+            message: "Your deck has been read as a \(buildDeckSummary).  Create this deck?",
             yesCallback: { [weak self] in
-                self?.splitViewController?.showDetailViewController(UIViewController(), sender: self)
-        }, noCallback: { [weak self] in
-            return self?.deckListText.becomeFirstResponder()
-        }), animated: true)
+                self?.saveDeck()
+            }, noCallback: { [weak self] in
+                return self?.deckListText.becomeFirstResponder()
+        })
 
-
+        present(alert, animated: true)
     }
 
 }
@@ -77,6 +78,17 @@ extension NewDeckViewController {
         present(UIAlertController.okayAlert(title: "Error", message: "You must provide a deck list.", callback: { [weak self] in
             self?.deckListText.becomeFirstResponder()
         }), animated: true)
+    }
+
+    func saveDeck() {
+        guard let title = deckNameText.text, let content = deckListText.text else {
+            return
+        }
+
+        if let errorMessage = DeckListService.shared.save(deck: title, contents: content) {
+            return present(UIAlertController.okayAlert(title: "Error", message: errorMessage), animated: true)
+        }
+        splitViewController?.showDetailViewController(UIViewController(), sender: self)
     }
 
 }

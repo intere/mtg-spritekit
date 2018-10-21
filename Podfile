@@ -29,3 +29,21 @@ target 'tvCardGameMTG' do
   end
 
 end
+
+
+# Post Installation Tasks
+post_install do |installer|
+  puts "Running Post-Installation Tasks..."
+
+  swift42Pods = ['Cartography']
+
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      # config.build_settings['ENABLE_BITCODE'] = 'NO' # Disables Bitcode for every Pod
+      config.build_settings.delete('DEBUG_INFORMATION_FORMAT') # Enabling Debug Symbol Generation for every Pod
+      config.build_settings['SWIFT_VERSION'] = '4.2' if swift42Pods.include? target.name
+    end
+  end
+
+end
+
