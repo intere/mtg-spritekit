@@ -21,6 +21,7 @@ extension SKCard {
     /// Stops the wigling animation on the card
     func stopWiggle() {
         removeAction(forKey: ActionConstants.wiggleActionName)
+        run(SKAction.scaleX(to: 1.0, duration: 0.2))
     }
 
     /// Enlarges the card and moves it to the center of the screen for viewing

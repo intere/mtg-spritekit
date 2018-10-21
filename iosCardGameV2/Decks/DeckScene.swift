@@ -14,6 +14,7 @@ class DeckScene: SKScene {
     var deck: Deck?
     var messageLabel: SKLabelNode?
     let theCamera = SKCameraNode()
+    var selected: SKCard?
 
     override func didMove(to view: SKView) {
         super.didMove(to: view)
@@ -48,6 +49,52 @@ class DeckScene: SKScene {
             return assertionFailure("no camera")
         }
         camera.position = camera.position.panMove(by: delta)
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            guard let card = card(for: touch) else {
+                continue
+            }
+            if let selected = selected {
+                if selected == card {
+                    selected.deselect()
+                    self.selected = nil
+                } else {
+                    selected.deselect()
+                    card.select()
+                    self.selected = card
+                }
+
+            } else {
+                card.select()
+                self.selected = card
+            }
+
+            return
+        }
+    }
+}
+
+// MARK: - Implementation
+
+extension DeckScene {
+
+    /// Gets you the card for the provided touch.
+    ///
+    /// - Parameter touch: The touch event
+    /// - Returns: An SKCard if there was one at the touch point.
+    func card(for touch: UITouch) -> SKCard? {
+        let location = touch.location(in: self)
+        return card(at: location)
+    }
+
+    /// Gets you the card at the provided location.
+    ///
+    /// - Parameter location: The location to check for a cad.
+    /// - Returns: The SKCard if it exists at the provided point.
+    func card(at location: CGPoint) -> SKCard? {
+        return atPoint(location) as? SKCard
     }
 
     /// Loads the deck (deck.txt file) and caches all of the images for it.

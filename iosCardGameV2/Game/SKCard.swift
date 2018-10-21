@@ -40,6 +40,15 @@ class SKCard: SKSpriteNode {
         damageLabel = makeDamageLabel()
     }
 
+    func select() {
+        wiggle()
+    }
+
+    func deselect() {
+        stopWiggle()
+    }
+
+    /// Taps this card
     func tap() {
         guard !tapped else {
             return
@@ -48,6 +57,7 @@ class SKCard: SKSpriteNode {
         run(SKAction.rotate(toAngle: 90.radians.cgFloat, duration: 0.3))
     }
 
+    /// Untaps this card
     func untap() {
         guard tapped else {
             return
@@ -56,6 +66,7 @@ class SKCard: SKSpriteNode {
         run(SKAction.rotate(toAngle: -90.radians.cgFloat, duration: 0.3))
     }
 
+    /// Creates the texture for this card
     func makeTexture() {
         guard let imageUrl = card.imageUrl else {
             return
