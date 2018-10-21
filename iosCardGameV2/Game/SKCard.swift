@@ -40,10 +40,18 @@ class SKCard: SKSpriteNode {
         damageLabel = makeDamageLabel()
     }
 
+}
+
+// MARK: - Card Actions
+
+extension SKCard {
+
+    /// Card selection action
     func select() {
         wiggle()
     }
 
+    /// Card deselection action
     func deselect() {
         stopWiggle()
     }
@@ -73,7 +81,6 @@ class SKCard: SKSpriteNode {
         }
 
         MtgApiService.shared.loadImage(urlString: imageUrl) { result in
-
             switch result {
             case .success(let image):
                 self.frontTexture = SKTexture(image: image)

@@ -13,6 +13,7 @@ class GameScene: SKScene {
 
     var playerBoard: PlayerBoard!
     var messageLabel: SKLabelNode?
+    var gameCamera = SKCameraNode()
 
     override func didMove(to view: SKView) {
         #if !os(tvOS)
@@ -21,6 +22,8 @@ class GameScene: SKScene {
         bg.position = CGPoint.zero
         addChild(bg)
         #endif
+        camera = gameCamera
+        camera?.position = CGPoint(x: view.frame.midX, y: view.frame.midY)
 
         guard NSClassFromString("XCTestCase") == nil else {
             return

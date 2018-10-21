@@ -12,7 +12,9 @@ import SpriteKit
 class GameViewController: UIViewController {
 
     var deck: Deck?
-
+    var lastPanPoint: CGPoint?
+    var lastScale: CGFloat?
+    var scene: GameScene!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +24,7 @@ class GameViewController: UIViewController {
 
 
         let skView = self.view as! SKView
-        let scene = GameScene(size: skView.frame.size)
+        scene = GameScene(size: skView.frame.size)
         scene.playerBoard = PlayerBoard(player: Player(name: "User", deck: deck))
 
         skView.showsFPS = true
@@ -32,6 +34,10 @@ class GameViewController: UIViewController {
         skView.presentScene(scene)
 
         Notification.GameSceneEvent.gameLoaded.addObserver(self, selector: #selector(gameLoaded(_:)))
+
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
+        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(_:)))
+        [panGesture, pinchGesture].forEach { view.addGestureRecognizer($0) }
     }
 
     override var prefersStatusBarHidden : Bool {
@@ -42,6 +48,22 @@ class GameViewController: UIViewController {
         return UIStoryboard(name: "Gameplay", bundle: nil).instantiateViewController(withIdentifier: "GameViewController") as! GameViewController
     }
   
+}
+
+// MARK: - Gestures
+
+extension GameViewController {
+
+    @objc
+    func handlePan(_ gesture: UIPanGestureRecognizer) {
+        lastPanPoint = panHandler(gesture, lastPanPoint: lastPanPoint, scene: scene)
+    }
+
+    @objc
+    func handlePinch(_ gesture: UIPinchGestureRecognizer) {
+        lastScale = self.pinchHandler(gesture, lastScale: lastScale, scene: scene)
+    }
+
 }
 
 // MARK: - Notifications

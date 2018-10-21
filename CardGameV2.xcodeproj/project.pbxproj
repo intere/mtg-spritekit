@@ -42,6 +42,7 @@
 		36748066217C237800B89DA8 /* DeckPreview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36748065217C237800B89DA8 /* DeckPreview.storyboard */; };
 		36748068217C25C400B89DA8 /* DeckPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36748067217C25C400B89DA8 /* DeckPreviewViewController.swift */; };
 		3674806A217C333600B89DA8 /* DeckScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36748069217C333600B89DA8 /* DeckScene.swift */; };
+		3674806C217CF61B00B89DA8 /* SKSceneExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3674806B217CF61B00B89DA8 /* SKSceneExtension.swift */; };
 		3696CFA7215FDC53008BA9EF /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3696CFA6215FDC53008BA9EF /* Deck.swift */; };
 		3696CFA8215FDC53008BA9EF /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3696CFA6215FDC53008BA9EF /* Deck.swift */; };
 		36A5DDE7215FFA6B00178BBC /* DeckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A5DDE6215FFA6B00178BBC /* DeckTests.swift */; };
@@ -143,6 +144,7 @@
 		36748065217C237800B89DA8 /* DeckPreview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DeckPreview.storyboard; sourceTree = "<group>"; };
 		36748067217C25C400B89DA8 /* DeckPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckPreviewViewController.swift; sourceTree = "<group>"; };
 		36748069217C333600B89DA8 /* DeckScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckScene.swift; sourceTree = "<group>"; };
+		3674806B217CF61B00B89DA8 /* SKSceneExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSceneExtension.swift; sourceTree = "<group>"; };
 		3696CFA6215FDC53008BA9EF /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		36A5DDE6215FFA6B00178BBC /* DeckTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckTests.swift; sourceTree = "<group>"; };
 		36A5DDE8215FFDB100178BBC /* PlayerBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerBoard.swift; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 				365786A8217BAD7700F16FB9 /* Designables.swift */,
 				365786AA217BAF2900F16FB9 /* UIViewControllerExtension.swift */,
 				365786AC217BB12E00F16FB9 /* UIAlertControllerExtensions.swift */,
+				3674806B217CF61B00B89DA8 /* SKSceneExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -962,6 +965,7 @@
 				36A5DDF52160107700178BBC /* Player.swift in Sources */,
 				365786AB217BAF2900F16FB9 /* UIViewControllerExtension.swift in Sources */,
 				3674806A217C333600B89DA8 /* DeckScene.swift in Sources */,
+				3674806C217CF61B00B89DA8 /* SKSceneExtension.swift in Sources */,
 				362B7AF821501887009E165C /* MathExtensions.swift in Sources */,
 				365786A7217BACF100F16FB9 /* NewDeckViewController.swift in Sources */,
 				365786A3217BA99800F16FB9 /* DeckListService.swift in Sources */,
