@@ -31,20 +31,11 @@ class DeckPreviewViewController: UIViewController {
         return UIStoryboard(name: "DeckPreview", bundle: nil).instantiateInitialViewController() as! DeckPreviewViewController
     }
 
-    func buildScene() {
-        guard let deck = deck else {
-            return assertionFailure("No Deck")
-        }
+}
 
-        scene = DeckScene(size: skView.frame.size)
-        scene.deck = deck
-        skView.showsFPS = true
-        skView.showsNodeCount = true
-        skView.ignoresSiblingOrder = false
-        scene.scaleMode = .resizeFill
+// MARK: - Gestures
 
-        skView.presentScene(scene)
-    }
+extension DeckPreviewViewController {
 
     @objc
     func handlePinch(_ pinch: UIPinchGestureRecognizer) {
@@ -93,6 +84,27 @@ class DeckPreviewViewController: UIViewController {
         default:
             break
         }
+    }
+
+}
+
+// MARK: - Implementation
+
+extension DeckPreviewViewController {
+
+    func buildScene() {
+        guard let deck = deck else {
+            return assertionFailure("No Deck")
+        }
+
+        scene = DeckScene(size: skView.frame.size)
+        scene.deck = deck
+        skView.showsFPS = true
+        skView.showsNodeCount = true
+        skView.ignoresSiblingOrder = false
+        scene.scaleMode = .resizeFill
+
+        skView.presentScene(scene)
     }
 
 }
