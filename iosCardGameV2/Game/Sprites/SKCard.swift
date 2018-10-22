@@ -14,10 +14,12 @@ class SKCard: SKSpriteNode {
     struct Constants {
         static let width: CGFloat = 100
         static let height: CGFloat = 140
+
+        static let defaultSize = CGSize(width: Constants.width, height: Constants.height)
+        static let cardBackTexture = SKTexture(imageNamed: "mtg_back")
     }
 
     var frontTexture: SKTexture?
-    let backTexture: SKTexture
     var damage = 0
     var damageLabel: SKLabelNode?
     var faceUp = true
@@ -26,18 +28,16 @@ class SKCard: SKSpriteNode {
     var tapped = false
     var card: Card
 
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("NSCoding not supported")
-    }
-
     init(card: Card) {
         self.card = card
-        backTexture = SKTexture(imageNamed: "mtg_back")
-
-        super.init(texture: backTexture, color: .clear, size: CGSize(width: 100, height: 140))
+        super.init(texture: Constants.cardBackTexture, color: .clear, size: Constants.defaultSize)
 
         makeTexture()
         damageLabel = makeDamageLabel()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("NSCoding not supported")
     }
 
 }
