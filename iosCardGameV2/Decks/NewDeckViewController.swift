@@ -15,6 +15,9 @@ class NewDeckViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        deckListText.delegate = self
+        deckNameText.delegate = self
     }
 
     @IBAction
@@ -38,6 +41,28 @@ class NewDeckViewController: UIViewController {
         present(alert, animated: true)
     }
 
+}
+
+// MARK: - UITextViewDelegate
+
+extension NewDeckViewController: UITextViewDelegate {
+
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+        }
+        return true
+    }
+
+}
+
+// MARK: - UITextFieldDelegate
+
+extension NewDeckViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
 
 // MARK: - Implementation

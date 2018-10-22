@@ -170,7 +170,7 @@ extension MtgApiServiceTests {
 
                     case .success(let image):
                         do {
-                            try UIImagePNGRepresentation(image)?.write(to: URL(fileURLWithPath: "/tmp/nexus.png"))
+                            try image.pngData()?.write(to: URL(fileURLWithPath: "/tmp/nexus.png"))
                         } catch {
                             XCTFail("Failed to write the nexus image")
                         }

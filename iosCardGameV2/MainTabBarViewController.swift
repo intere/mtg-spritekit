@@ -32,7 +32,7 @@ extension MainTabBarViewController {
         gamePlayVC.deck = deck
 
         selectedIndex = 1
-        (childViewControllers[1] as? UINavigationController)?.setViewControllers([gamePlayVC], animated: true)
+        (children[1] as? UINavigationController)?.setViewControllers([gamePlayVC], animated: true)
     }
 
 }
