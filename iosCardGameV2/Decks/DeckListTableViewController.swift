@@ -22,6 +22,13 @@ class DeckListTableViewController: UITableViewController {
         super.viewDidLoad()
         Notification.DeckEvent.newDeckSaved.addObserver(self, selector: #selector(newDeckAdded(_:)))
         Notification.DeckEvent.selectDeck.addObserver(self, selector: #selector(selectDeck(_:)))
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            guard let name = self.files.last?.userFriendlyName else {
+                return
+            }
+            Notification.DeckEvent.selectDeck.notify(withObject: name)
+        }
     }
 
     // MARK: - Table view data source
@@ -93,7 +100,7 @@ extension DeckListTableViewController {
             tableView.selectRow(at: IndexPath(row: idx, section: 0), animated: true, scrollPosition: .middle)
             let previewVC = DeckPreviewViewController.loadFromStoryboard()
             previewVC.deck = deck(at: idx)
-            showDetailViewController(previewVC, sender: self)
+            popSplitNavAndPush(vc: previewVC)
             break
         }
     }
@@ -114,6 +121,23 @@ extension DeckListTableViewController {
 // MARK: - Implementation
 
 private extension DeckListTableViewController {
+
+    func popSplitNavAndPush(vc viewController: UIViewController) {
+        guard splitViewController?.traitCollection.horizontalSizeClass == .compact else {
+            splitViewController?.showDetailViewController(viewController, sender: self)
+            return
+        }
+        guard let navigationController = splitViewController?.viewControllers.first as? UINavigationController else {
+            return assertionFailure("No Navigation Controller")
+        }
+        var viewControllers = navigationController.viewControllers
+        if viewControllers.count > 1 {
+            viewControllers.removeLast()
+        }
+        viewControllers.append(viewController)
+
+        navigationController.setViewControllers(viewControllers, animated: true)
+    }
 
     /// This function will setup a test play of the deck at the provided index
     ///

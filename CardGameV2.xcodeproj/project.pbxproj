@@ -36,6 +36,8 @@
 		365786B3217D259700F16FB9 /* SKCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365786B1217D259700F16FB9 /* SKCard.swift */; };
 		365786B4217D259700F16FB9 /* SKCard+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365786B2217D259700F16FB9 /* SKCard+Actions.swift */; };
 		365786B6217D25AC00F16FB9 /* SKCardPile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365786B5217D25AC00F16FB9 /* SKCardPile.swift */; };
+		365786B8217E003000F16FB9 /* DeckSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365786B7217E003000F16FB9 /* DeckSplitViewController.swift */; };
+		365786BA217E05A700F16FB9 /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365786B9217E05A700F16FB9 /* UIDeviceExtension.swift */; };
 		366A5023215D24B500C435E3 /* Card+SerializationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366A5022215D24B500C435E3 /* Card+SerializationTests.swift */; };
 		366A5026215D25CE00C435E3 /* 417683.json in Resources */ = {isa = PBXBuildFile; fileRef = 366A5025215D25CE00C435E3 /* 417683.json */; };
 		366A5028215D26B000C435E3 /* 397905.json in Resources */ = {isa = PBXBuildFile; fileRef = 366A5027215D26B000C435E3 /* 397905.json */; };
@@ -139,6 +141,8 @@
 		365786B1217D259700F16FB9 /* SKCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKCard.swift; sourceTree = "<group>"; };
 		365786B2217D259700F16FB9 /* SKCard+Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKCard+Actions.swift"; sourceTree = "<group>"; };
 		365786B5217D25AC00F16FB9 /* SKCardPile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKCardPile.swift; sourceTree = "<group>"; };
+		365786B7217E003000F16FB9 /* DeckSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckSplitViewController.swift; sourceTree = "<group>"; };
+		365786B9217E05A700F16FB9 /* UIDeviceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtension.swift; sourceTree = "<group>"; };
 		366A5022215D24B500C435E3 /* Card+SerializationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+SerializationTests.swift"; sourceTree = "<group>"; };
 		366A5025215D25CE00C435E3 /* 417683.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 417683.json; sourceTree = "<group>"; };
 		366A5027215D26B000C435E3 /* 397905.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 397905.json; sourceTree = "<group>"; };
@@ -261,6 +265,7 @@
 				365786AA217BAF2900F16FB9 /* UIViewControllerExtension.swift */,
 				365786AC217BB12E00F16FB9 /* UIAlertControllerExtensions.swift */,
 				3674806B217CF61B00B89DA8 /* SKSceneExtension.swift */,
+				365786B9217E05A700F16FB9 /* UIDeviceExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -316,6 +321,7 @@
 				36748065217C237800B89DA8 /* DeckPreview.storyboard */,
 				36748067217C25C400B89DA8 /* DeckPreviewViewController.swift */,
 				36748069217C333600B89DA8 /* DeckScene.swift */,
+				365786B7217E003000F16FB9 /* DeckSplitViewController.swift */,
 			);
 			path = Decks;
 			sourceTree = "<group>";
@@ -978,10 +984,12 @@
 				36A5DDF52160107700178BBC /* Player.swift in Sources */,
 				365786AB217BAF2900F16FB9 /* UIViewControllerExtension.swift in Sources */,
 				3674806A217C333600B89DA8 /* DeckScene.swift in Sources */,
+				365786B8217E003000F16FB9 /* DeckSplitViewController.swift in Sources */,
 				3674806C217CF61B00B89DA8 /* SKSceneExtension.swift in Sources */,
 				362B7AF821501887009E165C /* MathExtensions.swift in Sources */,
 				365786A7217BACF100F16FB9 /* NewDeckViewController.swift in Sources */,
 				365786A3217BA99800F16FB9 /* DeckListService.swift in Sources */,
+				365786BA217E05A700F16FB9 /* UIDeviceExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

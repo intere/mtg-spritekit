@@ -16,12 +16,6 @@ class GameScene: SKScene {
     var gameCamera = SKCameraNode()
 
     override func didMove(to view: SKView) {
-        #if !os(tvOS)
-        let bg = SKSpriteNode(imageNamed: "bg_blank")
-        bg.anchorPoint = CGPoint.zero
-        bg.position = CGPoint.zero
-        addChild(bg)
-        #endif
         camera = gameCamera
         camera?.position = CGPoint(x: view.frame.midX, y: view.frame.midY)
 
@@ -171,7 +165,7 @@ extension GameScene {
 
     func showLibrary() {
         let library = SKCardPile(title: "Library", cards: playerBoard.library, faceDown: true)
-        library.position = CGPoint(x: frame.maxX - (SKCard.Constants.width / 2 + 30), y: frame.maxY - (SKCard.Constants.height / 2 + 30)) 
+        library.position = CGPoint(x: frame.maxX - (SKCard.Constants.width / 2 + 30), y: frame.maxY - (SKCard.Constants.height / 2 + 30))
         addChild(library)
     }
 
