@@ -10,6 +10,7 @@
 		05C30CBDF12AA28B9654CC29 /* Pods_tvCardGameMTGTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 262076B7A9E0B8B67CA177AF /* Pods_tvCardGameMTGTests.framework */; };
 		361B7206215EED8100A596D6 /* deck.txt in Resources */ = {isa = PBXBuildFile; fileRef = 361B7205215EED8100A596D6 /* deck.txt */; };
 		361B7207215EEDA700A596D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3EFEB141CD3C43400014542 /* Assets.xcassets */; };
+		36242C4421A1C19500706FF4 /* SKCardPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36242C4321A1C19500706FF4 /* SKCardPlaceholder.swift */; };
 		362B7AF521501649009E165C /* MtgApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362B7AF421501649009E165C /* MtgApiService.swift */; };
 		362B7AF821501887009E165C /* MathExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362B7AF721501887009E165C /* MathExtensions.swift */; };
 		362B7AFA21501A87009E165C /* deck.txt in Resources */ = {isa = PBXBuildFile; fileRef = 362B7AF921501A87009E165C /* deck.txt */; };
@@ -61,6 +62,7 @@
 		36A5DDF62160107700178BBC /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A5DDF42160107700178BBC /* Player.swift */; };
 		36A5DDF82160129D00178BBC /* PlayerBoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A5DDF72160129D00178BBC /* PlayerBoardTests.swift */; };
 		36A5DDFA216012D100178BBC /* BaseDeckTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A5DDF9216012D100178BBC /* BaseDeckTest.swift */; };
+		36A6A41521A1D37600365223 /* SKPlaceholderPile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A6A41421A1D37600365223 /* SKPlaceholderPile.swift */; };
 		36AED7BD215ED689000D02D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AED7BC215ED689000D02D0 /* AppDelegate.swift */; };
 		36AED7C5215ED689000D02D0 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AED7C4215ED689000D02D0 /* GameViewController.swift */; };
 		36AED7C8215ED689000D02D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36AED7C6215ED689000D02D0 /* Main.storyboard */; };
@@ -113,6 +115,7 @@
 		25500602D3A66ECF66FB5961 /* Pods-tvCardGameMTGTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tvCardGameMTGTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tvCardGameMTGTests/Pods-tvCardGameMTGTests.debug.xcconfig"; sourceTree = "<group>"; };
 		262076B7A9E0B8B67CA177AF /* Pods_tvCardGameMTGTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tvCardGameMTGTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		361B7205215EED8100A596D6 /* deck.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = deck.txt; path = iosCardGameV2/deck.txt; sourceTree = SOURCE_ROOT; };
+		36242C4321A1C19500706FF4 /* SKCardPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKCardPlaceholder.swift; sourceTree = "<group>"; };
 		362B7AF421501649009E165C /* MtgApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MtgApiService.swift; sourceTree = "<group>"; };
 		362B7AF721501887009E165C /* MathExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathExtensions.swift; sourceTree = "<group>"; };
 		362B7AF921501A87009E165C /* deck.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = deck.txt; sourceTree = "<group>"; };
@@ -160,6 +163,7 @@
 		36A5DDF42160107700178BBC /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		36A5DDF72160129D00178BBC /* PlayerBoardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerBoardTests.swift; sourceTree = "<group>"; };
 		36A5DDF9216012D100178BBC /* BaseDeckTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDeckTest.swift; sourceTree = "<group>"; };
+		36A6A41421A1D37600365223 /* SKPlaceholderPile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKPlaceholderPile.swift; sourceTree = "<group>"; };
 		36AED7BA215ED689000D02D0 /* tvCardGameMTG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tvCardGameMTG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36AED7BC215ED689000D02D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36AED7C4215ED689000D02D0 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -332,6 +336,8 @@
 				365786B1217D259700F16FB9 /* SKCard.swift */,
 				365786B2217D259700F16FB9 /* SKCard+Actions.swift */,
 				365786B5217D25AC00F16FB9 /* SKCardPile.swift */,
+				36242C4321A1C19500706FF4 /* SKCardPlaceholder.swift */,
+				36A6A41421A1D37600365223 /* SKPlaceholderPile.swift */,
 			);
 			path = Sprites;
 			sourceTree = "<group>";
@@ -961,6 +967,7 @@
 				36578686217AA34400F16FB9 /* AppTheme.swift in Sources */,
 				36A5DDE9215FFDB100178BBC /* PlayerBoard.swift in Sources */,
 				365786AD217BB12E00F16FB9 /* UIAlertControllerExtensions.swift in Sources */,
+				36A6A41521A1D37600365223 /* SKPlaceholderPile.swift in Sources */,
 				36578691217B8CE400F16FB9 /* Notifications.swift in Sources */,
 				36748068217C25C400B89DA8 /* DeckPreviewViewController.swift in Sources */,
 				362B7AFC21501ABE009E165C /* DeckReader.swift in Sources */,
@@ -985,6 +992,7 @@
 				365786AB217BAF2900F16FB9 /* UIViewControllerExtension.swift in Sources */,
 				3674806A217C333600B89DA8 /* DeckScene.swift in Sources */,
 				365786B8217E003000F16FB9 /* DeckSplitViewController.swift in Sources */,
+				36242C4421A1C19500706FF4 /* SKCardPlaceholder.swift in Sources */,
 				3674806C217CF61B00B89DA8 /* SKSceneExtension.swift in Sources */,
 				362B7AF821501887009E165C /* MathExtensions.swift in Sources */,
 				365786A7217BACF100F16FB9 /* NewDeckViewController.swift in Sources */,

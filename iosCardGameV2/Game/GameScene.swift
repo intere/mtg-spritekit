@@ -14,6 +14,16 @@ class GameScene: SKScene {
     var playerBoard: PlayerBoard!
     var messageLabel: SKLabelNode?
     var gameCamera = SKCameraNode()
+    var selectedCard: SKCard? {
+        didSet {
+            guard let selectedCard = selectedCard else {
+                return
+            }
+            if let name = selectedCard.card.name {
+                print("Selected Card: \(name)")
+            }
+        }
+    }
 
     override func didMove(to view: SKView) {
         camera = gameCamera
@@ -40,17 +50,24 @@ class GameScene: SKScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             guard let card = card(for: touch) else {
-                continue
+                return
             }
             guard !touch.isMultiTap else {
                 card.toggleEnlarged()
-                continue
+                return
             }
             guard !card.enlarged else {
-                continue
+                return
             }
 
-            card.pickup()
+            if card.selected {
+                card.deselect()
+                selectedCard = nil
+            } else {
+                selectedCard?.deselect()
+                card.select()
+                selectedCard = card
+            }
         }
     }
 
@@ -62,7 +79,7 @@ class GameScene: SKScene {
             guard !card.enlarged else {
                 continue
             }
-            card.dropCard(on: self)
+
         }
     }
 
@@ -142,7 +159,7 @@ extension GameScene {
     /// - Parameter location: The location to check for a cad.
     /// - Returns: The SKCard if it exists at the provided point.
     func card(at location: CGPoint) -> SKCard? {
-        return atPoint(location) as? SKCard
+        return atPoint(location) as? SKCard ?? atPoint(location).parent as? SKCard
     }
 
     /// Adds a "loading" message to the view.

@@ -11,15 +11,7 @@ import SpriteKit
 
 class SKCard: SKSpriteNode {
 
-    struct Constants {
-        static let width: CGFloat = 100
-        static let height: CGFloat = 140
-
-        static let defaultSize = CGSize(width: Constants.width, height: Constants.height)
-        static let cardBackTexture = SKTexture(imageNamed: "mtg_back")
-    }
-
-    var frontTexture: SKTexture?
+    var cardTexture: SKTexture?
     var damage = 0
     var damageLabel: SKLabelNode?
     var faceUp = true
@@ -27,6 +19,7 @@ class SKCard: SKSpriteNode {
     var savedPosition = CGPoint.zero
     var tapped = false
     var card: Card
+    var selected = false
 
     init(card: Card) {
         self.card = card
@@ -48,12 +41,23 @@ extension SKCard {
 
     /// Card selection action
     func select() {
-        wiggle()
+        let childCard = SKSpriteNode(texture: cardTexture)
+        childCard.size = size
+
+        texture = Constants.selectedTexture
+        size = Constants.selectedSize
+
+        addChild(childCard)
+        selected = true
     }
 
     /// Card deselection action
     func deselect() {
-        stopWiggle()
+
+        removeAllChildren()
+        texture = cardTexture
+        size = Constants.defaultSize
+        selected = false
     }
 
     /// Taps this card
@@ -83,9 +87,9 @@ extension SKCard {
         MtgApiService.shared.loadImage(urlString: imageUrl) { result in
             switch result {
             case .success(let image):
-                self.frontTexture = SKTexture(image: image)
+                self.cardTexture = SKTexture(image: image)
                 DispatchQueue.main.async {
-                    self.texture = self.frontTexture
+                    self.texture = self.cardTexture
                 }
 
             default:
@@ -106,4 +110,21 @@ extension SKCard {
 
         return label
     }
+}
+
+// MARK: - Constants
+
+extension SKCard {
+
+    struct Constants {
+        static let width: CGFloat = 100
+        static let height: CGFloat = 140
+
+        static let defaultSize = CGSize(width: Constants.width, height: Constants.height)
+        static let selectedSize = CGSize(width: 106, height: 146)
+
+        static let cardBackTexture = SKTexture(imageNamed: "mtg_back")
+        static let selectedTexture = SKTexture(imageNamed: "selected")
+    }
+
 }
