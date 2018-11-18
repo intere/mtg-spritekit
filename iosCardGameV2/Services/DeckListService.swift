@@ -39,7 +39,7 @@ class DeckListService {
         guard let docsDirectory = docsDirectory else {
             return "No docs directory to write to"
         }
-        let fixedFileName = named.replacingOccurrences(of: " ", with: "_-_")
+        let fixedFileName = fix(filename: named)
         guard let deckFile = URL(string: "\(fixedFileName)\(Constants.deckSuffix)", relativeTo: docsDirectory) else {
             return "Failed to create deck file URL"
         }
@@ -57,6 +57,13 @@ class DeckListService {
 // MARK: - Implementation
 
 private extension DeckListService {
+
+    func fix(filename: String) -> String {
+        var result = filename.replacingOccurrences(of: " ", with: "_-_")
+        result = result.replacingOccurrences(of: "'", with: "_--_")
+        result = result.replacingOccurrences(of: "’", with: "_--_")
+        return result
+    }
 
     var fileManager: FileManager {
         return FileManager.default

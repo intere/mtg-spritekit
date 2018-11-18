@@ -34,8 +34,6 @@ class GameScene: SKScene {
             guard let card = self.card(for: touch), !card.enlarged else {
                 continue
             }
-
-            card.position = touch.location(in: self)
         }
     }
 

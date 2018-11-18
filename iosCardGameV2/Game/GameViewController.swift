@@ -72,15 +72,15 @@ extension GameViewController {
 
     @objc
     func gameLoaded(_ notification: NSNotification) {
-        let alert = UIAlertController(title: "Your hand", message: "Do you want to take a mulligan?", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Your hand", message: "Do you want to keep?", preferredStyle: .alert)
 
-        alert.addAction(UIAlertAction(title: "No, keep", style: .default, handler: { _ in
-            print("Keeping")
-            Notification.UserAction.keepHand.notify()
-        }))
-        alert.addAction(UIAlertAction(title: "Yes, mulligan", style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: "No, mulligan", style: .default, handler: { _ in
             print("Taking a mulligan")
             Notification.UserAction.mulliganHand.notify()
+        }))
+        alert.addAction(UIAlertAction(title: "Yes, keep", style: .default, handler: { _ in
+            print("Keeping")
+            Notification.UserAction.keepHand.notify()
         }))
 
         present(alert, animated: true)

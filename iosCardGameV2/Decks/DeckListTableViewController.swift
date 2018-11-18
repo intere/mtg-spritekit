@@ -170,6 +170,9 @@ extension URL {
 
     /// Gets you the user friendly name of the file.
     var userFriendlyName: String {
-        return (lastPathComponent as NSString).deletingPathExtension.replacingOccurrences(of: "_-_", with: " ")
+        var result = (lastPathComponent as NSString).deletingPathExtension.replacingOccurrences(of: "_-_", with: " ")
+        result = result.replacingOccurrences(of: "_--_", with: "'")
+
+        return result
     }
 }
