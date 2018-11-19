@@ -180,8 +180,9 @@ extension GameScene {
 
     func showLibrary() {
         let library = SKCardPile(title: "Library", cards: playerBoard.library, faceDown: true)
-        library.position = CGPoint(x: frame.maxX - (SKCard.Constants.width / 2 + 30), y: frame.maxY - (SKCard.Constants.height / 2 + 30))
-        addChild(library)
+        let libraryPile = SKPlaceholderPile(pile: library)
+        libraryPile.position = CGPoint(x: frame.maxX - (SKCard.Constants.width / 2 + 30), y: frame.maxY - (SKCard.Constants.height / 2 + 30))
+        addChild(libraryPile)
     }
 
     /// Positions the players hand

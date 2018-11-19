@@ -9,12 +9,19 @@
 import MTGSDKSwift
 import SpriteKit
 
-class SKPlaceholderPile {
-    let placeholder = SKCardPlaceholder()
-    let pile: SKCardPile
+class SKPlaceholderPile: SKNode {
+    var placeholder: SKCardPlaceholder
+    var pile: SKCardPile
 
-    init(title: String, cards: [Card], faceDown: Bool = true) {
-        pile = SKCardPile(title: title, cards: cards, faceDown: faceDown)
-        
+    init(pile: SKCardPile) {
+        self.pile = pile
+        placeholder = SKCardPlaceholder()
+        super.init()
+        addChild(placeholder)
+        addChild(pile)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
