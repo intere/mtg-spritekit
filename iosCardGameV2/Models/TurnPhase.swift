@@ -16,17 +16,33 @@ class TurnPhase: GKState {
 
 class UntapPhase: TurnPhase {
 
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
+        return stateClass == UpkeepPhase.self
+    }
+
 }
 
 class UpkeepPhase: TurnPhase {
+
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
+        return stateClass == DrawPhase.self
+    }
 
 }
 
 class DrawPhase: TurnPhase {
 
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
+        return stateClass == PreCombatMain.self
+    }
+
 }
 
-class FirstMainPhase: TurnPhase {
+class PreCombatMain: TurnPhase {
+
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
+        return stateClass == DeclareAttackersStep.self
+    }
 
 }
 
@@ -37,28 +53,47 @@ class CombatPhase: TurnPhase {
 
 class DeclareAttackersStep: CombatPhase {
 
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
+        return stateClass == AttackPlayInstantsAndAbilitiesStep.self
+    }
 }
 
 class AttackPlayInstantsAndAbilitiesStep: CombatPhase {
 
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
+        return stateClass == DeclareBlockersStep.self
+    }
 }
 
 class DeclareBlockersStep: CombatPhase {
 
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
+        return stateClass == BlockPlayInstantsAndAbilitiesStep.self
+    }
 }
 
 class BlockPlayInstantsAndAbilitiesStep: CombatPhase {
 
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
+        return stateClass == CombatDamageStep.self
+    }
 }
 
 class CombatDamageStep: CombatPhase {
 
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
+        return stateClass == PostCombatMain.self
+    }
 }
 
-class SecondMainPhase: TurnPhase {
+class PostCombatMain: TurnPhase {
 
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
+        return stateClass == EndStep.self
+    }
 }
 
 class EndStep: TurnPhase {
+
 
 }

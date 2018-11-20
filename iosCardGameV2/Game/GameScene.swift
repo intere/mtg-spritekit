@@ -92,11 +92,8 @@ extension GameScene {
     @objc
     func takeMulligan(_ notification: NSNotification) {
         // 1. Remove current cards
-        for child in children {
-            guard let card = child as? SKCard else {
-                continue
-            }
-            card.fadeOutAndRemove()
+        for child in children where child.name == "Hand" {
+            child.removeFromParent()
         }
 
         // 2. take a mulligan and show that hand
@@ -187,22 +184,25 @@ extension GameScene {
 
     /// Positions the players hand
     func showHand() {
-        let hand = playerBoard.hand
-
-        var startX = CGFloat(20) + SKCard.Constants.width / 2
-        var startY = CGFloat(frame.minY + 30) + SKCard.Constants.height / 2
-
-        for card in hand {
-            let skCard = SKCard(card: card)
-            skCard.position = CGPoint(x: startX, y: startY)
-            if reset(y: startY) {
-                resetPosition(card: skCard)
-                startX = skCard.position.x
-                startY = skCard.position.y
-            }
-            startX += skCard.frame.width + 5
-            skCard.fadeInAfter(addingTo: self)
-        }
+//        let hand = playerBoard.hand
+//
+//        var startX = CGFloat(20) + SKCard.Constants.width / 2
+//        var startY = CGFloat(frame.minY + 30) + SKCard.Constants.height / 2
+//
+//        for card in hand {
+//            let skCard = SKCard(card: card)
+//            skCard.position = CGPoint(x: startX, y: startY)
+//            if reset(y: startY) {
+//                resetPosition(card: skCard)
+//                startX = skCard.position.x
+//                startY = skCard.position.y
+//            }
+//            startX += skCard.frame.width + 5
+//            skCard.fadeInAfter(addingTo: self)
+//        }
+        let hand = SKCardGroup(name: "Hand", cards: playerBoard.hand.map({ SKCard(card: $0) }))
+        hand.position = CGPoint(x: SKCard.Constants.width / 2 + 20, y: frame.minY + 30 + SKCard.Constants.height / 2)
+        addChild(hand)
     }
 
     /// Renders the deck on the screen (makes use of the deck and the cards).
