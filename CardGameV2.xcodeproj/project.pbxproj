@@ -64,6 +64,8 @@
 		36A5DDFA216012D100178BBC /* BaseDeckTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A5DDF9216012D100178BBC /* BaseDeckTest.swift */; };
 		36A6A41521A1D37600365223 /* SKPlaceholderPile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A6A41421A1D37600365223 /* SKPlaceholderPile.swift */; };
 		36A6A41721A273FD00365223 /* SKCardGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A6A41621A273FD00365223 /* SKCardGroup.swift */; };
+		36A6A42E21A6FDE400365223 /* RemoteDeckReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A6A42D21A6FDE400365223 /* RemoteDeckReaderTests.swift */; };
+		36A6A43021A703FA00365223 /* RemoteDeckService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A6A42F21A703FA00365223 /* RemoteDeckService.swift */; };
 		36AED7BD215ED689000D02D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AED7BC215ED689000D02D0 /* AppDelegate.swift */; };
 		36AED7C5215ED689000D02D0 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AED7C4215ED689000D02D0 /* GameViewController.swift */; };
 		36AED7C8215ED689000D02D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36AED7C6215ED689000D02D0 /* Main.storyboard */; };
@@ -166,6 +168,8 @@
 		36A5DDF9216012D100178BBC /* BaseDeckTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDeckTest.swift; sourceTree = "<group>"; };
 		36A6A41421A1D37600365223 /* SKPlaceholderPile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKPlaceholderPile.swift; sourceTree = "<group>"; };
 		36A6A41621A273FD00365223 /* SKCardGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKCardGroup.swift; sourceTree = "<group>"; };
+		36A6A42D21A6FDE400365223 /* RemoteDeckReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDeckReaderTests.swift; sourceTree = "<group>"; };
+		36A6A42F21A703FA00365223 /* RemoteDeckService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDeckService.swift; sourceTree = "<group>"; };
 		36AED7BA215ED689000D02D0 /* tvCardGameMTG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tvCardGameMTG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36AED7BC215ED689000D02D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36AED7C4215ED689000D02D0 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -256,6 +260,7 @@
 				362B7AFB21501ABE009E165C /* DeckReader.swift */,
 				366A5029215D350300C435E3 /* CardCacheService.swift */,
 				365786A2217BA99800F16FB9 /* DeckListService.swift */,
+				36A6A42F21A703FA00365223 /* RemoteDeckService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -293,6 +298,7 @@
 			children = (
 				362B7B0C21501B9E009E165C /* DeckReaderTests.swift */,
 				362B7B0E215023C8009E165C /* MtgApiServiceTests.swift */,
+				36A6A42D21A6FDE400365223 /* RemoteDeckReaderTests.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -930,6 +936,7 @@
 				366A5023215D24B500C435E3 /* Card+SerializationTests.swift in Sources */,
 				362B7B0F215023C8009E165C /* MtgApiServiceTests.swift in Sources */,
 				36A5DDF82160129D00178BBC /* PlayerBoardTests.swift in Sources */,
+				36A6A42E21A6FDE400365223 /* RemoteDeckReaderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -983,6 +990,7 @@
 				36578699217BA58E00F16FB9 /* GameScene.swift in Sources */,
 				365786AF217CE93700F16FB9 /* MainTabBarViewController.swift in Sources */,
 				365786B6217D25AC00F16FB9 /* SKCardPile.swift in Sources */,
+				36A6A43021A703FA00365223 /* RemoteDeckService.swift in Sources */,
 				D3EFEB0A1CD3C43400014542 /* AppDelegate.swift in Sources */,
 				36578688217AA90700F16FB9 /* UIColorExtensions.swift in Sources */,
 				365786B3217D259700F16FB9 /* SKCard.swift in Sources */,
