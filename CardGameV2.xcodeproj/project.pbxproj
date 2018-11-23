@@ -66,6 +66,8 @@
 		36A6A41721A273FD00365223 /* SKCardGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A6A41621A273FD00365223 /* SKCardGroup.swift */; };
 		36A6A42E21A6FDE400365223 /* RemoteDeckReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A6A42D21A6FDE400365223 /* RemoteDeckReaderTests.swift */; };
 		36A6A43021A703FA00365223 /* RemoteDeckService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A6A42F21A703FA00365223 /* RemoteDeckService.swift */; };
+		36A6A43221A7148A00365223 /* DeckChooser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36A6A43121A7148A00365223 /* DeckChooser.storyboard */; };
+		36A6A43421A7151600365223 /* DeckChooserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A6A43321A7151600365223 /* DeckChooserTableViewController.swift */; };
 		36AED7BD215ED689000D02D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AED7BC215ED689000D02D0 /* AppDelegate.swift */; };
 		36AED7C5215ED689000D02D0 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AED7C4215ED689000D02D0 /* GameViewController.swift */; };
 		36AED7C8215ED689000D02D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36AED7C6215ED689000D02D0 /* Main.storyboard */; };
@@ -170,6 +172,8 @@
 		36A6A41621A273FD00365223 /* SKCardGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKCardGroup.swift; sourceTree = "<group>"; };
 		36A6A42D21A6FDE400365223 /* RemoteDeckReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDeckReaderTests.swift; sourceTree = "<group>"; };
 		36A6A42F21A703FA00365223 /* RemoteDeckService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDeckService.swift; sourceTree = "<group>"; };
+		36A6A43121A7148A00365223 /* DeckChooser.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DeckChooser.storyboard; sourceTree = "<group>"; };
+		36A6A43321A7151600365223 /* DeckChooserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckChooserTableViewController.swift; sourceTree = "<group>"; };
 		36AED7BA215ED689000D02D0 /* tvCardGameMTG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tvCardGameMTG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36AED7BC215ED689000D02D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36AED7C4215ED689000D02D0 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -308,6 +312,8 @@
 			children = (
 				36578685217AA34400F16FB9 /* AppTheme.swift */,
 				3657868C217B8A3900F16FB9 /* Notifiable.swift */,
+				36A6A43121A7148A00365223 /* DeckChooser.storyboard */,
+				36A6A43321A7151600365223 /* DeckChooserTableViewController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -705,6 +711,7 @@
 				D3EFEB291CD3C5D500014542 /* wolf_howl.wav in Resources */,
 				D3EFEB281CD3C5D500014542 /* bear_growl.wav in Resources */,
 				D3EFEB151CD3C43400014542 /* Assets.xcassets in Resources */,
+				36A6A43221A7148A00365223 /* DeckChooser.storyboard in Resources */,
 				36578697217BA58E00F16FB9 /* Gameplay.storyboard in Resources */,
 				D3EFEB131CD3C43400014542 /* Main.storyboard in Resources */,
 				D3EFEB211CD3C59F00014542 /* credits.txt in Resources */,
@@ -997,6 +1004,7 @@
 				362B7AF521501649009E165C /* MtgApiService.swift in Sources */,
 				36A5DDF22160104D00178BBC /* Game.swift in Sources */,
 				365786B4217D259700F16FB9 /* SKCard+Actions.swift in Sources */,
+				36A6A43421A7151600365223 /* DeckChooserTableViewController.swift in Sources */,
 				36578683217AA30000F16FB9 /* AlertViewController.swift in Sources */,
 				36F675A0215D1C3B00733708 /* Card+Serialization.swift in Sources */,
 				36A5DDEF2160021300178BBC /* Trigger.swift in Sources */,
