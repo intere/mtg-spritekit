@@ -80,6 +80,8 @@
 		36C797CA215EF51D00D8D8EC /* iTunesArtwork-512.png in Resources */ = {isa = PBXBuildFile; fileRef = D3EFEB2B1CD3C75700014542 /* iTunesArtwork-512.png */; };
 		36C797CB215EF51D00D8D8EC /* iTunesArtwork-512@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3EFEB2C1CD3C75700014542 /* iTunesArtwork-512@2x.png */; };
 		36C797CC215EF51D00D8D8EC /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3EFEB2F1CD3D8A100014542 /* OpenSans-Bold.ttf */; };
+		36F3B1F021AD07F700AE7765 /* SetupGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F3B1EF21AD07F700AE7765 /* SetupGameViewController.swift */; };
+		36F3B1F421B0106E00AE7765 /* GameSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F3B1F321B0106E00AE7765 /* GameSettings.swift */; };
 		36F675A0215D1C3B00733708 /* Card+Serialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F6759F215D1C3B00733708 /* Card+Serialization.swift */; };
 		86A853F5A20A3991F4EDD8F7 /* Pods_CardGame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 828BF80EB7F7AB501D2F1E3C /* Pods_CardGame.framework */; };
 		89AA57BE39AC2CD6FBDB2304 /* Pods_tvCardGameMTG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC8D1773A57A55DF45D7FC30 /* Pods_tvCardGameMTG.framework */; };
@@ -182,6 +184,8 @@
 		36AED7D0215ED68B000D02D0 /* tvCardGameMTGTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tvCardGameMTGTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		36AED7D4215ED68B000D02D0 /* CardGameMTGTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardGameMTGTests.swift; sourceTree = "<group>"; };
 		36AED7D6215ED68B000D02D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		36F3B1EF21AD07F700AE7765 /* SetupGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupGameViewController.swift; sourceTree = "<group>"; };
+		36F3B1F321B0106E00AE7765 /* GameSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSettings.swift; sourceTree = "<group>"; };
 		36F6759F215D1C3B00733708 /* Card+Serialization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+Serialization.swift"; sourceTree = "<group>"; };
 		49D50E1E94E6F111C0845821 /* Pods-tvCardGameMTG.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tvCardGameMTG.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tvCardGameMTG/Pods-tvCardGameMTG.debug.xcconfig"; sourceTree = "<group>"; };
 		7562CCFD132DBCF31797117D /* Pods-CardGame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardGame.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CardGame/Pods-CardGame.debug.xcconfig"; sourceTree = "<group>"; };
@@ -265,6 +269,7 @@
 				366A5029215D350300C435E3 /* CardCacheService.swift */,
 				365786A2217BA99800F16FB9 /* DeckListService.swift */,
 				36A6A42F21A703FA00365223 /* RemoteDeckService.swift */,
+				36F3B1F321B0106E00AE7765 /* GameSettings.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -325,6 +330,7 @@
 				36578693217BA58E00F16FB9 /* Gameplay.storyboard */,
 				36578695217BA58E00F16FB9 /* GameScene.swift */,
 				3657869B217BA63F00F16FB9 /* GameViewController.swift */,
+				36F3B1EF21AD07F700AE7765 /* SetupGameViewController.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -981,6 +987,7 @@
 			files = (
 				36A6A41721A273FD00365223 /* SKCardGroup.swift in Sources */,
 				365786A1217BA91500F16FB9 /* DeckListTableViewController.swift in Sources */,
+				36F3B1F021AD07F700AE7765 /* SetupGameViewController.swift in Sources */,
 				365786A9217BAD7700F16FB9 /* Designables.swift in Sources */,
 				36578686217AA34400F16FB9 /* AppTheme.swift in Sources */,
 				36A5DDE9215FFDB100178BBC /* PlayerBoard.swift in Sources */,
@@ -991,6 +998,7 @@
 				362B7AFC21501ABE009E165C /* DeckReader.swift in Sources */,
 				3657868D217B8A3900F16FB9 /* Notifiable.swift in Sources */,
 				36A5DDEC215FFE5800178BBC /* TurnPhase.swift in Sources */,
+				36F3B1F421B0106E00AE7765 /* GameSettings.swift in Sources */,
 				3696CFA7215FDC53008BA9EF /* Deck.swift in Sources */,
 				3657869C217BA63F00F16FB9 /* GameViewController.swift in Sources */,
 				366A502B215D350900C435E3 /* CardCacheService.swift in Sources */,
@@ -1325,7 +1333,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1375,7 +1383,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

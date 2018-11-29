@@ -28,8 +28,9 @@ extension MainTabBarViewController {
             return
         }
 
-        let gamePlayVC = GameViewController.loadFromStoryboard()
-        gamePlayVC.deck = deck
+//        let gamePlayVC = GameViewController.loadFromStoryboard()
+//        gamePlayVC.deck = deck
+        let gamePlayVC = SetupGameViewController.loadFromStoryboard()
 
         selectedIndex = 1
         (children[1] as? UINavigationController)?.setViewControllers([gamePlayVC], animated: true)
