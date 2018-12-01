@@ -127,16 +127,15 @@ extension GameScene {
         // Ensure that we cache all of the cards in the deck, then continue
         MtgApiService.shared.cache(deck: deck) { (error) in
             DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
                 if let error = error {
-                    self?.messageLabel?.text = "Error loading deck from API\n\(error.localizedDescription)"
+                    self.messageLabel?.text = "Error loading deck from API\n\(error.localizedDescription)"
                     return
                 }
-                self?.messageLabel?.run(SKAction.fadeOut(withDuration: 0.5)) {
-                    self?.messageLabel?.removeFromParent()
+                self.messageLabel?.run(SKAction.fadeOut(withDuration: 0.5)) {
+                    self.messageLabel?.removeFromParent()
                 }
-                // TODO: Now show the player's hand
-                self?.playerBoard = PlayerBoard(player: Player(name: "Reznor", deck: deck))
-                self?.startGame()
+                self.startGame()
                 Notification.GameSceneEvent.gameLoaded.notify()
             }
         }

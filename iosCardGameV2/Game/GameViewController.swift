@@ -6,8 +6,9 @@
 //  Copyright © 2018 iColasoft. All rights reserved.
 //
 
-import UIKit
+import Cartography
 import SpriteKit
+import UIKit
 
 class GameViewController: UIViewController {
 
@@ -16,18 +17,28 @@ class GameViewController: UIViewController {
     var lastScale: CGFloat?
     var scene: GameScene!
 
+    let topHudView = UIView()
+    let bottomHudView = UIView()
+    var topHudHeightConstraint: NSLayoutConstraint!
+    var bottomHudHeighConstraint: NSLayoutConstraint!
+
+    lazy var panPrinter = {
+        return Debouncer(delay: 0.1) { [weak self] in
+            guard let self = self, let lastPanPoint = self.lastPanPoint else { return }
+            print("Pan Point: \(lastPanPoint)")
+        }
+    }()
+    lazy var scalePrinter = {
+        return Debouncer(delay: 0.1) { [weak self] in
+            guard let self = self, let lastScale = self.lastScale else { return }
+            print("Scale: \(lastScale)")
+        }
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let skView = self.view as! SKView
-        scene = GameScene(size: skView.frame.size)
-        scene.playerBoard = game.boards[0]
-
-        skView.showsFPS = true
-        skView.showsNodeCount = true
-        skView.ignoresSiblingOrder = false
-        scene.scaleMode = .resizeFill
-        skView.presentScene(scene)
+        configureView()
 
         Notification.GameSceneEvent.gameLoaded.addObserver(self, selector: #selector(gameLoaded(_:)))
 
@@ -53,11 +64,13 @@ extension GameViewController {
     @objc
     func handlePan(_ gesture: UIPanGestureRecognizer) {
         lastPanPoint = panHandler(gesture, lastPanPoint: lastPanPoint, scene: scene)
+        panPrinter.call()
     }
 
     @objc
     func handlePinch(_ gesture: UIPinchGestureRecognizer) {
         lastScale = self.pinchHandler(gesture, lastScale: lastScale, scene: scene)
+        scalePrinter.call()
     }
 
 }
@@ -80,6 +93,41 @@ extension GameViewController {
         }))
 
         present(alert, animated: true)
+    }
+
+}
+
+// MARK: - Implementation
+
+extension GameViewController {
+
+    func configureView() {
+        let skView = self.view as! SKView
+        scene = GameScene(size: skView.frame.size)
+        scene.playerBoard = game.boards[0]
+
+        skView.showsFPS = true
+        skView.showsNodeCount = true
+        skView.ignoresSiblingOrder = false
+        scene.scaleMode = .resizeFill
+        skView.presentScene(scene)
+
+        [topHudView, bottomHudView].forEach { view in
+            view.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+            skView.addSubview(view)
+        }
+
+        constrain(skView, topHudView, bottomHudView) { view, topHudView, bottomHudView in
+            topHudView.left == view.left
+            topHudView.top == view.top
+            topHudView.right == view.right
+            topHudHeightConstraint = topHudView.height == 0
+
+            bottomHudView.left == view.left
+            bottomHudView.right == view.right
+            bottomHudView.bottom == view.bottom
+            bottomHudHeighConstraint = bottomHudView.height == 0
+        }
     }
 
 }

@@ -43,6 +43,7 @@ public extension Notifiable where Self: CustomStringConvertible {
     /// Sends out this notification via the default `NotificationCenter`.
     func notify() {
         NotificationCenter.default.post(notification)
+        print("\(notificationString).notify()")
     }
 
     /// Sends out this notification (with an associated object) via the default `NotificationCenter`.
@@ -50,6 +51,7 @@ public extension Notifiable where Self: CustomStringConvertible {
     /// - Parameter object: The object to be associated with this notification.
     func notify(withObject object: Any) {
         NotificationCenter.default.post(name: name, object: object)
+        print("\(notificationString).notify(withObject: \(object))")
     }
 
     /// Registers a listener for the event with the default `NotificationCenter`.

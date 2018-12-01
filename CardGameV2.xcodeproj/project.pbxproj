@@ -82,6 +82,8 @@
 		36C797CC215EF51D00D8D8EC /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3EFEB2F1CD3D8A100014542 /* OpenSans-Bold.ttf */; };
 		36F3B1F021AD07F700AE7765 /* SetupGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F3B1EF21AD07F700AE7765 /* SetupGameViewController.swift */; };
 		36F3B1F421B0106E00AE7765 /* GameSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F3B1F321B0106E00AE7765 /* GameSettings.swift */; };
+		36F3B1F621B2E02600AE7765 /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F3B1F521B2E02600AE7765 /* Debouncer.swift */; };
+		36F3B1F821B2F61300AE7765 /* GameViewController+HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F3B1F721B2F61300AE7765 /* GameViewController+HUD.swift */; };
 		36F675A0215D1C3B00733708 /* Card+Serialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F6759F215D1C3B00733708 /* Card+Serialization.swift */; };
 		86A853F5A20A3991F4EDD8F7 /* Pods_CardGame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 828BF80EB7F7AB501D2F1E3C /* Pods_CardGame.framework */; };
 		89AA57BE39AC2CD6FBDB2304 /* Pods_tvCardGameMTG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC8D1773A57A55DF45D7FC30 /* Pods_tvCardGameMTG.framework */; };
@@ -186,6 +188,8 @@
 		36AED7D6215ED68B000D02D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		36F3B1EF21AD07F700AE7765 /* SetupGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupGameViewController.swift; sourceTree = "<group>"; };
 		36F3B1F321B0106E00AE7765 /* GameSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSettings.swift; sourceTree = "<group>"; };
+		36F3B1F521B2E02600AE7765 /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
+		36F3B1F721B2F61300AE7765 /* GameViewController+HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameViewController+HUD.swift"; sourceTree = "<group>"; };
 		36F6759F215D1C3B00733708 /* Card+Serialization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+Serialization.swift"; sourceTree = "<group>"; };
 		49D50E1E94E6F111C0845821 /* Pods-tvCardGameMTG.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tvCardGameMTG.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tvCardGameMTG/Pods-tvCardGameMTG.debug.xcconfig"; sourceTree = "<group>"; };
 		7562CCFD132DBCF31797117D /* Pods-CardGame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardGame.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CardGame/Pods-CardGame.debug.xcconfig"; sourceTree = "<group>"; };
@@ -319,6 +323,7 @@
 				3657868C217B8A3900F16FB9 /* Notifiable.swift */,
 				36A6A43121A7148A00365223 /* DeckChooser.storyboard */,
 				36A6A43321A7151600365223 /* DeckChooserTableViewController.swift */,
+				36F3B1F521B2E02600AE7765 /* Debouncer.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -331,6 +336,7 @@
 				36578695217BA58E00F16FB9 /* GameScene.swift */,
 				3657869B217BA63F00F16FB9 /* GameViewController.swift */,
 				36F3B1EF21AD07F700AE7765 /* SetupGameViewController.swift */,
+				36F3B1F721B2F61300AE7765 /* GameViewController+HUD.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -993,6 +999,7 @@
 				36A5DDE9215FFDB100178BBC /* PlayerBoard.swift in Sources */,
 				365786AD217BB12E00F16FB9 /* UIAlertControllerExtensions.swift in Sources */,
 				36A6A41521A1D37600365223 /* SKPlaceholderPile.swift in Sources */,
+				36F3B1F821B2F61300AE7765 /* GameViewController+HUD.swift in Sources */,
 				36578691217B8CE400F16FB9 /* Notifications.swift in Sources */,
 				36748068217C25C400B89DA8 /* DeckPreviewViewController.swift in Sources */,
 				362B7AFC21501ABE009E165C /* DeckReader.swift in Sources */,
@@ -1008,6 +1015,7 @@
 				36A6A43021A703FA00365223 /* RemoteDeckService.swift in Sources */,
 				D3EFEB0A1CD3C43400014542 /* AppDelegate.swift in Sources */,
 				36578688217AA90700F16FB9 /* UIColorExtensions.swift in Sources */,
+				36F3B1F621B2E02600AE7765 /* Debouncer.swift in Sources */,
 				365786B3217D259700F16FB9 /* SKCard.swift in Sources */,
 				362B7AF521501649009E165C /* MtgApiService.swift in Sources */,
 				36A5DDF22160104D00178BBC /* Game.swift in Sources */,

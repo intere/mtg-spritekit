@@ -38,7 +38,6 @@ class SetupGameViewController: UIViewController {
             player2View.top == player1View.bottom + 8
             player2View.left == view.left + 8
             player2View.right == view.right - 8
-//            player2View.bottom <= view.bottom - 8
 
             startButton.top == player2View.bottom + 20
             startButton.centerX == view.centerX
