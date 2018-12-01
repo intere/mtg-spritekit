@@ -57,19 +57,7 @@ class SetupGameViewController: UIViewController {
 
     @IBAction
     func startGame(_ source: Any) {
-        guard let player1Name = player1View.playerNameText.text,
-            let player2Name = player2View.playerNameText.text,
-            let player1Deck = player1View.selectedDeck,
-            let player2Deck = player2View.selectedDeck else {
-                return
-        }
-
-        GameSettings.shared.player1Name = player1Name
-        GameSettings.shared.player1Deck = player1Deck
-        GameSettings.shared.player2Name = player2Name
-        GameSettings.shared.player2Deck = player2Deck
-
-        // TODO: Create a Game Context and pass it to the Game VC.
+        startGame()
     }
 }
 
@@ -104,6 +92,45 @@ extension SetupGameViewController {
         present(deckChooser, animated: true, completion: nil)
     }
 
+}
+
+// MARK: - Implementation
+
+private extension SetupGameViewController {
+
+    func startGame() {
+        guard let player1Name = player1View.playerNameText.text,
+            let player2Name = player2View.playerNameText.text,
+            let player1Deck = player1View.selectedDeck,
+            let player2Deck = player2View.selectedDeck else {
+                return
+        }
+
+        GameSettings.shared.player1Name = player1Name
+        GameSettings.shared.player1Deck = player1Deck
+        GameSettings.shared.player2Name = player2Name
+        GameSettings.shared.player2Deck = player2Deck
+
+        // TODO: Create a Game Context and pass it to the Game VC.
+        Game.createGame(player1: player1Name, deck1: player1Deck, player2: player2Name, deck2: player2Deck) { (game, error) in
+            if let error = error {
+                return print("ERROR: \(error.localizedDescription)")
+            }
+            guard let game = game else {
+                return print("Error, no game object came back")
+            }
+
+            DispatchQueue.main.async { [weak self] in
+                self?.start(game: game)
+            }
+        }
+    }
+
+    func start(game: Game) {
+        let board = GameViewController.loadFromStoryboard()
+        board.game = game
+        navigationController?.pushViewController(board, animated: true)
+    }
 }
 
 // MARK: - SetupPlayerView

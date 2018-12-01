@@ -11,21 +11,17 @@ import SpriteKit
 
 class GameViewController: UIViewController {
 
-    var deck: Deck?
+    var game: Game!
     var lastPanPoint: CGPoint?
     var lastScale: CGFloat?
     var scene: GameScene!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let deck = deck else {
-            return
-        }
-
 
         let skView = self.view as! SKView
         scene = GameScene(size: skView.frame.size)
-        scene.playerBoard = PlayerBoard(player: Player(name: "User", deck: deck))
+        scene.playerBoard = game.boards[0]
 
         skView.showsFPS = true
         skView.showsNodeCount = true
