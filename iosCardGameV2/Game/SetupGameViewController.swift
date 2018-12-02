@@ -51,7 +51,8 @@ class SetupGameViewController: UIViewController {
     }
     
     class func loadFromStoryboard() -> SetupGameViewController {
-        return UIStoryboard(name: "Gameplay", bundle: nil).instantiateViewController(withIdentifier: "SetupGameViewController") as! SetupGameViewController
+        return UIStoryboard(name: "Gameplay", bundle: nil)
+            .instantiateViewController(withIdentifier: "SetupGameViewController") as! SetupGameViewController
     }
 
     @IBAction
@@ -110,8 +111,8 @@ private extension SetupGameViewController {
         GameSettings.shared.player2Name = player2Name
         GameSettings.shared.player2Deck = player2Deck
 
-        // TODO: Create a Game Context and pass it to the Game VC.
-        Game.createGame(player1: player1Name, deck1: player1Deck, player2: player2Name, deck2: player2Deck) { (game, error) in
+        ModernGamePlayService.shared.createGame(player1: player1Name, deck1: player1Deck,
+                                                player2: player2Name, deck2: player2Deck) { (game, error) in
             if let error = error {
                 return print("ERROR: \(error.localizedDescription)")
             }

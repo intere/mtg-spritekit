@@ -10,23 +10,31 @@ import Foundation
 import MTGSDKSwift
 import GameplayKit
 
+/// A block for the creation of a game, it should either succeed with a game or
+/// fail with an error, never both or neither.
 typealias CreateGameBlock = (Game?, Error?) -> Void
 
 class Game {
 
     /// The PlayerBoard objects in the game
     var boards: [PlayerBoard]
+
+    /// The seed of the current board
     var randomSeedString = {
         return GKARC4RandomSource().seed.base64EncodedString()
     }()
+
+    /// We use a GameKit Random so we get consistent random number generation
     var random: GKARC4RandomSource!
 
     /// The game type (Modern by default)
     var format: String = "Modern"
 
-    private var firstPlayerIndex = 0
-
+    /// The turn number
     var turn = 0
+
+    /// The index of the player who won the roll (and gets to choose to go first or not).
+    private var rollWinningPlayer = 0
 
     init(boards: [PlayerBoard], randomSeedString: String? = nil) {
         self.boards = boards
@@ -36,54 +44,18 @@ class Game {
             return
         }
         random = GKARC4RandomSource(seed: seedData)
-        firstPlayerIndex = random.nextInt(upperBound: boards.count)
-        assert(firstPlayerIndex < boards.count, "Start index is too high")
+        rollWinningPlayer = random.nextInt(upperBound: boards.count)
+        assert(rollWinningPlayer < boards.count, "Start index is too high")
+    }
+}
+
+// MARK: - API
+
+extension Game {
+
+    /// Did the first player (this player) win the roll?
+    var firstPlayerWonRoll: Bool {
+        return rollWinningPlayer == 0
     }
 
-    /// Creates the game by going off and loading the cards for each deck.  When
-    /// This process completes for both decks, the completion block then runs.
-    ///
-    /// - Parameters:
-    ///   - player1: The first player's name.
-    ///   - deck1: The first player's deck.
-    ///   - player2: The second player's name.
-    ///   - deck2: The second player's deck.
-    ///   - completion: The block to handle the completion of the deck loading.
-    static func createGame(player1: String, deck1: URL, player2: String, deck2: URL, completion: @escaping CreateGameBlock) {
-        guard let firstDeck = DeckReader.shared.readFile(path: deck1),
-            let secondDeck = DeckReader.shared.readFile(path: deck2) else {
-            return completion(nil, nil)
-        }
-        var firstCached = false
-        var secondCached = false
-
-        // The block that will delegate to the completion handler when everything has called back
-        let finish = {
-            guard firstCached && secondCached else {
-                return
-            }
-            let game = Game(boards: [
-                PlayerBoard(player: Player(name: player1, deck: firstDeck)),
-                PlayerBoard(player: Player(name: player2, deck: secondDeck))
-            ])
-            completion(game, nil)
-        }
-
-        // Cache the first deck
-        MtgApiService.shared.cache(deck: firstDeck) { error in
-            if let error = error {
-                return completion(nil, error)
-            }
-            firstCached = true
-            finish()
-        }
-        // Cache the second deck
-        MtgApiService.shared.cache(deck: secondDeck) { error in
-            if let error = error {
-                return completion(nil, error)
-            }
-            secondCached = true
-            finish()
-        }
-    }
 }

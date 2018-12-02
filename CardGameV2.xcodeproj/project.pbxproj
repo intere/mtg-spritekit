@@ -84,6 +84,7 @@
 		36F3B1F421B0106E00AE7765 /* GameSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F3B1F321B0106E00AE7765 /* GameSettings.swift */; };
 		36F3B1F621B2E02600AE7765 /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F3B1F521B2E02600AE7765 /* Debouncer.swift */; };
 		36F3B1F821B2F61300AE7765 /* GameViewController+HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F3B1F721B2F61300AE7765 /* GameViewController+HUD.swift */; };
+		36F3B1FA21B3901900AE7765 /* ModernGamePlayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F3B1F921B3901900AE7765 /* ModernGamePlayService.swift */; };
 		36F675A0215D1C3B00733708 /* Card+Serialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F6759F215D1C3B00733708 /* Card+Serialization.swift */; };
 		86A853F5A20A3991F4EDD8F7 /* Pods_CardGame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 828BF80EB7F7AB501D2F1E3C /* Pods_CardGame.framework */; };
 		89AA57BE39AC2CD6FBDB2304 /* Pods_tvCardGameMTG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC8D1773A57A55DF45D7FC30 /* Pods_tvCardGameMTG.framework */; };
@@ -190,6 +191,7 @@
 		36F3B1F321B0106E00AE7765 /* GameSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSettings.swift; sourceTree = "<group>"; };
 		36F3B1F521B2E02600AE7765 /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
 		36F3B1F721B2F61300AE7765 /* GameViewController+HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameViewController+HUD.swift"; sourceTree = "<group>"; };
+		36F3B1F921B3901900AE7765 /* ModernGamePlayService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModernGamePlayService.swift; sourceTree = "<group>"; };
 		36F6759F215D1C3B00733708 /* Card+Serialization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+Serialization.swift"; sourceTree = "<group>"; };
 		49D50E1E94E6F111C0845821 /* Pods-tvCardGameMTG.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tvCardGameMTG.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tvCardGameMTG/Pods-tvCardGameMTG.debug.xcconfig"; sourceTree = "<group>"; };
 		7562CCFD132DBCF31797117D /* Pods-CardGame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardGame.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CardGame/Pods-CardGame.debug.xcconfig"; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 				365786A2217BA99800F16FB9 /* DeckListService.swift */,
 				36A6A42F21A703FA00365223 /* RemoteDeckService.swift */,
 				36F3B1F321B0106E00AE7765 /* GameSettings.swift */,
+				36F3B1F921B3901900AE7765 /* ModernGamePlayService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -331,12 +334,12 @@
 		36578692217BA58E00F16FB9 /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				365786B0217D257A00F16FB9 /* Sprites */,
 				36578693217BA58E00F16FB9 /* Gameplay.storyboard */,
 				36578695217BA58E00F16FB9 /* GameScene.swift */,
 				3657869B217BA63F00F16FB9 /* GameViewController.swift */,
-				36F3B1EF21AD07F700AE7765 /* SetupGameViewController.swift */,
 				36F3B1F721B2F61300AE7765 /* GameViewController+HUD.swift */,
+				36F3B1EF21AD07F700AE7765 /* SetupGameViewController.swift */,
+				365786B0217D257A00F16FB9 /* Sprites */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -1023,6 +1026,7 @@
 				36A6A43421A7151600365223 /* DeckChooserTableViewController.swift in Sources */,
 				36578683217AA30000F16FB9 /* AlertViewController.swift in Sources */,
 				36F675A0215D1C3B00733708 /* Card+Serialization.swift in Sources */,
+				36F3B1FA21B3901900AE7765 /* ModernGamePlayService.swift in Sources */,
 				36A5DDEF2160021300178BBC /* Trigger.swift in Sources */,
 				36A5DDF52160107700178BBC /* Player.swift in Sources */,
 				365786AB217BAF2900F16FB9 /* UIViewControllerExtension.swift in Sources */,
