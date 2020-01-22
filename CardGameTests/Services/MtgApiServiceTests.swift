@@ -119,16 +119,13 @@ extension MtgApiServiceTests {
             }
         }
 
-        waitForExpectations(timeout: 10, handler: nil)
+        waitForExpectations(timeout: 20, handler: nil)
     }
 
     func testLoadInkmothNexus() {
         let exp = expectation(description: "loadCards")
 
         search(forCard: "Inkmoth Nexus") { result in
-            defer {
-                exp.fulfill()
-            }
             switch result {
             case .error(let error):
                 XCTFail(error.localizedDescription)
@@ -139,6 +136,8 @@ extension MtgApiServiceTests {
                     XCTAssertNotNil(card.imageUrl)
                 }
             }
+
+            exp.fulfill()
         }
         waitForExpectations(timeout: 10, handler: nil)
     }
@@ -196,6 +195,14 @@ extension MtgApiServiceTests {
             CardSearchParameter(parameterType: .name, value: cardName),
             CardSearchParameter(parameterType: .contains, value: "imageUrl")
         ]
-        magic.fetchCards(params, configuration: config, completion: completion)
+        
+        magic.fetchCards(params, configuration: config) { result in
+            switch result {
+            case .success(let cards):
+                completion(.success(cards.filter({ $0.imageUrl != nil })))
+            case .error(let error):
+                completion(.error(error))
+            }
+        }
     }
 }

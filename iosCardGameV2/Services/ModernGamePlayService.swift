@@ -8,6 +8,10 @@
 
 import Foundation
 
+/// A block for the creation of a game, it should either succeed with a game or
+/// fail with an error, never both or neither.
+typealias CreateGameBlock = (Game?, Error?) -> Void
+
 class ModernGamePlayService {
     static let shared = ModernGamePlayService()
 
@@ -57,6 +61,36 @@ class ModernGamePlayService {
             }
             secondCached = true
             finish()
+        }
+    }
+
+    /// Starts the game out
+    ///
+    /// - Parameter game: <#game description#>
+    func start(game: Game) {
+        guard game.firstPlayerWonRoll else {
+            return Notification.GamePlayEvent.drawHand.notify()
+        }
+        Notification.GamePlayEvent.choosePlayOrDrawFirst.notify()
+    }
+
+
+}
+
+// MARK: - GamePlayEvent Notification
+
+extension Notification {
+
+    enum GamePlayEvent: String, Notifiable, CustomStringConvertible {
+        case drawHand = "draw.hand"
+        case choosePlayOrDrawFirst = "choose.play.or.draw"
+
+        static var notificationBase: String {
+            return "com.cardgame.game.play.event"
+        }
+
+        var description: String {
+            return rawValue
         }
     }
 }

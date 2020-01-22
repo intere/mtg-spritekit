@@ -17,6 +17,8 @@
 		362B7AFC21501ABE009E165C /* DeckReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362B7AFB21501ABE009E165C /* DeckReader.swift */; };
 		362B7B0D21501B9E009E165C /* DeckReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362B7B0C21501B9E009E165C /* DeckReaderTests.swift */; };
 		362B7B0F215023C8009E165C /* MtgApiServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362B7B0E215023C8009E165C /* MtgApiServiceTests.swift */; };
+		363477C323D882350038CF5B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363477C123D882350038CF5B /* SceneDelegate.swift */; };
+		363477C423D882350038CF5B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363477C223D882350038CF5B /* ContentView.swift */; };
 		36578683217AA30000F16FB9 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36578682217AA30000F16FB9 /* AlertViewController.swift */; };
 		36578686217AA34400F16FB9 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36578685217AA34400F16FB9 /* AppTheme.swift */; };
 		36578688217AA90700F16FB9 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36578687217AA90700F16FB9 /* UIColorExtensions.swift */; };
@@ -134,6 +136,8 @@
 		362B7B0521501B77009E165C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		362B7B0C21501B9E009E165C /* DeckReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckReaderTests.swift; sourceTree = "<group>"; };
 		362B7B0E215023C8009E165C /* MtgApiServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MtgApiServiceTests.swift; sourceTree = "<group>"; };
+		363477C123D882350038CF5B /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		363477C223D882350038CF5B /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		36578682217AA30000F16FB9 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		36578685217AA34400F16FB9 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
 		36578687217AA90700F16FB9 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
@@ -535,6 +539,8 @@
 		D3EFEB321CD3E38200014542 /* System */ = {
 			isa = PBXGroup;
 			children = (
+				363477C223D882350038CF5B /* ContentView.swift */,
+				363477C123D882350038CF5B /* SceneDelegate.swift */,
 				D3EFEB091CD3C43400014542 /* AppDelegate.swift */,
 				D3EFEB111CD3C43400014542 /* Main.storyboard */,
 				D3EFEB161CD3C43400014542 /* LaunchScreen.storyboard */,
@@ -555,8 +561,6 @@
 				362B7AFD21501B77009E165C /* Sources */,
 				362B7AFE21501B77009E165C /* Frameworks */,
 				362B7AFF21501B77009E165C /* Resources */,
-				03FCC918F0A54E10DACE6387 /* [CP] Embed Pods Frameworks */,
-				AF329AFC592E7E3E6F9D8104 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -577,7 +581,6 @@
 				36AED7B7215ED689000D02D0 /* Frameworks */,
 				36AED7B8215ED689000D02D0 /* Resources */,
 				CDB628F4D7970B0E774705CB /* [CP] Embed Pods Frameworks */,
-				749AF200A594010229A977D8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -596,8 +599,6 @@
 				36AED7CC215ED68B000D02D0 /* Sources */,
 				36AED7CD215ED68B000D02D0 /* Frameworks */,
 				36AED7CE215ED68B000D02D0 /* Resources */,
-				B43297D6491E19C9E97D55CD /* [CP] Embed Pods Frameworks */,
-				649F789459F431934141A6C0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -618,7 +619,6 @@
 				D3EFEB031CD3C43400014542 /* Frameworks */,
 				D3EFEB041CD3C43400014542 /* Resources */,
 				9C154AED7C72397799A51F6D /* [CP] Embed Pods Frameworks */,
-				918B59426955DEF89C9E9A70 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -669,6 +669,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -741,21 +742,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		03FCC918F0A54E10DACE6387 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CardGameTests/Pods-CardGameTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		1D6AF855CA71E0ED71282326 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -792,58 +778,13 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		649F789459F431934141A6C0 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tvCardGameMTGTests/Pods-tvCardGameMTGTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		749AF200A594010229A977D8 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tvCardGameMTG/Pods-tvCardGameMTG-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		918B59426955DEF89C9E9A70 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CardGame/Pods-CardGame-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		9C154AED7C72397799A51F6D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-CardGame/Pods-CardGame-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-CardGame/Pods-CardGame-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Cartography/Cartography.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher-iOS/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/MTGSDKSwift-iOS/MTGSDKSwift.framework",
@@ -856,7 +797,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CardGame/Pods-CardGame-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CardGame/Pods-CardGame-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9D472401015560480AFF6747 /* [CP] Check Pods Manifest.lock */ = {
@@ -877,21 +818,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AF329AFC592E7E3E6F9D8104 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CardGameTests/Pods-CardGameTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		B26022E0B8A36E6B87942B95 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -910,28 +836,13 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B43297D6491E19C9E97D55CD /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tvCardGameMTGTests/Pods-tvCardGameMTGTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		CDB628F4D7970B0E774705CB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-tvCardGameMTG/Pods-tvCardGameMTG-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-tvCardGameMTG/Pods-tvCardGameMTG-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher-tvOS/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/MTGSDKSwift-tvOS/MTGSDKSwift.framework",
 			);
@@ -942,7 +853,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tvCardGameMTG/Pods-tvCardGameMTG-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tvCardGameMTG/Pods-tvCardGameMTG-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1014,6 +925,7 @@
 				366A502B215D350900C435E3 /* CardCacheService.swift in Sources */,
 				36578699217BA58E00F16FB9 /* GameScene.swift in Sources */,
 				365786AF217CE93700F16FB9 /* MainTabBarViewController.swift in Sources */,
+				363477C323D882350038CF5B /* SceneDelegate.swift in Sources */,
 				365786B6217D25AC00F16FB9 /* SKCardPile.swift in Sources */,
 				36A6A43021A703FA00365223 /* RemoteDeckService.swift in Sources */,
 				D3EFEB0A1CD3C43400014542 /* AppDelegate.swift in Sources */,
@@ -1033,6 +945,7 @@
 				3674806A217C333600B89DA8 /* DeckScene.swift in Sources */,
 				365786B8217E003000F16FB9 /* DeckSplitViewController.swift in Sources */,
 				36242C4421A1C19500706FF4 /* SKCardPlaceholder.swift in Sources */,
+				363477C423D882350038CF5B /* ContentView.swift in Sources */,
 				3674806C217CF61B00B89DA8 /* SKSceneExtension.swift in Sources */,
 				362B7AF821501887009E165C /* MathExtensions.swift in Sources */,
 				365786A7217BACF100F16FB9 /* NewDeckViewController.swift in Sources */,
@@ -1108,7 +1021,7 @@
 				DEVELOPMENT_TEAM = 268S5GJFWZ;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = CardGameTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.icolasoft.mtg.CardGameTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1143,7 +1056,7 @@
 				DEVELOPMENT_TEAM = 268S5GJFWZ;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = CardGameTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.icolasoft.mtg.CardGameTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1187,7 +1100,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 12.0;
+				TVOS_DEPLOYMENT_TARGET = 13.0;
 			};
 			name = Debug;
 		};
@@ -1221,7 +1134,7 @@
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 12.0;
+				TVOS_DEPLOYMENT_TARGET = 13.0;
 			};
 			name = Release;
 		};
@@ -1345,7 +1258,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1395,7 +1308,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -1411,7 +1324,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 268S5GJFWZ;
 				INFOPLIST_FILE = "$(SRCROOT)/iosCardGameV2/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.intere.ios.CardGameMTG;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1428,7 +1341,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 268S5GJFWZ;
 				INFOPLIST_FILE = "$(SRCROOT)/iosCardGameV2/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.intere.ios.CardGameMTG;
 				PRODUCT_NAME = "$(TARGET_NAME)";

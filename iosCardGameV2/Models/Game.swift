@@ -10,10 +10,6 @@ import Foundation
 import MTGSDKSwift
 import GameplayKit
 
-/// A block for the creation of a game, it should either succeed with a game or
-/// fail with an error, never both or neither.
-typealias CreateGameBlock = (Game?, Error?) -> Void
-
 class Game {
 
     /// The PlayerBoard objects in the game

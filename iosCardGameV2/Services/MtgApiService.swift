@@ -134,7 +134,7 @@ struct MtgApiService {
                     print("Network error with card \(cardName): \(error.localizedDescription)")
 
                 case .success(let cards):
-                    guard let card = cards.filter({ $0.name == cardName }).first else {
+                    guard let card = cards.filter({ $0.name == cardName && $0.multiverseid != nil }).first else {
                         return
                     }
                     results.append(card)
