@@ -38,7 +38,7 @@ class CardCacheService {
             return assertionFailure("ERROR: we are missing the minimal information to cache the card")
         }
         let path = cacheDirectory.appendingPathComponent("\(multiverseid).json")
-        let jsonPayload = [ Parser.JsonKeys.cards: [card.toJsonMap] ]
+        let jsonPayload = [Parser.CardJsonKey.cards: [card.toJsonMap] ]
 
         let data = try JSONSerialization.data(withJSONObject: jsonPayload, options: JSONSerialization.WritingOptions(rawValue: 0))
         try data.write(to: path)

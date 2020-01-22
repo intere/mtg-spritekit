@@ -36,7 +36,7 @@ struct MtgApiService {
                         }
                         self.loadImage(urlString: imageUrl) { result in
                             switch result {
-                            case .error(let error):
+                            case .failure(let error):
                                 print("Error loading image: \(error.localizedDescription)")
                             default:
                                 break
@@ -45,7 +45,7 @@ struct MtgApiService {
                 }
                 completion?(nil)
                 
-            case .error(let error):
+            case .failure(let error):
                 print("Error loading deck: \(error.localizedDescription)")
                 completion?(error)
             }
@@ -61,7 +61,7 @@ struct MtgApiService {
         if ImageCache.default.imageCachedType(forKey: urlString).cached {
             ImageCache.default.retrieveImage(forKey: urlString, options: nil) { (image, _) in
                 guard let image = image else {
-                    return completion(Result.error(NetworkError.fetchCardImageError("The card was not found in the cache")))
+                    return completion(.failure(NetworkError.fetchCardImageError("The card was not found in the cache")))
                 }
                 completion(Result.success(image))
             }
@@ -74,7 +74,7 @@ struct MtgApiService {
                 case .success(let image):
                     ImageCache.default.store(image, forKey: urlString, toDisk: true)
 
-                case .error(let error):
+                case .failure(let error):
                     print("Error fetching image \(urlString): \(error.localizedDescription)")
                 }
 
@@ -115,9 +115,9 @@ struct MtgApiService {
 
                     if set.isEmpty {
                         if let error = errorResult {
-                            completion(Result.error(error))
+                            completion(.failure(error))
                         } else {
-                            completion(Result.success(results))
+                            completion(.success(results))
                         }
                     }
                     return
@@ -129,7 +129,7 @@ struct MtgApiService {
             magic.fetchCards(params, configuration: config) { result in
 
                 switch result {
-                case .error(let error):
+                case .failure(let error):
                     errorResult = error
                     print("Network error with card \(cardName): \(error.localizedDescription)")
 
@@ -149,9 +149,9 @@ struct MtgApiService {
 
                     if set.isEmpty {
                         if let error = errorResult {
-                            completion(Result.error(error))
+                            completion(.failure(error))
                         } else {
-                            completion(Result.success(results))
+                            completion(.success(results))
                         }
                     }
                 }

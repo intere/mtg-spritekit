@@ -30,7 +30,7 @@ class Card_SerializationTests: XCTestCase {
         guard let chandra = chandra else {
             return XCTFail("Failed to load chandra")
         }
-        let serialized = [ Parser.JsonKeys.cards: [ chandra.toJsonMap ] ]
+        let serialized = [Parser.CardJsonKey.cards.rawValue: [chandra.toJsonMap]]
 
         guard let deserialized = Parser.parseCards(json: serialized).first else {
             return XCTFail("Failed to deserialize our payload")
@@ -75,7 +75,7 @@ class Card_SerializationTests: XCTestCase {
         guard let emrakul = emrakul else {
             return XCTFail("Failed to load chandra")
         }
-        let serialized = [ Parser.JsonKeys.cards: [ emrakul.toJsonMap ] ]
+        let serialized = [Parser.CardJsonKey.cards.rawValue: [emrakul.toJsonMap]]
 
         guard let deserialized = Parser.parseCards(json: serialized).first else {
             return XCTFail("Failed to deserialize our payload")

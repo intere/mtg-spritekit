@@ -8,7 +8,7 @@ target 'CardGame' do
   inhibit_all_warnings!
 
   # Pods for CardGame
-  pod 'MTGSDKSwift', :git => 'git@github.com:intere/mtg-sdk-swift.git', :branch => 'tvos'
+  pod 'MTGSDKSwift', :git => 'git@github.com:intere/mtg-sdk-swift.git', :branch => 'release/2.0.0'
   pod 'Kingfisher'
   pod 'Cartography', '~> 3.0'
 
@@ -24,7 +24,7 @@ target 'tvCardGameMTG' do
   use_frameworks!
 
   # Pods for CardGame
-  pod 'MTGSDKSwift', :git => 'git@github.com:intere/mtg-sdk-swift.git', :branch => 'tvos'
+  pod 'MTGSDKSwift', :git => 'git@github.com:intere/mtg-sdk-swift.git', :branch => 'release/2.0.0'
   pod 'Kingfisher'
 
   target 'tvCardGameMTGTests' do

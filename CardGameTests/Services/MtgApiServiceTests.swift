@@ -29,7 +29,7 @@ extension MtgApiServiceTests {
             }
 
             switch result {
-            case .error(let error):
+            case .failure(let error):
                 XCTFail("Failed with error: \(error.localizedDescription)")
 
             case .success(let cards):
@@ -67,7 +67,7 @@ extension MtgApiServiceTests {
             }
 
             switch result {
-            case .error(let error):
+            case .failure(let error):
                 XCTFail("Failed with error: \(error.localizedDescription)")
 
             case .success(let cards):
@@ -108,7 +108,7 @@ extension MtgApiServiceTests {
                 exp.fulfill()
             }
             switch result {
-            case .error(let error):
+            case .failure(let error):
                 XCTFail(error.localizedDescription)
 
             case .success(let cards):
@@ -127,7 +127,7 @@ extension MtgApiServiceTests {
 
         search(forCard: "Inkmoth Nexus") { result in
             switch result {
-            case .error(let error):
+            case .failure(let error):
                 XCTFail(error.localizedDescription)
 
             case .success(let cards):
@@ -152,7 +152,7 @@ extension MtgApiServiceTests {
 
         search(forCard: "Inkmoth Nexus") { result in
             switch result {
-            case .error(let error):
+            case .failure(let error):
                 XCTFail(error.localizedDescription)
 
             case .success(let cards):
@@ -164,7 +164,7 @@ extension MtgApiServiceTests {
                         exp.fulfill()
                     }
                     switch result {
-                    case .error(let error):
+                    case .failure(let error):
                         XCTFail("Error loading image: \(error.localizedDescription)")
 
                     case .success(let image):
@@ -200,8 +200,8 @@ extension MtgApiServiceTests {
             switch result {
             case .success(let cards):
                 completion(.success(cards.filter({ $0.imageUrl != nil })))
-            case .error(let error):
-                completion(.error(error))
+            case .failure(let error):
+                completion(.failure(error))
             }
         }
     }
