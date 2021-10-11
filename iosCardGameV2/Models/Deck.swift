@@ -18,9 +18,9 @@ import MTGSDKSwift
 class CardGroup {
     var name: String
     var quantity: Int
-    var card: Card? = nil
+    var card: CardSearchResults.Card? = nil
 
-    init(name: String = "", quantity: Int = 1, card: Card? = nil) {
+    init(name: String = "", quantity: Int = 1, card: CardSearchResults.Card? = nil) {
         self.name = name
         self.quantity = quantity
         self.card = card
@@ -79,12 +79,12 @@ class Deck {
     }
 
     /// Gets you the cards in the main board.
-    var mainboardCards: [Card] {
+    var mainboardCards: [CardSearchResults.Card] {
         return mainboard.flatMap { $0.cards }
     }
 
     /// Gets you the cards in the side board.
-    var sideboardCards: [Card] {
+    var sideboardCards: [CardSearchResults.Card] {
         return sideboard.flatMap { $0.cards }
     }
 }
@@ -95,12 +95,12 @@ extension CardGroup {
 
     /// Assumes that the card is cached, and based on that assumption gives
     /// you the `quantity` number of cards back for this CardGroup
-    var cards: [Card] {
+    var cards: [CardSearchResults.Card] {
         guard let card = card else {
-            assertionFailure("\(name) is missing its card")
-            return [Card]()
+//            assertionFailure("\(name) is missing its card")
+            return [CardSearchResults.Card]()
         }
-        var cards = [Card]()
+        var cards = [CardSearchResults.Card]()
         for _ in 0..<quantity {
             cards.append(card)
         }

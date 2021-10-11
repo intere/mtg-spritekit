@@ -65,13 +65,13 @@ private extension RemoteDeckService {
 
 // MARK: - RemoteDeckError
 
-enum RemoteDeckError: Error {
+enum RemoteDeckError: LocalizedError {
 
     case invalidResponseType
     case invalidStatusCode(Int)
     case noData
 
-    var localizedDescription: String {
+    var errorDescription: String? {
         switch self {
         case .invalidResponseType:
             return "Wrong response object type"

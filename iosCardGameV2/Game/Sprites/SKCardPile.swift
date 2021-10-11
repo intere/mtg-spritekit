@@ -10,7 +10,7 @@ import MTGSDKSwift
 import SpriteKit
 
 class SKCardPile: SKSpriteNode {
-    var cards: [Card] {
+    var cards: [CardSearchResults.Card] {
         didSet {
             titleLabel.text = "\(title) - \(cards.count) cards"
         }
@@ -19,7 +19,7 @@ class SKCardPile: SKSpriteNode {
     let faceDown: Bool
     let titleLabel = SKLabelNode(fontNamed: "OpenSans-Bold")
 
-    init(title: String, cards: [Card], faceDown: Bool = true) {
+    init(title: String, cards: [CardSearchResults.Card], faceDown: Bool = true) {
         self.title = title
         self.cards = cards
         self.faceDown = faceDown
@@ -50,7 +50,7 @@ extension SKCardPile {
 
     /// Creates the texture for this card
     func makeTexture() {
-        guard let card = cards.last, let imageUrl = card.imageUrl else {
+        guard let card = cards.last, let imageUrl = card.imageURL else {
             return
         }
 

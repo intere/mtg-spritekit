@@ -209,8 +209,8 @@ extension GameScene {
     /// - Parameters:
     ///   - deck: The deck to show on the screen.
     ///   - cards: The cards to show on the screen.
-    func showOverlapped(deck: Deck, cards: [Card]) {
-        var cardHash = [String: Card]()
+    func showOverlapped(deck: Deck, cards: [CardSearchResults.Card]) {
+        var cardHash = [String: CardSearchResults.Card]()
         cards.forEach { card in
             guard let name = card.name else {
                 return print("ERROR: Card with no name")
@@ -226,7 +226,7 @@ extension GameScene {
                 print("ERROR: no API Card for \(card.name)")
                 continue
             }
-            guard apiCard.imageUrl != nil else {
+            guard apiCard.imageURL != nil else {
                 print("ERROR: no image for card \(card.name)")
                 continue
             }

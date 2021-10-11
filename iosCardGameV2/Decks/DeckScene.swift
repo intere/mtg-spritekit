@@ -82,7 +82,7 @@ extension DeckScene {
         MtgApiService.shared.cache(deck: deck) { (error) in
             DispatchQueue.main.async { [weak self] in
                 if let error = error {
-                    self?.messageLabel?.text = "Error loading deck from API\n\(error.localizedDescription)"
+                    self?.messageLabel?.text = "Error loading deck from API: \n\(error.localizedDescription)"
                     return
                 }
                 self?.messageLabel?.run(SKAction.fadeOut(withDuration: 0.5)) {

@@ -6,16 +6,34 @@
 //  Copyright © 2018 iColasoft. All rights reserved.
 //
 
+import Combine
 import XCTest
 
 class RemoteDeckReaderTests: XCTestCase {
-
+    private var cancellables = Set<AnyCancellable>()
     let url = URL(string: "https://www.mtggoldfish.com/deck/download/1475592")
 
-    func testLoadDeck() {
-        guard let url = url else {
-            return XCTFail("Failed to build a valid URL")
-        }
+    func testLoadDeckViaCombine() {
+        guard let url = url else { return XCTFail("Failed to build a valid URL") }
+
+        let exp = expectation(description: "get deck")
+
+        URLSession.shared.dataTaskPublisher(for: url)
+            .map { $0.data }
+            .replaceError(with: nil)
+            .eraseToAnyPublisher()
+            .sink { data in
+                defer { exp.fulfill() }
+                guard let data = data else { return XCTFail("no result data") }
+                guard let result = String(data: data, encoding: .utf8) else { return XCTFail("failed to get a valid string") }
+                let lines = result.split(separator: "\n")
+                XCTAssertNotEqual(0, lines.count)
+            }.store(in: &cancellables)
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+
+    func testLoadDeckViaUrlSession() {
+        guard let url = url else { return XCTFail("Failed to build a valid URL") }
 
         let exp = expectation(description: "get deck")
 
@@ -48,6 +66,12 @@ class RemoteDeckReaderTests: XCTestCase {
 
         waitForExpectations(timeout: 5, handler: nil)
     }
+
+}
+
+// MARK: - Helpers
+
+private extension RemoteDeckReaderTests {
 
     func getFilename(from headers: [AnyHashable: Any]) -> String? {
         // Content-Disposition: attachment; filename="Deck - Jund.txt"

@@ -49,6 +49,13 @@
 		36748068217C25C400B89DA8 /* DeckPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36748067217C25C400B89DA8 /* DeckPreviewViewController.swift */; };
 		3674806A217C333600B89DA8 /* DeckScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36748069217C333600B89DA8 /* DeckScene.swift */; };
 		3674806C217CF61B00B89DA8 /* SKSceneExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3674806B217CF61B00B89DA8 /* SKSceneExtension.swift */; };
+		3684BC542713240D0029F3A1 /* HistoricTreasureHunt in Resources */ = {isa = PBXBuildFile; fileRef = 3684BC532713240D0029F3A1 /* HistoricTreasureHunt */; };
+		3684BC5627132B880029F3A1 /* CardSearchResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3684BC5527132B880029F3A1 /* CardSearchResultTests.swift */; };
+		3684BC5927132B9F0029F3A1 /* Search-HostileHostel.json in Resources */ = {isa = PBXBuildFile; fileRef = 3684BC5727132B9E0029F3A1 /* Search-HostileHostel.json */; };
+		3684BC5A27132B9F0029F3A1 /* Search-GrowthSpiral.json in Resources */ = {isa = PBXBuildFile; fileRef = 3684BC5827132B9E0029F3A1 /* Search-GrowthSpiral.json */; };
+		3684BC5C2713AAFD0029F3A1 /* Search-Island.json in Resources */ = {isa = PBXBuildFile; fileRef = 3684BC5B2713AAFD0029F3A1 /* Search-Island.json */; };
+		3684BC5E2713D8740029F3A1 /* CardNameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3684BC5D2713D8740029F3A1 /* CardNameModel.swift */; };
+		3684BC612713EF680029F3A1 /* CardName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3684BC5F2713EF640029F3A1 /* CardName.swift */; };
 		3696CFA7215FDC53008BA9EF /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3696CFA6215FDC53008BA9EF /* Deck.swift */; };
 		3696CFA8215FDC53008BA9EF /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3696CFA6215FDC53008BA9EF /* Deck.swift */; };
 		36A5DDE7215FFA6B00178BBC /* DeckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A5DDE6215FFA6B00178BBC /* DeckTests.swift */; };
@@ -79,6 +86,8 @@
 		36AED7DF215EEB00000D02D0 /* MtgApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362B7AF421501649009E165C /* MtgApiService.swift */; };
 		36AED7E0215EEB00000D02D0 /* DeckReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362B7AFB21501ABE009E165C /* DeckReader.swift */; };
 		36AED7E1215EEB00000D02D0 /* CardCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366A5029215D350300C435E3 /* CardCacheService.swift */; };
+		36BE78502711475800F1CE06 /* CombineMagicCardSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BE784F2711475800F1CE06 /* CombineMagicCardSearchTests.swift */; };
+		36BE78522711DE1F00F1CE06 /* CombineMagicCardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BE78512711DE1F00F1CE06 /* CombineMagicCardService.swift */; };
 		36C797CA215EF51D00D8D8EC /* iTunesArtwork-512.png in Resources */ = {isa = PBXBuildFile; fileRef = D3EFEB2B1CD3C75700014542 /* iTunesArtwork-512.png */; };
 		36C797CB215EF51D00D8D8EC /* iTunesArtwork-512@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3EFEB2C1CD3C75700014542 /* iTunesArtwork-512@2x.png */; };
 		36C797CC215EF51D00D8D8EC /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3EFEB2F1CD3D8A100014542 /* OpenSans-Bold.ttf */; };
@@ -126,6 +135,7 @@
 		1BD34D764ED97ABE958C29FC /* Pods-tvCardGameMTG.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tvCardGameMTG.release.xcconfig"; path = "Pods/Target Support Files/Pods-tvCardGameMTG/Pods-tvCardGameMTG.release.xcconfig"; sourceTree = "<group>"; };
 		25500602D3A66ECF66FB5961 /* Pods-tvCardGameMTGTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tvCardGameMTGTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tvCardGameMTGTests/Pods-tvCardGameMTGTests.debug.xcconfig"; sourceTree = "<group>"; };
 		262076B7A9E0B8B67CA177AF /* Pods_tvCardGameMTGTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tvCardGameMTGTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		361592E22711415E0067690A /* CardGame.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CardGame.entitlements; sourceTree = "<group>"; };
 		361B7205215EED8100A596D6 /* deck.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = deck.txt; path = iosCardGameV2/deck.txt; sourceTree = SOURCE_ROOT; };
 		36242C4321A1C19500706FF4 /* SKCardPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKCardPlaceholder.swift; sourceTree = "<group>"; };
 		362B7AF421501649009E165C /* MtgApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MtgApiService.swift; sourceTree = "<group>"; };
@@ -168,6 +178,13 @@
 		36748067217C25C400B89DA8 /* DeckPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckPreviewViewController.swift; sourceTree = "<group>"; };
 		36748069217C333600B89DA8 /* DeckScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckScene.swift; sourceTree = "<group>"; };
 		3674806B217CF61B00B89DA8 /* SKSceneExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSceneExtension.swift; sourceTree = "<group>"; };
+		3684BC532713240D0029F3A1 /* HistoricTreasureHunt */ = {isa = PBXFileReference; lastKnownFileType = text; path = HistoricTreasureHunt; sourceTree = "<group>"; };
+		3684BC5527132B880029F3A1 /* CardSearchResultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSearchResultTests.swift; sourceTree = "<group>"; };
+		3684BC5727132B9E0029F3A1 /* Search-HostileHostel.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Search-HostileHostel.json"; sourceTree = "<group>"; };
+		3684BC5827132B9E0029F3A1 /* Search-GrowthSpiral.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Search-GrowthSpiral.json"; sourceTree = "<group>"; };
+		3684BC5B2713AAFD0029F3A1 /* Search-Island.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Search-Island.json"; sourceTree = "<group>"; };
+		3684BC5D2713D8740029F3A1 /* CardNameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardNameModel.swift; sourceTree = "<group>"; };
+		3684BC5F2713EF640029F3A1 /* CardName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardName.swift; sourceTree = "<group>"; };
 		3696CFA6215FDC53008BA9EF /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		36A5DDE6215FFA6B00178BBC /* DeckTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckTests.swift; sourceTree = "<group>"; };
 		36A5DDE8215FFDB100178BBC /* PlayerBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerBoard.swift; sourceTree = "<group>"; };
@@ -191,6 +208,8 @@
 		36AED7D0215ED68B000D02D0 /* tvCardGameMTGTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tvCardGameMTGTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		36AED7D4215ED68B000D02D0 /* CardGameMTGTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardGameMTGTests.swift; sourceTree = "<group>"; };
 		36AED7D6215ED68B000D02D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		36BE784F2711475800F1CE06 /* CombineMagicCardSearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineMagicCardSearchTests.swift; sourceTree = "<group>"; };
+		36BE78512711DE1F00F1CE06 /* CombineMagicCardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineMagicCardService.swift; sourceTree = "<group>"; };
 		36F3B1EF21AD07F700AE7765 /* SetupGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupGameViewController.swift; sourceTree = "<group>"; };
 		36F3B1F321B0106E00AE7765 /* GameSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSettings.swift; sourceTree = "<group>"; };
 		36F3B1F521B2E02600AE7765 /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
@@ -281,6 +300,7 @@
 				36A6A42F21A703FA00365223 /* RemoteDeckService.swift */,
 				36F3B1F321B0106E00AE7765 /* GameSettings.swift */,
 				36F3B1F921B3901900AE7765 /* ModernGamePlayService.swift */,
+				36BE78512711DE1F00F1CE06 /* CombineMagicCardService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -319,6 +339,7 @@
 				362B7B0C21501B9E009E165C /* DeckReaderTests.swift */,
 				362B7B0E215023C8009E165C /* MtgApiServiceTests.swift */,
 				36A6A42D21A6FDE400365223 /* RemoteDeckReaderTests.swift */,
+				36BE784F2711475800F1CE06 /* CombineMagicCardSearchTests.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -387,9 +408,13 @@
 		366A5024215D25CE00C435E3 /* TestResources */ = {
 			isa = PBXGroup;
 			children = (
+				3684BC5B2713AAFD0029F3A1 /* Search-Island.json */,
+				3684BC5827132B9E0029F3A1 /* Search-GrowthSpiral.json */,
+				3684BC5727132B9E0029F3A1 /* Search-HostileHostel.json */,
 				366A5027215D26B000C435E3 /* 397905.json */,
 				366A5025215D25CE00C435E3 /* 417683.json */,
 				36A5DDF9216012D100178BBC /* BaseDeckTest.swift */,
+				3684BC532713240D0029F3A1 /* HistoricTreasureHunt */,
 			);
 			path = TestResources;
 			sourceTree = "<group>";
@@ -403,6 +428,7 @@
 				36A5DDEE2160021300178BBC /* Trigger.swift */,
 				36A5DDF12160104D00178BBC /* Game.swift */,
 				36A5DDF42160107700178BBC /* Player.swift */,
+				3684BC5F2713EF640029F3A1 /* CardName.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -412,6 +438,8 @@
 			children = (
 				36A5DDE6215FFA6B00178BBC /* DeckTests.swift */,
 				36A5DDF72160129D00178BBC /* PlayerBoardTests.swift */,
+				3684BC5527132B880029F3A1 /* CardSearchResultTests.swift */,
+				3684BC5D2713D8740029F3A1 /* CardNameModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -459,6 +487,7 @@
 		D3EFEAFD1CD3C43400014542 = {
 			isa = PBXGroup;
 			children = (
+				361592E22711415E0067690A /* CardGame.entitlements */,
 				D3EFEB081CD3C43400014542 /* iosCardGameV2 */,
 				362B7B0221501B77009E165C /* CardGameTests */,
 				36AED7BB215ED689000D02D0 /* tvosCardGameMTG */,
@@ -692,7 +721,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				366A5028215D26B000C435E3 /* 397905.json in Resources */,
+				3684BC542713240D0029F3A1 /* HistoricTreasureHunt in Resources */,
+				3684BC5C2713AAFD0029F3A1 /* Search-Island.json in Resources */,
 				366A5026215D25CE00C435E3 /* 417683.json in Resources */,
+				3684BC5A27132B9F0029F3A1 /* Search-GrowthSpiral.json in Resources */,
+				3684BC5927132B9F0029F3A1 /* Search-HostileHostel.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -864,11 +897,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				36A5DDFA216012D100178BBC /* BaseDeckTest.swift in Sources */,
+				36BE78502711475800F1CE06 /* CombineMagicCardSearchTests.swift in Sources */,
 				36A5DDE7215FFA6B00178BBC /* DeckTests.swift in Sources */,
 				362B7B0D21501B9E009E165C /* DeckReaderTests.swift in Sources */,
 				366A5023215D24B500C435E3 /* Card+SerializationTests.swift in Sources */,
 				362B7B0F215023C8009E165C /* MtgApiServiceTests.swift in Sources */,
+				3684BC5627132B880029F3A1 /* CardSearchResultTests.swift in Sources */,
 				36A5DDF82160129D00178BBC /* PlayerBoardTests.swift in Sources */,
+				3684BC5E2713D8740029F3A1 /* CardNameModel.swift in Sources */,
 				36A6A42E21A6FDE400365223 /* RemoteDeckReaderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -925,11 +961,13 @@
 				366A502B215D350900C435E3 /* CardCacheService.swift in Sources */,
 				36578699217BA58E00F16FB9 /* GameScene.swift in Sources */,
 				365786AF217CE93700F16FB9 /* MainTabBarViewController.swift in Sources */,
+				3684BC612713EF680029F3A1 /* CardName.swift in Sources */,
 				363477C323D882350038CF5B /* SceneDelegate.swift in Sources */,
 				365786B6217D25AC00F16FB9 /* SKCardPile.swift in Sources */,
 				36A6A43021A703FA00365223 /* RemoteDeckService.swift in Sources */,
 				D3EFEB0A1CD3C43400014542 /* AppDelegate.swift in Sources */,
 				36578688217AA90700F16FB9 /* UIColorExtensions.swift in Sources */,
+				36BE78522711DE1F00F1CE06 /* CombineMagicCardService.swift in Sources */,
 				36F3B1F621B2E02600AE7765 /* Debouncer.swift in Sources */,
 				365786B3217D259700F16FB9 /* SKCard.swift in Sources */,
 				362B7AF521501649009E165C /* MtgApiService.swift in Sources */,
@@ -1322,12 +1360,14 @@
 			baseConfigurationReference = 7562CCFD132DBCF31797117D /* Pods-CardGame.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CardGame.entitlements;
 				DEVELOPMENT_TEAM = 268S5GJFWZ;
 				INFOPLIST_FILE = "$(SRCROOT)/iosCardGameV2/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.intere.ios.CardGameMTG;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1339,12 +1379,14 @@
 			baseConfigurationReference = F56A83A0E04C56858709B73D /* Pods-CardGame.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CardGame.entitlements;
 				DEVELOPMENT_TEAM = 268S5GJFWZ;
 				INFOPLIST_FILE = "$(SRCROOT)/iosCardGameV2/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.intere.ios.CardGameMTG;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -18,10 +18,10 @@ class SKCard: SKSpriteNode {
     var enlarged = false
     var savedPosition = CGPoint.zero
     var tapped = false
-    var card: Card
+    var card: CardSearchResults.Card
     var selected = false
 
-    init(card: Card) {
+    init(card: CardSearchResults.Card) {
         self.card = card
         super.init(texture: Constants.cardBackTexture, color: .clear, size: Constants.defaultSize)
 
@@ -80,7 +80,7 @@ extension SKCard {
 
     /// Creates the texture for this card
     func makeTexture() {
-        guard let imageUrl = card.imageUrl else {
+        guard let imageUrl = card.imageURL else {
             return
         }
 

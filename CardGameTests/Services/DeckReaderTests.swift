@@ -49,5 +49,17 @@ class DeckReaderTests: XCTestCase {
         XCTAssertEqual(60, deck.mainboardCount)
         XCTAssertEqual(15, deck.sideboardCount)
     }
+
+    func testUniqueCards() {
+        guard let deck = DeckReader.shared.readBundleFile(fileNamed: "deck.txt") else {
+            return XCTFail("Failed to load deck")
+        }
+        var cardSet = Set(deck.mainboard.map({ $0.name }))
+        deck.sideboard.forEach { cardSet.insert($0.name) }
+
+        let uniques = Set(deck.uniqueCardNames)
+
+        XCTAssertEqual(cardSet, uniques)
+    }
     
 }

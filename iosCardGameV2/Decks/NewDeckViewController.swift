@@ -114,16 +114,14 @@ private extension NewDeckViewController {
             return alertFillInDeck()
         }
 
-        let alert = UIAlertController.yesNoAlert(
+        present(UIAlertController.yesNoAlert(
             title: "Deck Info",
-            message: "Your deck has been read as a \(buildDeckSummary).  Create this deck?",
-            yesCallback: { [weak self] in
+            message: "Your deck has been read as a \(buildDeckSummary).  Create this deck?") { [weak self] in
                 self?.saveDeck()
-            }, noCallback: { [weak self] in
-                return self?.deckListText.becomeFirstResponder()
-        })
+            } noCallback: { [weak self] in
+                self?.deckListText.becomeFirstResponder()
+            }, animated: true)
 
-        present(alert, animated: true)
     }
 
     func alertFillInTitle() {

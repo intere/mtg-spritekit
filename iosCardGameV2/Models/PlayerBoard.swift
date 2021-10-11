@@ -31,19 +31,19 @@ class PlayerBoard {
 //    var emblems: [Emblem]
 
     /// The player's library
-    private(set) var library = [Card]()
+    private(set) var library = [CardSearchResults.Card]()
 
     /// The player's graveyard
-    private(set) var graveyard = [Card]()
+    private(set) var graveyard = [CardSearchResults.Card]()
 
     /// Cards the player has revealed
-    var revealed = [Card]()
+    var revealed = [CardSearchResults.Card]()
 
     /// The player's exiled cards
-    var exile = [Card]()
+    var exile = [CardSearchResults.Card]()
 
     /// The player's hand
-    var hand = [Card]()
+    var hand = [CardSearchResults.Card]()
 
     /// Gets you the player's deck
     var deck: Deck! {

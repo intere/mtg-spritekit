@@ -40,7 +40,7 @@ extension MtgApiServiceTests {
                         XCTFail("card without a name: \(card.multiverseid!)")
                         continue
                     }
-                    XCTAssertNotNil(card.imageUrl, "Card \(cardName) had a nil image")
+                    XCTAssertNotNil(card.imageURL, "Card \(cardName) had a nil image")
                 }
             }
         }
@@ -73,9 +73,9 @@ extension MtgApiServiceTests {
             case .success(let cards):
                 XCTAssertEqual(uniqueCount, cards.count, "Not enough cards came back")
                 for card in cards {
-                    XCTAssertNotNil(card.imageUrl, "Card \(card.name!) had a nil image")
+                    XCTAssertNotNil(card.imageURL, "Card \(card.name!) had a nil image")
                 }
-                var hash = [String: Card]()
+                var hash = [String: CardSearchResults.Card]()
                 cards.forEach {
                     guard let name = $0.name else {
                         return XCTFail("Failed to get a name for a card")
