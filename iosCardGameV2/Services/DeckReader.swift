@@ -20,7 +20,7 @@ struct DeckReader {
             let content = try String(contentsOf: path)
             return read(fileContent: content)
         } catch {
-            print("ERROR reading contents of file: \(path.absoluteString)")
+            Logger.error("reading contents of file: \(path.absoluteString)")
         }
 
         return nil
@@ -38,7 +38,7 @@ struct DeckReader {
             let content = try String(contentsOfFile: path)
             return read(fileContent: content)
         } catch {
-            print("Error reading contents of file \(path): \(error.localizedDescription)")
+            Logger.error(error)
         }
         
         return nil
@@ -56,14 +56,14 @@ struct DeckReader {
         var sideboard = false
 
         for line in lines {
-            print("Line: '\(line)'")
+            Logger.debug("Line: '\(line)'")
             guard !line.replacingOccurrences(of: " ", with: "").isEmpty && !line.lowercased().starts(with: "sideboard") else {
                 sideboard = true
                 continue
             }
             var parts = line.split(separator: " ")
             guard parts.count > 1, let quantity = Int(parts.remove(at: 0)) else {
-                print("Failed to parse line: \(line)")
+                Logger.error("Failed to parse line: \(line)")
                 continue
             }
             let name = parts.joined(separator: " ")

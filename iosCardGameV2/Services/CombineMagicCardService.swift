@@ -58,16 +58,17 @@ class CombineMagicCardSearch: MagicCardSearch {
             .map { $0.data }
             .decode(type: CardSearchResults.self, decoder: JSONDecoder())
             .catch({ (error) -> Just<CardSearchResults> in
-                print("Error getting card '\(name)': \(error)")
+                Logger.error("Error getting card '\(name)': \(error)")
+                Logger.error(error)
                 return Just(CardSearchResults(cards: .none))
             })
 //            .replaceError(with: CardSearchResults(cards: nil))
 //            .eraseToAnyPublisher()
             .sink(receiveCompletion: { completion in
-                print("Sink completion: \(completion)")
+                Logger.debug("Sink completion: \(completion)")
             }, receiveValue: { result in
                 if result.cards == nil {
-                    print("\(name) has nil cards")
+                    Logger.warn("\(name) has nil cards")
                     completion(.failure(MagicCardSearchError.cardSearchError))
                 } else {
                     completion(.success(result))

@@ -28,7 +28,7 @@ extension CardSearchResults.Card {
         do {
             return try JSONEncoder().encode(self)
         } catch {
-            print("Failed to encode JSON data: \(error)")
+            Logger.error("Failed to encode JSON data: \(error)")
             return nil
         }
     }
@@ -37,7 +37,7 @@ extension CardSearchResults.Card {
         do {
             return try JSONDecoder().decode(CardSearchResults.Card.self, from: data)
         } catch {
-            print("Error decoding Card JSON: \(error)")
+            Logger.error("Error decoding Card JSON: \(error)")
             return nil
         }
     }

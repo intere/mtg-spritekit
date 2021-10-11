@@ -20,7 +20,7 @@ class GameScene: SKScene {
                 return
             }
             if let name = selectedCard.card.name {
-                print("Selected Card: \(name)")
+                Logger.info("Selected Card: \(name)")
             }
         }
     }
@@ -213,7 +213,7 @@ extension GameScene {
         var cardHash = [String: CardSearchResults.Card]()
         cards.forEach { card in
             guard let name = card.name else {
-                return print("ERROR: Card with no name")
+                return Logger.error("Card with no name")
             }
             cardHash[name] = card
         }
@@ -223,11 +223,11 @@ extension GameScene {
 
         for card in deck.mainboard {
             guard let apiCard = cardHash[card.name] else {
-                print("ERROR: no API Card for \(card.name)")
+                Logger.error("no API Card for \(card.name)")
                 continue
             }
             guard apiCard.imageURL != nil else {
-                print("ERROR: no image for card \(card.name)")
+                Logger.error("no image for card \(card.name)")
                 continue
             }
             for _ in 0..<card.quantity {

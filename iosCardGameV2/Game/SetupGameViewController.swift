@@ -114,10 +114,10 @@ private extension SetupGameViewController {
         ModernGamePlayService.shared.createGame(player1: player1Name, deck1: player1Deck,
                                                 player2: player2Name, deck2: player2Deck) { (game, error) in
             if let error = error {
-                return print("ERROR: \(error.localizedDescription)")
+                return Logger.error(error)
             }
             guard let game = game else {
-                return print("Error, no game object came back")
+                return Logger.error("no game object came back")
             }
 
             DispatchQueue.main.async { [weak self] in

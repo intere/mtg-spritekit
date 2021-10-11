@@ -115,7 +115,7 @@ extension DeckScene {
         for card in deck.mainboard {
             for _ in 0..<card.quantity {
                 guard let cardInfo = card.card else {
-                    print("Failed to find the card for \(card.name)")
+                    Logger.warn("Failed to find the card for \(card.name)")
                     continue
                 }
                 let skCard = SKCard(card: cardInfo)

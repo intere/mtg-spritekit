@@ -71,11 +71,11 @@ extension DeckListTableViewController {
             let cell = sender as? UITableViewCell,
             let indexPath = tableView.indexPath(for: cell),
             indexPath.row < files.count else {
-                return print("Nope")
+                return Logger.error("Nope")
         }
 
         guard let deck = deck(at: indexPath.row) else {
-            return print("Failed to read deck file")
+            return Logger.error("Failed to read deck file")
         }
         deckPreview.deck = deck
     }
@@ -113,7 +113,7 @@ extension DeckListTableViewController {
 
     @IBAction
     func tappedAdd(_ sender: Any) {
-        print("You tapped add deck")
+        Logger.info("You tapped add deck")
     }
 
 }

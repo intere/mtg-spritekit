@@ -56,6 +56,7 @@
 		3684BC5C2713AAFD0029F3A1 /* Search-Island.json in Resources */ = {isa = PBXBuildFile; fileRef = 3684BC5B2713AAFD0029F3A1 /* Search-Island.json */; };
 		3684BC5E2713D8740029F3A1 /* CardNameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3684BC5D2713D8740029F3A1 /* CardNameModel.swift */; };
 		3684BC612713EF680029F3A1 /* CardName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3684BC5F2713EF640029F3A1 /* CardName.swift */; };
+		3684BC6427146FD00029F3A1 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3684BC6227146FCC0029F3A1 /* Logger.swift */; };
 		3696CFA7215FDC53008BA9EF /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3696CFA6215FDC53008BA9EF /* Deck.swift */; };
 		3696CFA8215FDC53008BA9EF /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3696CFA6215FDC53008BA9EF /* Deck.swift */; };
 		36A5DDE7215FFA6B00178BBC /* DeckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A5DDE6215FFA6B00178BBC /* DeckTests.swift */; };
@@ -185,6 +186,7 @@
 		3684BC5B2713AAFD0029F3A1 /* Search-Island.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Search-Island.json"; sourceTree = "<group>"; };
 		3684BC5D2713D8740029F3A1 /* CardNameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardNameModel.swift; sourceTree = "<group>"; };
 		3684BC5F2713EF640029F3A1 /* CardName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardName.swift; sourceTree = "<group>"; };
+		3684BC6227146FCC0029F3A1 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		3696CFA6215FDC53008BA9EF /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		36A5DDE6215FFA6B00178BBC /* DeckTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckTests.swift; sourceTree = "<group>"; };
 		36A5DDE8215FFDB100178BBC /* PlayerBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerBoard.swift; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 				36A6A43121A7148A00365223 /* DeckChooser.storyboard */,
 				36A6A43321A7151600365223 /* DeckChooserTableViewController.swift */,
 				36F3B1F521B2E02600AE7765 /* Debouncer.swift */,
+				3684BC6227146FCC0029F3A1 /* Logger.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -966,6 +969,7 @@
 				365786B6217D25AC00F16FB9 /* SKCardPile.swift in Sources */,
 				36A6A43021A703FA00365223 /* RemoteDeckService.swift in Sources */,
 				D3EFEB0A1CD3C43400014542 /* AppDelegate.swift in Sources */,
+				3684BC6427146FD00029F3A1 /* Logger.swift in Sources */,
 				36578688217AA90700F16FB9 /* UIColorExtensions.swift in Sources */,
 				36BE78522711DE1F00F1CE06 /* CombineMagicCardService.swift in Sources */,
 				36F3B1F621B2E02600AE7765 /* Debouncer.swift in Sources */,

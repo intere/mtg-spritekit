@@ -8,11 +8,9 @@
 
 import Foundation
 import Kingfisher
-//import MTGSDKSwift
 
 /// A callback handler for when the deck is cached
 typealias DeckCached = (Error?) -> Void
-
 typealias CardCompletion = (Result<[CardSearchResults.Card], Error>) -> Void
 
 
@@ -33,13 +31,11 @@ struct MtgApiService {
             switch result {
             case .success(let cards):
                     for card in cards {
-                        guard let imageUrl = card.imageURL else {
-                            continue
-                        }
+                        guard let imageUrl = card.imageURL else { continue }
                         self.loadImage(urlString: imageUrl) { result in
                             switch result {
                             case .failure(let error):
-                                print("Error loading image: \(error.localizedDescription)")
+                                Logger.error(error)
                             default:
                                 break
                             }
@@ -48,7 +44,7 @@ struct MtgApiService {
                 completion?(nil)
                 
             case .failure(let error):
-                print("Error loading deck: \(error.localizedDescription)")
+                Logger.error(error)
                 completion?(error)
             }
         }
@@ -74,7 +70,7 @@ struct MtgApiService {
                     ImageCache.default.store(image, forKey: urlString, toDisk: true)
 
                 case .failure(let error):
-                    print("Error fetching image \(urlString): \(error.localizedDescription)")
+                    Logger.error(error)
                 }
                 completion(result)
             }
@@ -99,8 +95,9 @@ struct MtgApiService {
                 if let card = try CardCacheService.shared.loadCachedCard(named: cardName) {
                     results.append(card)
                     let set = cardSet.subtracting(results.compactMap({ $0.name }))
-                    print("We have \(results.count) of \(cardSet.count) responses back: \(cardName)")
-                    print("Updated Set: \(set)")
+                    Logger.debug("Cache hit: \(cardName)")
+                    Logger.debug("We have \(results.count) of \(cardSet.count) responses back: \(cardName)")
+                    Logger.debug("Updated Set: \(set)")
                     // Assign the card to the card in the deck
                     deck.getCards(byName: cardName).forEach { $0.card = card }
 
@@ -114,7 +111,7 @@ struct MtgApiService {
                     return
                 }
             } catch {
-                print("ERROR: \(error.localizedDescription)")
+                Logger.error(error)
                 completion(.failure(error))
             }
 
@@ -133,8 +130,8 @@ struct MtgApiService {
                     deck.getCards(byName: cardName).forEach { $0.card = card }
 
                     let set = cardSet.subtracting(results.compactMap({ $0.name }))
-                    print("We have \(results.count) of \(cardSet.count) responses back: \(cardName)")
-                    print("Updated Set: \(set)")
+                    Logger.debug("We have \(results.count) of \(cardSet.count) responses back: \(cardName)")
+                    Logger.debug("Updated Set: \(set)")
 
                     if set.isEmpty {
                         if let error = errorResult {

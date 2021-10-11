@@ -25,13 +25,13 @@ class GameViewController: UIViewController {
     lazy var panPrinter = {
         return Debouncer(delay: 0.1) { [weak self] in
             guard let self = self, let lastPanPoint = self.lastPanPoint else { return }
-            print("Pan Point: \(lastPanPoint)")
+            Logger.debug("Pan Point: \(lastPanPoint)")
         }
     }()
     lazy var scalePrinter = {
         return Debouncer(delay: 0.1) { [weak self] in
             guard let self = self, let lastScale = self.lastScale else { return }
-            print("Scale: \(lastScale)")
+            Logger.debug("Scale: \(lastScale)")
         }
     }()
 
@@ -84,11 +84,11 @@ extension GameViewController {
         let alert = UIAlertController(title: "Your hand", message: "Do you want to keep?", preferredStyle: .alert)
 
         alert.addAction(UIAlertAction(title: "No, mulligan", style: .default, handler: { _ in
-            print("Taking a mulligan")
+            Logger.info("Taking a mulligan")
             Notification.UserAction.mulliganHand.notify()
         }))
         alert.addAction(UIAlertAction(title: "Yes, keep", style: .default, handler: { _ in
-            print("Keeping")
+            Logger.info("Keeping")
             Notification.UserAction.keepHand.notify()
         }))
 

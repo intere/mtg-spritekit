@@ -47,7 +47,7 @@ class DeckChooserTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let deck = decks[indexPath.row]
-        print("Selected file: \(deck.absoluteString)")
+        Logger.info("Selected file: \(deck.absoluteString)")
         chooserDelegate?.selected(deck: deck)
         dismiss(animated: true, completion: nil)
     }

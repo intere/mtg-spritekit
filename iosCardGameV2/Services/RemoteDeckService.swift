@@ -22,7 +22,7 @@ class RemoteDeckService {
     func fetchDeck(from url: URL, completion: @escaping DeckLoadedCallback) {
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let error = error {
-                print("Error: \(error.localizedDescription)")
+                Logger.error(error)
                 return completion(nil, nil, error)
             }
             guard let response = response as? HTTPURLResponse else {

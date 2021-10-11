@@ -14,7 +14,7 @@ class DeckListService {
     /// Gets you a list of all of the deck files.
     var deckFiles: [URL] {
         guard let docsDir = docsDirectory else {
-            print("Couldn't find the documents directory")
+            Logger.error("Couldn't find the documents directory")
             return []
         }
 
@@ -23,8 +23,8 @@ class DeckListService {
                 $0.absoluteString.lowercased().hasSuffix(Constants.deckSuffix)
             }
         }
-        catch let error as NSError {
-            print("Oops! Something went wrong: \(error)")
+        catch {
+            Logger.error(error)
             return []
         }
     }
